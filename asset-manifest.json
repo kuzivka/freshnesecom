@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/freshnesecom/static/js/main.acc66208.js",
+    "index.html": "/freshnesecom/index.html",
+    "main.acc66208.js.map": "/freshnesecom/static/js/main.acc66208.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.acc66208.js"
+  ]
+}
