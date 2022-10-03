@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AliasTest from '@components/AliasTest';
 
 function App() {
   return (
     <div className="App">
-      Freshnesecom
+      <AliasTest />
     </div>
   );
 }
