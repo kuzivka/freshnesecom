@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/freshnesecom/static/js/main.48be759c.js",
+    "main.js": "/freshnesecom/static/js/main.5cd602ed.js",
     "index.html": "/freshnesecom/index.html",
-    "main.48be759c.js.map": "/freshnesecom/static/js/main.48be759c.js.map"
+    "main.5cd602ed.js.map": "/freshnesecom/static/js/main.5cd602ed.js.map"
   },
   "entrypoints": [
-    "static/js/main.48be759c.js"
+    "static/js/main.5cd602ed.js"
   ]
 }
