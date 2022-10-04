@@ -10,6 +10,8 @@ module.exports = function override(config) {
       '@common': path.resolve(__dirname, './src/common'),
       '@store': path.resolve(__dirname, './src/store'),
       '@selectors': path.resolve(__dirname, './src/selectors'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+
     },
   };
   return config;

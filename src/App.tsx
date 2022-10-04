@@ -1,10 +1,17 @@
-import AliasTest from '@components/AliasTest';
+import AllProductsPage from '@pages/AllProductsPage';
+import ProductPage from '@pages/ProductPage';
+import ShoppingCart from '@pages/ShoppingCart';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <AliasTest />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/freshnesecom" element={<AllProductsPage />} />
+        <Route path="/product-page" element={<ProductPage />} />
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
