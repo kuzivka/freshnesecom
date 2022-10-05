@@ -8,7 +8,7 @@ module.exports = function override(config) {
       '@components': path.resolve(__dirname, './src/components'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@common': path.resolve(__dirname, './src/common'),
-      '@store': path.resolve(__dirname, './src/store'),
+      '@reducers': path.resolve(__dirname, './src/redusers'),
       '@selectors': path.resolve(__dirname, './src/selectors'),
       '@pages': path.resolve(__dirname, './src/pages'),
 
