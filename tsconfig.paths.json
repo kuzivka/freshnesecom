@@ -6,7 +6,8 @@
       "@styles/*": ["./styles/*"],
       "@store/*": ["./store/*"],
       "@common/*": ["./common/*"],
-      "@selectors": ["./selectors/*"]
+      "@selectors": ["./selectors/*"],
+      "@pages/*": ["./pages/*"]
     }
   }
 }
