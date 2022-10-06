@@ -1,25 +1,12 @@
 import { ReactComponent as Arrow } from '@assets/svg/arrow.svg';
+import { categories, options } from '@common/constants';
+import { Button, List, ListItem, Menu, MenuItem } from '@mui/material';
 import {
-  Button,
-  Fade,
-  IconButton,
-  List,
-  ListItem,
-  Menu,
-  MenuItem,
-} from '@mui/material';
+  categoryMenuOptions,
+  headerCategoryMenu,
+  headerMenuButton,
+} from '@styles/header-styles';
 import { useState } from 'react';
-
-const categories = [
-  { name: 'Category 1' },
-  { name: 'Category 2' },
-  { name: 'Category 3' },
-  { name: 'Category 4' },
-  { name: 'Category 5' },
-  { name: 'Category 6' },
-  { name: 'Category 7' },
-  { name: 'Category 8' },
-];
 
 export default function CategoryMenu() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -32,38 +19,35 @@ export default function CategoryMenu() {
     setAnchorEl(null);
   };
   return (
-    <List
-      sx={{
-        backgroundColor: '#f9f9f9',
-        display: 'flex',
-        width: '80vw',
-        margin: '0 auto',
-      }}
-    >
+    <List sx={{ ...headerCategoryMenu }}>
       {categories.map((category) => (
         <ListItem>
           <Button
+            sx={{ ...headerMenuButton }}
             id="fade-button"
-            aria-controls={open ? 'fade-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
           >
             {category.name}
-
             <Arrow />
           </Button>
           <Menu
+            elevation={0}
             id="fade-menu"
             anchorEl={anchorEl}
             open={open}
-            MenuListProps={{ onMouseLeave: handleClose }}
+            MenuListProps={{
+              onMouseLeave: handleClose,
+              sx: { ...categoryMenuOptions },
+            }}
             onClose={handleClose}
-            TransitionComponent={Fade}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            {options.map((option) => (
+              <MenuItem sx={{ ...categoryMenuOptions }} onClick={handleClose}>
+                {option.name}
+              </MenuItem>
+            ))}
           </Menu>
         </ListItem>
       ))}

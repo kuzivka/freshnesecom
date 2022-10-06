@@ -1,5 +1,6 @@
 import { ReactComponent as Arrow } from '@assets/svg/arrow.svg';
 import { ReactComponent as Search } from '@assets/svg/search.svg';
+import { categories } from '@common/constants';
 import {
   Divider,
   IconButton,
@@ -8,26 +9,20 @@ import {
   Paper,
   Select,
 } from '@mui/material';
+import {
+  searchInput,
+  searchInputButton,
+  searchInputDivider,
+  searchInputField,
+  searchInputSelect,
+} from '@styles/header-styles';
 import { useState } from 'react';
 
 export default function SearchInput() {
   const [selectState, setSelectState] = useState('All Categories');
 
   return (
-    <Paper
-      elevation={0}
-      component="form"
-      sx={{
-        backgroundColor: '#F9F9F9',
-        border: '2px solid #ddd',
-        p: '0 12px',
-        display: 'flex',
-        alignItems: 'center',
-        width: 500,
-        height: '42px',
-        borderRadius: '20px',
-      }}
-    >
+    <Paper elevation={0} component="form" sx={{ ...searchInput }}>
       <Select
         disableUnderline
         variant="standard"
@@ -39,21 +34,25 @@ export default function SearchInput() {
           setSelectState(e.target.value);
         }}
         IconComponent={Arrow}
-        sx={{ width: 200, pr: '15px' }}
+        sx={{ ...searchInputSelect }}
       >
         <MenuItem value={'All Categories'}>All Categories</MenuItem>
-        <MenuItem value={'Category 2'}>Twenty</MenuItem>
-        <MenuItem value={'Category 3'}>Thirty</MenuItem>
+        {categories.map((category) => (
+          <MenuItem value={category.name}>{category.name}</MenuItem>
+        ))}
       </Select>
-      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+      <Divider sx={{ ...searchInputDivider }} orientation="vertical" />
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ...searchInputField }}
         placeholder="Search products, categories..."
       />
-      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+      <IconButton
+        type="button"
+        sx={{ ...searchInputButton }}
+        aria-label="search"
+      >
         <Search />
       </IconButton>
-      
     </Paper>
   );
 }
