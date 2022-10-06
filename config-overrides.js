@@ -11,6 +11,7 @@ module.exports = function override(config) {
       '@reducers': path.resolve(__dirname, './src/redusers'),
       '@selectors': path.resolve(__dirname, './src/selectors'),
       '@pages': path.resolve(__dirname, './src/pages'),
+      '@assets': path.resolve(__dirname, './src/assets'),
 
     },
   };
