@@ -2,15 +2,15 @@ import { Box, Link, List, ListItem, Typography } from '@mui/material';
 
 export default function FooterLinks() {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0 36px' }}>
       {links.map((block) => (
         <Box>
-          <Typography component="div" variant="h6">
+          <Typography component="div" variant="h6" sx={{fontWeight:'600', fontSize:'18px'}}>
             {block.title}
           </Typography>
           <List>
             {block.links.map((link) => (
-              <ListItem sx={{p:'16px 0px'}}>
+              <ListItem sx={{p:'8px 0px'}}>
                 <Link sx={{ color: '#6A983C', fontSize: '14px' }} href={link.link}>
                   {link.resource}
                 </Link>

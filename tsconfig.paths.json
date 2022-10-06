@@ -8,7 +8,8 @@
       "@common/*": ["./common/*"],
       "@selectors": ["./selectors/*"],
       "@pages/*": ["./pages/*"],
-      "@assets/*": ["./assets/*"]
+      "@assets/*": ["./assets/*"],
+      "@services/*": ["./services/*"]
     }
   }
 }

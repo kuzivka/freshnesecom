@@ -18,11 +18,15 @@ import {
 } from '@styles/header-styles';
 import { useState } from 'react';
 
+function SelectArrowIcon(props: any) {
+  return <Arrow style={{ height: '50%' }} {...props} />;
+}
+
 export default function SearchInput() {
   const [selectState, setSelectState] = useState('All Categories');
 
   return (
-    <Paper elevation={0} component="form" sx={{ ...searchInput }}>
+    <Paper elevation={0} component="form" sx={searchInput}>
       <Select
         disableUnderline
         variant="standard"
@@ -33,24 +37,26 @@ export default function SearchInput() {
         onChange={(e) => {
           setSelectState(e.target.value);
         }}
-        IconComponent={Arrow}
-        sx={{ ...searchInputSelect }}
+        IconComponent={SelectArrowIcon}
+        sx={{
+          width: 150,
+          fontWeight: '800',
+          fontSize: '16px',
+        }}
       >
         <MenuItem value={'All Categories'}>All Categories</MenuItem>
         {categories.map((category) => (
-          <MenuItem value={category.name}>{category.name}</MenuItem>
+          <MenuItem key={category.name} value={category.name}>
+            {category.name}
+          </MenuItem>
         ))}
       </Select>
-      <Divider sx={{ ...searchInputDivider }} orientation="vertical" />
+      <Divider sx={searchInputDivider} orientation="vertical" />
       <InputBase
-        sx={{ ...searchInputField }}
+        sx={searchInputField}
         placeholder="Search products, categories..."
       />
-      <IconButton
-        type="button"
-        sx={{ ...searchInputButton }}
-        aria-label="search"
-      >
+      <IconButton type="button" sx={searchInputButton} aria-label="search">
         <Search />
       </IconButton>
     </Paper>

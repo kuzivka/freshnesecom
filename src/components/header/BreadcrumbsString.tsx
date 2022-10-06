@@ -1,6 +1,6 @@
 import { Breadcrumbs, Typography } from '@mui/material';
 import { breadcrumbs } from '@styles/header-styles';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function BreadcrumbsString() {
   const location = useLocation();
@@ -16,11 +16,9 @@ export default function BreadcrumbsString() {
   };
 
   return (
-    <Breadcrumbs aria-label="breadcrumb" sx={{...breadcrumbs}}>
+    <Breadcrumbs aria-label="breadcrumb" sx={{ ...breadcrumbs }}>
       <Typography>Home Page</Typography>
-      <Link to={location.hash} >
-        {locationName()}
-      </Link>
+      <Typography>{locationName()}</Typography>
     </Breadcrumbs>
   );
 }
