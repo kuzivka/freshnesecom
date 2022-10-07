@@ -1,11 +1,11 @@
+import { ReactComponent as Arrow } from '@assets/svg/arrow.svg';
 import { Category } from '@common/type';
 import { Button, Fade, ListItem, Menu, MenuItem } from '@mui/material';
 import { categoryMenuOptions, headerMenuButton } from '@styles/header-styles';
-import { useState, MouseEvent } from 'react';
-import { ReactComponent as Arrow } from '@assets/svg/arrow.svg';
+import { MouseEvent, useState } from 'react';
 
 export default function DropDownMenu(props: Category) {
-  const { id, name, brand } = props;
+  const { name, brand } = props;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
@@ -17,7 +17,7 @@ export default function DropDownMenu(props: Category) {
     setAnchorEl(null);
   };
   return (
-    <ListItem key={id}>
+    <ListItem>
       <Button
         sx={headerMenuButton}
         id="fade-button"

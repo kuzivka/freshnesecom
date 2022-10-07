@@ -8,7 +8,8 @@ export default function CategoryMenu() {
 
   return (
     <List sx={headerCategoryMenu}>
-      {categories && categories.map((category) => <DropDownMenu {...category} />)}
+      {categories &&
+        categories.map((category, i) => <DropDownMenu key={i} {...category} />)}
     </List>
   );
 }

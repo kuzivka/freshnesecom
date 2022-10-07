@@ -57,6 +57,7 @@ export const headerCategoryMenu = {
 export const categoryMenuOptions = { backgroundColor: '#f9f9f9' };
 export const breadcrumbs = {
   m: '16px',
+  ml: '36px',
   '& >*': { textTransform: 'capitalize' },
 };
 export const searchInputSelect = {
@@ -67,4 +68,4 @@ export const searchInputSelect = {
 export const searchInputDivider = { height: 28, m: 0.5 };
 export const searchInputField = { ml: 1, flex: 1 };
 export const searchInputButton = { p: '10px', fontWeight: '500' };
-export const selectArrowIcon = { height: '50%'};
+export const selectArrowIcon = { height: '50%' };
