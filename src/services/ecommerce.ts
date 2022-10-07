@@ -7,7 +7,7 @@ export const ecommerceApi = createApi({
     baseUrl: 'https://633c403574afaef164055348.mockapi.io/api/',
   }),
   endpoints: (builder) => ({
-    getCategories: builder.query<Category[], string>({
+    getCategories: builder.query<Category[], null>({
       query: () => '/categories',
     }),
   }),

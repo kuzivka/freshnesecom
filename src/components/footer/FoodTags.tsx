@@ -9,8 +9,8 @@ export default function FoodTags() {
         Product tags
       </Typography>
       <Box sx={footerTagsContainer}>
-        {food.map((name, i) => (
-          <Chip key={i} label={name} />
+        {food.map((name) => (
+          <Chip key={name} label={name} />
         ))}
       </Box>
     </>

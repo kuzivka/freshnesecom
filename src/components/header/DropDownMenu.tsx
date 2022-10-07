@@ -16,13 +16,14 @@ export default function DropDownMenu(props: Category) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const isExpaned = () => (open ? 'true' : undefined);
   return (
     <ListItem>
       <Button
         sx={headerMenuButton}
         id="fade-button"
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={isExpaned()}
         onClick={handleClick}
       >
         {name}
@@ -40,8 +41,8 @@ export default function DropDownMenu(props: Category) {
         }}
         onClose={handleClose}
       >
-        {brand.map(({ name }, i) => (
-          <MenuItem key={i} sx={categoryMenuOptions} onClick={handleClose}>
+        {brand.map(({ name, id }) => (
+          <MenuItem key={id} sx={categoryMenuOptions} onClick={handleClose}>
             {name}
           </MenuItem>
         ))}

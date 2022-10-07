@@ -6,7 +6,7 @@ export default function AllProducts() {
   return (
     <Box>
       {productList.map((product) => (
-        <ProductListItem>{product.name}</ProductListItem>
+        <ProductListItem key={product.id}>{product.name}</ProductListItem>
       ))}
     </Box>
   );

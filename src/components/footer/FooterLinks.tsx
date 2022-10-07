@@ -4,6 +4,7 @@ import {
   footerLinksLink,
   footerLinksTitle,
 } from '@styles/footer-styles';
+
 import { links } from './constants';
 
 export default function FooterLinks() {
@@ -15,8 +16,8 @@ export default function FooterLinks() {
             {title}
           </Typography>
           <List>
-            {links.map(({ link, resource }, i) => (
-              <ListItem key={i} sx={footerLinksLink}>
+            {links.map(({ link, resource }) => (
+              <ListItem key={resource} sx={footerLinksLink}>
                 <Link href={link}>{resource}</Link>
               </ListItem>
             ))}
