@@ -10,7 +10,7 @@ import {
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BreadcrambsString from './BreadcrumbsString';
-import CategoryMenu from './CategoryMenu';
+import CategoryMenus from './CategoryMenus';
 import InfoBar from './InfoBar';
 import SearchInput from './SearchInput';
 
@@ -29,19 +29,19 @@ export function Header() {
     <>
       <InfoBar />
       <Divider variant="middle" />
-      <Box sx={{ ...headerContentContainer }}>
+      <Box sx={headerContentContainer}>
         <LogoIcon onClick={handleLogoClick} />
         <SearchInput />
-        <Box sx={{ ...headerIconButtonsContainer }}>
+        <Box sx={headerIconButtonsContainer}>
           <IconButton>
             <Account />
           </IconButton>
-          <IconButton>
-            <Cart onClick={handleCartClick} />
+          <IconButton onClick={handleCartClick}>
+            <Cart />
           </IconButton>
         </Box>
       </Box>
-      <CategoryMenu />
+      <CategoryMenus />
       <BreadcrambsString />
     </>
   );

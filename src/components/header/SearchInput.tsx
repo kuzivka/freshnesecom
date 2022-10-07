@@ -1,6 +1,4 @@
-import { ReactComponent as Arrow } from '@assets/svg/arrow.svg';
 import { ReactComponent as Search } from '@assets/svg/search.svg';
-import { categories } from '@common/constants';
 import {
   Divider,
   IconButton,
@@ -9,6 +7,7 @@ import {
   Paper,
   Select,
 } from '@mui/material';
+import { useGetCategoriesQuery } from '@services/ecommerce';
 import {
   searchInput,
   searchInputButton,
@@ -17,14 +16,11 @@ import {
   searchInputSelect,
 } from '@styles/header-styles';
 import { useState } from 'react';
-
-function SelectArrowIcon(props: any) {
-  return <Arrow style={{ height: '50%' }} {...props} />;
-}
+import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {
   const [selectState, setSelectState] = useState('All Categories');
-
+  const { data: categories } = useGetCategoriesQuery('');
   return (
     <Paper elevation={0} component="form" sx={searchInput}>
       <Select
@@ -38,18 +34,15 @@ export default function SearchInput() {
           setSelectState(e.target.value);
         }}
         IconComponent={SelectArrowIcon}
-        sx={{
-          width: 150,
-          fontWeight: '800',
-          fontSize: '16px',
-        }}
+        sx={searchInputSelect}
       >
         <MenuItem value={'All Categories'}>All Categories</MenuItem>
-        {categories.map((category) => (
-          <MenuItem key={category.name} value={category.name}>
-            {category.name}
-          </MenuItem>
-        ))}
+        {categories &&
+          categories.map(({ name }, i) => (
+            <MenuItem key={i} value={name}>
+              {name}
+            </MenuItem>
+          ))}
       </Select>
       <Divider sx={searchInputDivider} orientation="vertical" />
       <InputBase

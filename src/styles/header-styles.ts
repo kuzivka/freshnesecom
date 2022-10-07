@@ -5,9 +5,11 @@ export const infoBarContainer = {
   height: '52px',
   alignItems: 'center',
   padding: '0 20px',
-  '& .css-1ps4owl-MuiTypography-root-MuiLink-root': {
-    textDecoration: 'none',
-    color: '#6A983C',
+  '> *': {
+    fontSize: '12px',
+  },
+  '& .css-5xttdt-MuiTypography-root': {
+    fontSize: '12px',
   },
 };
 export const infoBarContactsContainer = {
@@ -53,15 +55,16 @@ export const headerCategoryMenu = {
   margin: '0 auto',
 };
 export const categoryMenuOptions = { backgroundColor: '#f9f9f9' };
-export const breadcrumbs = { m: '16px' };
+export const breadcrumbs = {
+  m: '16px',
+  '& >*': { textTransform: 'capitalize' },
+};
 export const searchInputSelect = {
   width: 150,
   fontWeight: '800',
   fontSize: '16px',
-  '& .css-19xtc65-MuiSelect-icon': { position: 'relative', pr: '10px', transform:'none' },
-  '& .css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input':
-    { paddingRight: '3px' },
 };
 export const searchInputDivider = { height: 28, m: 0.5 };
 export const searchInputField = { ml: 1, flex: 1 };
 export const searchInputButton = { p: '10px', fontWeight: '500' };
+export const selectArrowIcon = { height: '50%'};
