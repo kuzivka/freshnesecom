@@ -8,9 +8,9 @@ export const infoBarContainer = {
   '> *': {
     fontSize: '12px',
   },
-  '& .css-5xttdt-MuiTypography-root': {
-    fontSize: '12px',
-  },
+};
+export const infoBarContactInfo = {
+  fontSize: '12px',
 };
 export const infoBarContactsContainer = {
   display: 'flex',
