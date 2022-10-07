@@ -7,7 +7,9 @@
       "@reudcers/*": ["./reducers/*"],
       "@common/*": ["./common/*"],
       "@selectors": ["./selectors/*"],
-      "@pages/*": ["./pages/*"]
+      "@pages/*": ["./pages/*"],
+      "@assets/*": ["./assets/*"],
+      "@services/*": ["./services/*"]
     }
   }
 }

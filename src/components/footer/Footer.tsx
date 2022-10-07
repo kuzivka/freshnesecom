@@ -1,3 +1,13 @@
+import Copyrights from './Copyrights';
+import FoodTags from './FoodTags';
+import FooterLinks from './FooterLinks';
+
 export function Footer() {
-  return <h1>Footer</h1>;
+  return (
+    <>
+      <FooterLinks />
+      <FoodTags />
+      <Copyrights />
+    </>
+  );
 }
