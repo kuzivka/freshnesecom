@@ -51,13 +51,16 @@ export const headerMenuButton = {
 export const headerCategoryMenu = {
   backgroundColor: '#f9f9f9',
   display: 'flex',
-  width: '80vw',
+  justifyContent: 'center',
   margin: '0 auto',
+  flexWrap: 'wrap',
+
+  width: 'fit-content',
 };
 export const categoryMenuOptions = { backgroundColor: '#f9f9f9' };
 export const breadcrumbs = {
-  m: '16px',
-  ml: '36px',
+  p: '16px',
+  pl: '36px',
   '& >*': { textTransform: 'capitalize' },
 };
 export const searchInputSelect = {
@@ -69,3 +72,4 @@ export const searchInputDivider = { height: 28, m: 0.5 };
 export const searchInputField = { ml: 1, flex: 1 };
 export const searchInputButton = { p: '10px', fontWeight: '500' };
 export const selectArrowIcon = { height: '50%' };
+export const selectMenuItem = { width: 'fit-content' };

@@ -12,8 +12,7 @@ export const footerLinksLink = {
 export const footerTagsTitle = {
   fontWeight: '600',
   fontSize: '18px',
-  pl: '36px',
-  pb: '16px',
+  p: '12px 36px',
 };
 export const footerTagsContainer = {
   display: 'flex',

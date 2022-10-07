@@ -1,7 +1,11 @@
 import { ReactComponent as Arrow } from '@assets/svg/arrow.svg';
 import { Category } from '@common/type';
 import { Button, Fade, ListItem, Menu, MenuItem } from '@mui/material';
-import { categoryMenuOptions, headerMenuButton } from '@styles/header-styles';
+import {
+  categoryMenuOptions,
+  headerMenuButton,
+  selectMenuItem,
+} from '@styles/header-styles';
 import { MouseEvent, useState } from 'react';
 
 export default function DropDownMenu(props: Category) {
@@ -18,7 +22,7 @@ export default function DropDownMenu(props: Category) {
   };
   const isExpaned = () => (open ? 'true' : undefined);
   return (
-    <ListItem>
+    <ListItem sx={selectMenuItem}>
       <Button
         sx={headerMenuButton}
         id="fade-button"
