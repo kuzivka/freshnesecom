@@ -10,8 +10,8 @@ import { links } from './constants';
 export default function FooterLinks() {
   return (
     <Box sx={footerLinksContainer}>
-      {links.map(({ title, links }, index) => (
-        <Box key={index}>
+      {links.map(({ title, links }) => (
+        <Box key={title}>
           <Typography component="div" variant="h6" sx={footerLinksTitle}>
             {title}
           </Typography>
