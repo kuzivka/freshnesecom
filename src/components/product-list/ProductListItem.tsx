@@ -62,105 +62,103 @@ export function ProductListItem(props: ProductListItemProps) {
   };
 
   return (
-    <>
-      <Card
-        variant="outlined"
-        sx={{ width: '60vw', display: 'flex', borderRadius: '12px' }}
+    <Card
+      variant="outlined"
+      sx={{ width: '60vw', display: 'flex', borderRadius: '12px' }}
+    >
+      <CardMedia
+        component="img"
+        sx={{ width: '30%',  borderRadius: '12px'  }}
+        image={product.img[0]}
+        alt="Product photo"
+      />
+      <Box
+        sx={{
+          display: 'flex',
+          flexGrow: '1',
+          width: '70%',
+          p: 4,
+          justifyContent: 'space-between',
+        }}
       >
-        <CardMedia
-          component="img"
-          sx={{ width: '30%' }}
-          image={product.img[0]}
-          alt="Product photo"
-        />
+        <Box sx={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+          <Typography sx={productCardName} variant="h5">
+            {product.name}
+          </Typography>
+          <Typography variant="body2" sx={productCardDescription}>
+            {product.description}
+          </Typography>
+          <Rating
+            sx={{ color: 'black' }}
+            name="read-only"
+            value={ratingValue()}
+            readOnly
+          />
+          <List sx={{ width: '100%' }}>
+            {Object.entries(description).map(([objectKey, value]) => (
+              <ListItem key={objectKey} sx={productCardDescriptionContainer}>
+                <Typography sx={cardDescriptionList} variant="body1">
+                  {objectKey}
+                </Typography>
+                <Typography sx={cardDescriptionList} variant="body1">
+                  {value}
+                </Typography>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
         <Box
           sx={{
-            display: 'flex',
-            flexGrow: '1',
-            width: '70%',
-            p: 4,
+            width: '35%',
             justifyContent: 'space-between',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
-          <Box sx={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
-            <Typography sx={productCardName} variant="h5">
-              {product.name}
+          <Box>
+            {' '}
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: '600', fontSize: '18px' }}
+            >
+              {price()} USD
             </Typography>
-            <Typography variant="body2" sx={productCardDescription}>
-              {product.description}
-            </Typography>
-            <Rating
-              sx={{ color: 'black' }}
-              name="read-only"
-              value={ratingValue()}
-              readOnly
-            />
-            <List sx={{ width: '100%' }}>
-              {Object.entries(description).map(([objectKey, value]) => (
-                <ListItem key={objectKey} sx={productCardDescriptionContainer}>
-                  <Typography sx={cardDescriptionList} variant="body1">
-                    {objectKey}
-                  </Typography>
-                  <Typography sx={cardDescriptionList} variant="body1">
-                    {value}
-                  </Typography>
-                </ListItem>
-              ))}
-            </List>
+            {product.discount && (
+              <>
+                <Typography sx={priceWithoutDiscount} variant="caption">
+                  {product.price.pcs}
+                </Typography>
+              </>
+            )}
           </Box>
-          <Box
-            sx={{
-              width: '35%',
-              justifyContent: 'space-between',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Box>
-              {' '}
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: '600', fontSize: '18px' }}
-              >
-                {price()} USD
-              </Typography>
-              {product.discount && (
-                <>
-                  <Typography sx={priceWithoutDiscount} variant="caption">
-                    {product.price.pcs}
-                  </Typography>
-                </>
-              )}
-            </Box>
-            <Box>
-              <Typography sx={shippingPriceInfo} variant="subtitle2">
-                {shippingPrice()}
-              </Typography>
-              <Typography sx={shipingDurationInfo} variant="subtitle2">
-                Delivery in 1 day
-              </Typography>
-            </Box>
-            <Box sx={{ gap: '12px', display: 'flex', flexDirection: 'column' }}>
-              <Button
-                sx={productDetailsButton}
-                variant="contained"
-                disableElevation
-                endIcon={<Arrow />}
-              >
-                Product Details
-              </Button>
-              <Button
-                sx={addToFavouriteButton}
-                variant="contained"
-                disableElevation
-                startIcon={<Heart />}
-              >
-                Add to wish list
-              </Button>
-            </Box>
+          <Box>
+            <Typography sx={shippingPriceInfo} variant="subtitle2">
+              {shippingPrice()}
+            </Typography>
+            <Typography sx={shipingDurationInfo} variant="subtitle2">
+              Delivery in 1 day
+            </Typography>
+          </Box>
+          <Box sx={{ gap: '12px', display: 'flex', flexDirection: 'column' }}>
+            <Button
+              sx={productDetailsButton}
+              variant="contained"
+              disableElevation
+              endIcon={<Arrow />}
+            >
+              Product Details
+            </Button>
+            <Button
+              sx={addToFavouriteButton}
+              variant="contained"
+              disableElevation
+              startIcon={<Heart />}
+            >
+              Add to wish list
+            </Button>
           </Box>
         </Box>
-      </Card>
-    </>
+      </Box>
+    </Card>
   );
 }

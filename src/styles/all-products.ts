@@ -35,7 +35,7 @@ export const cardDescriptionList = {
   color: C1.C,
 };
 export const productCardName = {
-  fontWeight: '700',
+  fontWeight: '600',
   fontSize: '18px',
   mb: '4px',
 };
@@ -71,3 +71,10 @@ export const shipingDurationInfo = {
   color: C1.C,
   fontFamily: 'Open Sans',
 };
+export const chip = {
+  height: 'fit-content',
+  backgroundColor: C2.E,
+  color: C2.A,
+  fontWeight: '600',
+};
+export const titleSpan ={ p: 1, color: C1.C }
