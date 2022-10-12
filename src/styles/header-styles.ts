@@ -1,3 +1,5 @@
+import { C1 } from './colors';
+
 export const infoBarContainer = {
   display: 'flex',
   flexDirection: 'row',
@@ -23,8 +25,8 @@ export const infoBarLinksContainer = {
   gap: '38px',
 };
 export const searchInput = {
-  backgroundColor: '#F9F9F9',
-  border: '2px solid #ddd',
+  backgroundColor: C1.H,
+  border: `2px solid ${C1.D}`,
   p: '0 12px',
   display: 'flex',
   alignItems: 'center',
@@ -45,11 +47,11 @@ export const headerIconButtonsContainer = {
 };
 export const headerMenuButton = {
   textTransform: 'capitalize',
-  color: '#151515',
+  color: C1.A,
   gap: '5px',
 };
 export const headerCategoryMenu = {
-  backgroundColor: '#f9f9f9',
+  backgroundColor: C1.H,
   display: 'flex',
   justifyContent: 'center',
   margin: '0 auto',
@@ -57,7 +59,7 @@ export const headerCategoryMenu = {
 
   width: 'fit-content',
 };
-export const categoryMenuOptions = { backgroundColor: '#f9f9f9' };
+export const categoryMenuOptions = { backgroundColor: C1.H };
 export const breadcrumbs = {
   p: '16px',
   pl: '36px',

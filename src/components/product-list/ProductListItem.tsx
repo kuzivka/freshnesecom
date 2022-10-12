@@ -1,6 +1,6 @@
-import { Farm, Product } from '@common/type';
 import { ReactComponent as Arrow } from '@assets/svg/arrow-right.svg';
 import { ReactComponent as Heart } from '@assets/svg/heart.svg';
+import { Farm, Product } from '@common/type';
 import {
   Box,
   Button,
@@ -13,12 +13,21 @@ import {
 } from '@mui/material';
 import {
   addToFavouriteButton,
+  cardButtonContainer,
+  cardContainer,
   cardDescriptionList,
+  cardImage,
+  cardImageContainer,
+  cardPriceInfoContainer,
+  cardRating,
   priceWithoutDiscount,
   productCardDescription,
   productCardDescriptionContainer,
   productCardName,
+  productDescriptionContainer,
   productDetailsButton,
+  productInfoContainer,
+  productPrice,
   shipingDurationInfo,
   shippingPriceInfo,
 } from '@styles/all-products';
@@ -42,46 +51,32 @@ export function ProductListItem(props: ProductListItemProps) {
     Delivery: product.delivery,
     Stock: `${product.stock} pcs`,
   };
-  const price = () => {
-    if (product.discount) {
-      return ((product.price.pcs * product.discount) / 100).toFixed(2);
-    } else return product.price.pcs.toFixed(2);
-  };
 
-  const shippingPrice = () => {
-    if (product.shippingPrice) {
-      return 'Shipping Price: ' + product.shippingPrice + ' USD';
-    } else return 'Free Shipping';
-  };
+  const price = product.discount
+    ? ((product.price.pcs * product.discount) / 100).toFixed(2)
+    : product.price.pcs.toFixed(2);
 
-  const ratingValue = () => {
-    return (
-      product.rate.reduce((a: number, b: number) => a + b, 0) /
-      product.rate.length
-    );
-  };
+  const shippingPrice = product.shippingPrice
+    ? 'Shipping Price: ' + product.shippingPrice + ' USD'
+    : 'Free Shipping';
+
+  const ratingValue =
+    product.rate.reduce((a: number, b: number) => a + b, 0) /
+    product.rate.length;
 
   return (
-    <Card
-      variant="outlined"
-      sx={{ width: '60vw', display: 'flex', borderRadius: '12px' }}
-    >
-      <CardMedia
-        component="img"
-        sx={{ width: '30%',  borderRadius: '12px'  }}
-        image={product.img[0]}
-        alt="Product photo"
-      />
-      <Box
-        sx={{
-          display: 'flex',
-          flexGrow: '1',
-          width: '70%',
-          p: 4,
-          justifyContent: 'space-between',
-        }}
-      >
-        <Box sx={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+    <Card variant="outlined" sx={cardContainer}>
+      <Box sx={cardImageContainer}>
+        <CardMedia
+          component="img"
+          sx={cardImage}
+          image={product.img[0]}
+          alt="Product photo"
+        />
+      </Box>
+
+      <Box sx={productInfoContainer}>
+        <Box sx={productDescriptionContainer}>
           <Typography sx={productCardName} variant="h5">
             {product.name}
           </Typography>
@@ -89,12 +84,12 @@ export function ProductListItem(props: ProductListItemProps) {
             {product.description}
           </Typography>
           <Rating
-            sx={{ color: 'black' }}
+            sx={cardRating}
             name="read-only"
-            value={ratingValue()}
+            value={ratingValue}
             readOnly
           />
-          <List sx={{ width: '100%' }}>
+          <List>
             {Object.entries(description).map(([objectKey, value]) => (
               <ListItem key={objectKey} sx={productCardDescriptionContainer}>
                 <Typography sx={cardDescriptionList} variant="body1">
@@ -107,21 +102,10 @@ export function ProductListItem(props: ProductListItemProps) {
             ))}
           </List>
         </Box>
-        <Box
-          sx={{
-            width: '35%',
-            justifyContent: 'space-between',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
+        <Box sx={cardPriceInfoContainer}>
           <Box>
-            {' '}
-            <Typography
-              variant="h5"
-              sx={{ fontWeight: '600', fontSize: '18px' }}
-            >
-              {price()} USD
+            <Typography variant="h5" sx={productPrice}>
+              {price} USD
             </Typography>
             {product.discount && (
               <>
@@ -133,13 +117,13 @@ export function ProductListItem(props: ProductListItemProps) {
           </Box>
           <Box>
             <Typography sx={shippingPriceInfo} variant="subtitle2">
-              {shippingPrice()}
+              {shippingPrice}
             </Typography>
             <Typography sx={shipingDurationInfo} variant="subtitle2">
               Delivery in 1 day
             </Typography>
           </Box>
-          <Box sx={{ gap: '12px', display: 'flex', flexDirection: 'column' }}>
+          <Box sx={cardButtonContainer}>
             <Button
               sx={productDetailsButton}
               variant="contained"
