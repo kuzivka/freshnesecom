@@ -47,7 +47,7 @@ export default function SearchInput() {
       <Divider sx={searchInputDivider} orientation="vertical" />
       <InputBase
         sx={searchInputField}
-        placeholder="Search products, categories..."
+        placeholder="Search Products, categories..."
       />
       <IconButton type="button" sx={searchInputButton} aria-label="search">
         <Search />

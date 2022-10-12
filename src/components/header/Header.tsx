@@ -29,6 +29,7 @@ export function Header() {
     <>
       <InfoBar />
       <Divider variant="middle" />
+      <Box sx={{p:'16px 45px'}}>
       <Box sx={headerContentContainer}>
         <LogoIcon onClick={handleLogoClick} />
         <SearchInput />
@@ -41,7 +42,7 @@ export function Header() {
           </IconButton>
         </Box>
       </Box>
-      <CategoryMenus />
+      <CategoryMenus /></Box>
       <BreadcrambsString />
     </>
   );

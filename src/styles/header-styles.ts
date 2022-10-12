@@ -26,19 +26,20 @@ export const infoBarLinksContainer = {
 };
 export const searchInput = {
   backgroundColor: C1.H,
-  border: `2px solid ${C1.D}`,
+  border: `1px solid ${C1.D}`,
   p: '0 12px',
   display: 'flex',
   alignItems: 'center',
   width: 500,
   height: '42px',
-  borderRadius: '20px',
+  borderRadius: '12px',
 };
 export const headerContentContainer = {
-  padding: '20px',
+  pl: '26px',
+  pb: '10px',
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-around',
+  justifyContent: 'space-between',
   alignItems: 'center',
 };
 export const headerIconButtonsContainer = {
@@ -49,15 +50,16 @@ export const headerMenuButton = {
   textTransform: 'capitalize',
   color: C1.A,
   gap: '5px',
+  p: 0,
 };
 export const headerCategoryMenu = {
   backgroundColor: C1.H,
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: 'space-around',
   margin: '0 auto',
   flexWrap: 'wrap',
-
-  width: 'fit-content',
+  width: '100%',
+  p: '16px 45px',
 };
 export const categoryMenuOptions = { backgroundColor: C1.H };
 export const breadcrumbs = {
@@ -71,7 +73,16 @@ export const searchInputSelect = {
   fontSize: '16px',
 };
 export const searchInputDivider = { height: 28, m: 0.5 };
-export const searchInputField = { ml: 1, flex: 1 };
+export const searchInputField = {
+  ml: 1,
+  flex: 1,
+  fontFamily: 'Open Sans',
+  fontSize: '14px',
+};
 export const searchInputButton = { p: '10px', fontWeight: '500' };
-export const selectArrowIcon = { height: '50%' };
-export const selectMenuItem = { width: 'fit-content' };
+export const selectArrowIcon = { height: '50%', right: '5px' };
+export const selectMenuItem = {
+  width: 'fit-content',
+  height: 'fit-content',
+  p: 0,
+};

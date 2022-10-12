@@ -108,11 +108,9 @@ export function ProductListItem(props: ProductListItemProps) {
               {price} USD
             </Typography>
             {product.discount && (
-              <>
-                <Typography sx={priceWithoutDiscount} variant="caption">
-                  {product.price.pcs}
-                </Typography>
-              </>
+              <Typography sx={priceWithoutDiscount} variant="caption">
+                {product.price.pcs}
+              </Typography>
             )}
           </Box>
           <Box>
