@@ -1,5 +1,5 @@
 import { Box, Chip, Typography } from '@mui/material';
-import { ProductContext } from '@pages/all-products/AllProducts';
+import { ProductsContext } from '@pages/all-products/AllProducts';
 import {
   chip,
   productListTitle,
@@ -9,7 +9,7 @@ import {
 import { useContext } from 'react';
 
 export default function ProductListTitle() {
-  const products = useContext(ProductContext);
+  const products = useContext(ProductsContext);
   return (
     <Box sx={productListTitleContainer}>
       <Typography sx={productListTitle} variant="h2">

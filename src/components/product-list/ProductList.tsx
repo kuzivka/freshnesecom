@@ -1,19 +1,18 @@
 import { Product } from '@common/type';
 import { Box } from '@mui/material';
-import { ProductContext } from '@pages/all-products/AllProducts';
+import { ProductsContext } from '@pages/all-products/AllProducts';
 import { productListContainer } from '@styles/all-products/allProducts';
 import { useContext } from 'react';
 import { ProductListItem } from './ProductListItem';
 
 export default function ProductList() {
-  const data = useContext(ProductContext);
+  const products = useContext(ProductsContext);
 
   return (
     <Box sx={productListContainer}>
-      {data &&
-        data.map((product: Product) => (
-          <ProductListItem key={product.id} product={product} />
-        ))}
+      {products?.map((product: Product) => (
+        <ProductListItem key={product.id} product={product} />
+      ))}
     </Box>
   );
 }

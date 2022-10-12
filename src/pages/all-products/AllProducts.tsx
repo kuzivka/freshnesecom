@@ -5,17 +5,17 @@ import { Box } from '@mui/material';
 import { useGetProductsQuery } from '@services/ecommerce';
 import { createContext } from 'react';
 
-export const ProductContext = createContext<Product[] | undefined>(undefined);
+export const ProductsContext = createContext<Product[] | undefined>(undefined);
 
 export default function AllProducts() {
   const { data: allProducts } = useGetProductsQuery();
 
   return (
-    <ProductContext.Provider value={allProducts}>
+    <ProductsContext.Provider value={allProducts}>
       <Box>
         <ProductListTitle />
         <ProductList />
       </Box>
-    </ProductContext.Provider>
+    </ProductsContext.Provider>
   );
 }
