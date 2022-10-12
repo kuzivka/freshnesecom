@@ -35,7 +35,7 @@ export default function ProductPriceInfo({
   };
 
   const shippingPrice = product.shippingPrice
-    ? 'Shipping Price: ' + product.shippingPrice + ' USD'
+    ? `Shipping Price: ${product.shippingPrice} USD`
     : 'Free Shipping';
   return (
     <Box sx={cardPriceInfoContainer}>

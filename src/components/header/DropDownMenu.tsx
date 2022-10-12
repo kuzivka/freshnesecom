@@ -34,7 +34,7 @@ export default function DropDownMenu(props: Category) {
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
         elevation={0}
       >
-        {brand.map(({ name, id }) => (
+        {brand?.map(({ name, id }) => (
           <MenuItem
             key={id}
             sx={categoryMenuOptions}

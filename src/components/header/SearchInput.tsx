@@ -37,12 +37,11 @@ export default function SearchInput() {
         sx={searchInputSelect}
       >
         <MenuItem value={'All Categories'}>All Categories</MenuItem>
-        {categories &&
-          categories.map(({ name, id }) => (
-            <MenuItem key={id} value={name}>
-              {name}
-            </MenuItem>
-          ))}
+        {categories?.map(({ name, id }) => (
+          <MenuItem key={id} value={name}>
+            {name}
+          </MenuItem>
+        ))}
       </Select>
       <Divider sx={searchInputDivider} orientation="vertical" />
       <InputBase

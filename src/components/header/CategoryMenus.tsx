@@ -10,10 +10,9 @@ export default function CategoryMenu() {
   return (
     <Box sx={{ pl: '16px' }}>
       <List sx={headerCategoryMenu}>
-        {categories &&
-          categories.map((category) => (
-            <DropDownMenu key={category.id} {...category} />
-          ))}
+        {categories?.map((category) => (
+          <DropDownMenu key={category.id} {...category} />
+        ))}
       </List>
     </Box>
   );
