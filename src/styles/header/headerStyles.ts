@@ -1,4 +1,4 @@
-import { C1 } from './colors';
+import { C1 } from '../colors';
 
 export const infoBarContainer = {
   display: 'flex',
@@ -51,6 +51,9 @@ export const headerMenuButton = {
   color: C1.A,
   gap: '5px',
   p: 0,
+  '&:hover': {
+    backgroundColor: C1.H,
+  },
 };
 export const headerCategoryMenu = {
   backgroundColor: C1.H,

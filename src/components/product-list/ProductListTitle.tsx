@@ -5,7 +5,7 @@ import {
   productListTitle,
   productListTitleContainer,
   titleSpan,
-} from '@styles/all-products';
+} from '@styles/all-products/productListTitle';
 import { useContext } from 'react';
 
 export default function ProductListTitle() {

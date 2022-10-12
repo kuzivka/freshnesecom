@@ -6,7 +6,7 @@ import { Box, Divider, IconButton } from '@mui/material';
 import {
   headerContentContainer,
   headerIconButtonsContainer,
-} from '@styles/header-styles';
+} from '@styles/header/headerStyles';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BreadcrambsString from './BreadcrumbsString';

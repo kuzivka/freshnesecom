@@ -15,7 +15,7 @@ import {
   searchInputDivider,
   searchInputField,
   searchInputSelect,
-} from '@styles/header-styles';
+} from '@styles/header/headerStyles';
 import { useCallback, useState } from 'react';
 import { SelectArrowIcon } from './SelectArrowIcon';
 

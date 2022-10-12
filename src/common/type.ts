@@ -3,7 +3,23 @@ export interface Category {
   name: string;
   brand: Farm[];
 }
-
+export interface Price {
+  pcs: number | null;
+  kg: number ;
+  box: number | null;
+  pckg: number | null;
+}
+export interface Farm {
+  id: number;
+  name: string;
+  categoryId: number;
+}
+export interface Stock {
+  pcs: number | null;
+  kg: number | null;
+  box: number | null;
+  pckg: number | null;
+}
 export interface Product {
   id: number;
   name: string;
@@ -11,24 +27,14 @@ export interface Product {
   description: string;
   img: string[];
   discount: number | null;
-  price: {
-    pcs: number;
-    kg: number;
-    box: number;
-    pckg: number;
-  };
+  price: Price;
   rate: number[];
   freshness: string;
   color: string;
-  stock: number;
+  stock: Stock;
   country: string;
   delivery: string;
   shippingPrice: string;
   reviews: string[];
   question: string[];
-}
-export interface Farm {
-  id: number;
-  name: string;
-  categoryId: number;
 }
