@@ -21,7 +21,7 @@ import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {
   const [selectState, setSelectState] = useState('All Categories');
-  const { data: categories } = useGetCategoriesQuery(null);
+  const { data: categories } = useGetCategoriesQuery();
   const selectChangeHandler = useCallback((event: SelectChangeEvent) => {
     setSelectState(event.target.value);
   }, []);

@@ -8,10 +8,10 @@ import { createContext } from 'react';
 export const ProductContext = createContext<Product[] | undefined>(undefined);
 
 export default function AllProducts() {
-  const { data } = useGetProductsQuery(null);
+  const { data: allProducts } = useGetProductsQuery();
 
   return (
-    <ProductContext.Provider value={data}>
+    <ProductContext.Provider value={allProducts}>
       <Box>
         <ProductListTitle />
         <ProductList />

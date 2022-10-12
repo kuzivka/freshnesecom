@@ -7,13 +7,13 @@ export const ecommerceApi = createApi({
     baseUrl: 'https://633c403574afaef164055348.mockapi.io/api/',
   }),
   endpoints: (builder) => ({
-    getCategories: builder.query<Category[], null>({
+    getCategories: builder.query<Category[], void>({
       query: () => '/categories',
     }),
-    getProducts: builder.query<Product[], null>({
+    getProducts: builder.query<Product[], void>({
       query: () => '/products',
     }),
-    getFarms: builder.query<Farm[], null>({
+    getFarms: builder.query<Farm[], void>({
       query: () => `/brand`,
     }),
   }),

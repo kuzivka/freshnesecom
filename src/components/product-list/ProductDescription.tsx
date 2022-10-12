@@ -19,7 +19,7 @@ export default function ProductDescription({
   product,
   pcs,
 }: ProductDescriptionProps) {
-  const { data: farmsData } = useGetFarmsQuery(null);
+  const { data: farmsData } = useGetFarmsQuery();
   const ratingValue =
     product.rate.reduce((a: number, b: number) => a + b, 0) /
     product.rate.length;

@@ -5,13 +5,13 @@ interface CardImageProps {
   image: string;
 }
 
-export default function CardImage(props: CardImageProps) {
+export default function CardImage({ image }: CardImageProps) {
   return (
     <Box sx={cardImageContainer}>
       <CardMedia
         component="img"
         sx={cardImage}
-        image={props.image}
+        image={image}
         alt="Product photo"
       />
     </Box>

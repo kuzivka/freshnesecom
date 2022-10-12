@@ -1,6 +1,9 @@
 import { Product } from '@common/type';
 import { Box, Card } from '@mui/material';
-import { cardContainer, productInfoContainer } from '@styles/all-products/productListItem';
+import {
+  cardContainer,
+  productInfoContainer,
+} from '@styles/all-products/productListItem';
 import CardImage from './CardImage';
 import ProductDescription from './ProductDescription';
 import ProductPriceInfo from './ProductPriceInfo';
@@ -9,9 +12,7 @@ interface ProductListItemProps {
   product: Product;
 }
 
-export function ProductListItem(props: ProductListItemProps) {
-  const { product } = props;
-
+export function ProductListItem({ product }: ProductListItemProps) {
   const isPcsAvailable = () => {
     if (product.price.pcs && product.stock.pcs) {
       return true;

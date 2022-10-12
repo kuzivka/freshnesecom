@@ -5,7 +5,7 @@ import { headerCategoryMenu } from '@styles/header/headerStyles';
 import DropDownMenu from './DropDownMenu';
 
 export default function CategoryMenu() {
-  const { data: categories } = useGetCategoriesQuery(null);
+  const { data: categories } = useGetCategoriesQuery();
 
   return (
     <Box sx={{ pl: '16px' }}>
