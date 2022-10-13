@@ -4,9 +4,9 @@
     "paths": {
       "@components/*": ["./components/*"],
       "@styles/*": ["./styles/*"],
-      "@reudcers/*": ["./reducers/*"],
+      "@reducers/*": ["./reducers/*"],
       "@common/*": ["./common/*"],
-      "@selectors": ["./selectors/*"],
+      "@selectors/*": ["./selectors/*"],
       "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
       "@services/*": ["./services/*"]

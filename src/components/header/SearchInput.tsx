@@ -8,6 +8,7 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
+import { searchProducts } from '@reducers/listSlice';
 import { useGetCategoriesQuery } from '@services/ecommerce';
 import {
   searchInput,
@@ -16,15 +17,27 @@ import {
   searchInputField,
   searchInputSelect,
 } from '@styles/header/headerStyles';
-import { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {
   const [selectState, setSelectState] = useState('All Categories');
+
   const { data: categories } = useGetCategoriesQuery();
   const selectChangeHandler = useCallback((event: SelectChangeEvent) => {
     setSelectState(event.target.value);
   }, []);
+
+  const dispatch = useDispatch();
+
+  const handleSearchQueryChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const inputValue = event.target.value.replace(/[^\w\s]/gi, '').trim();
+      dispatch(searchProducts(inputValue));
+    },
+    [dispatch]
+  );
 
   return (
     <Paper elevation={0} component="form" sx={searchInput}>
@@ -47,6 +60,7 @@ export default function SearchInput() {
       <InputBase
         sx={searchInputField}
         placeholder="Search Products, categories..."
+        onChange={handleSearchQueryChange}
       />
       <IconButton type="button" sx={searchInputButton} aria-label="search">
         <Search />
