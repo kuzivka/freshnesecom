@@ -17,26 +17,33 @@ import {
   searchInputField,
   searchInputSelect,
 } from '@styles/header/headerStyles';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {
-  const [selectState, setSelectState] = useState('All Categories');
-
-  const { data: categories } = useGetCategoriesQuery();
-  const selectChangeHandler = useCallback((event: SelectChangeEvent) => {
-    setSelectState(event.target.value);
-  }, []);
+  const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const dispatch = useDispatch();
 
+  const { data: categories } = useGetCategoriesQuery();
+  const selectChangeHandler = useCallback((event: SelectChangeEvent) => {
+    setSelectedCategory(event.target.value);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(searchProducts(searchQuery));
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [dispatch, searchQuery]);
+
   const handleSearchQueryChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      const inputValue = event.target.value.replace(/[^\w\s]/gi, '').trim();
-      dispatch(searchProducts(inputValue));
+      setSearchQuery(event.target.value.replace(/[^\w\s]/gi, '').trim());
     },
-    [dispatch]
+    []
   );
 
   return (
@@ -44,7 +51,7 @@ export default function SearchInput() {
       <Select
         disableUnderline
         variant="standard"
-        value={selectState}
+        value={selectedCategory}
         onChange={selectChangeHandler}
         IconComponent={SelectArrowIcon}
         sx={searchInputSelect}
