@@ -34,7 +34,7 @@ export const searchInput = {
   height: '42px',
   borderRadius: '12px',
 };
-export const headerContentContainer = {
+export const headerContent = {
   pl: '26px',
   pb: '10px',
   display: 'flex',
@@ -42,6 +42,7 @@ export const headerContentContainer = {
   justifyContent: 'space-between',
   alignItems: 'center',
 };
+export const headerContentContainer = { p: '16px 45px' };
 export const headerIconButtonsContainer = {
   display: 'flex',
   gap: '30px',

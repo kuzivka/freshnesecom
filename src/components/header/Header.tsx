@@ -4,6 +4,7 @@ import { ReactComponent as LogoIcon } from '@assets/svg/freshnesecom.svg';
 import { PATH } from '@common/enums';
 import { Box, Divider, IconButton } from '@mui/material';
 import {
+  headerContent,
   headerContentContainer,
   headerIconButtonsContainer,
 } from '@styles/header/headerStyles';
@@ -30,8 +31,8 @@ export function Header() {
     <>
       <InfoBar />
       <Divider variant="middle" />
-      <Box sx={{ p: '16px 45px' }}>
-        <Box sx={headerContentContainer}>
+      <Box sx={headerContentContainer}>
+        <Box sx={headerContent}>
           <LogoIcon onClick={handleLogoClick} />
           {location.pathname === PATH.ALL_PRODUCTS && <SearchInput />}
           <Box sx={headerIconButtonsContainer}>
