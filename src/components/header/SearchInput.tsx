@@ -15,13 +15,13 @@ import {
   searchInputDivider,
   searchInputField,
   searchInputSelect,
-} from '@styles/header-styles';
+} from '@styles/header/headerStyles';
 import { useCallback, useState } from 'react';
 import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {
   const [selectState, setSelectState] = useState('All Categories');
-  const { data: categories } = useGetCategoriesQuery(null);
+  const { data: categories } = useGetCategoriesQuery();
   const selectChangeHandler = useCallback((event: SelectChangeEvent) => {
     setSelectState(event.target.value);
   }, []);
@@ -37,17 +37,16 @@ export default function SearchInput() {
         sx={searchInputSelect}
       >
         <MenuItem value={'All Categories'}>All Categories</MenuItem>
-        {categories &&
-          categories.map(({ name, id }) => (
-            <MenuItem key={id} value={name}>
-              {name}
-            </MenuItem>
-          ))}
+        {categories?.map(({ name, id }) => (
+          <MenuItem key={id} value={name}>
+            {name}
+          </MenuItem>
+        ))}
       </Select>
       <Divider sx={searchInputDivider} orientation="vertical" />
       <InputBase
         sx={searchInputField}
-        placeholder="Search products, categories..."
+        placeholder="Search Products, categories..."
       />
       <IconButton type="button" sx={searchInputButton} aria-label="search">
         <Search />

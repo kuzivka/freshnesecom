@@ -1,5 +1,5 @@
 import { Breadcrumbs, Typography } from '@mui/material';
-import { breadcrumbs } from '@styles/header-styles';
+import { breadcrumbs } from '@styles/header/headerStyles';
 import { useLocation } from 'react-router-dom';
 
 export default function BreadcrumbsString() {

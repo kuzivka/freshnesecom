@@ -4,7 +4,7 @@ import {
   infoBarContactsContainer,
   infoBarContainer,
   infoBarLinksContainer,
-} from '@styles/header-styles';
+} from '@styles/header/headerStyles';
 
 export default function InfoBar() {
   return (

@@ -6,7 +6,7 @@ import { Box, Divider, IconButton } from '@mui/material';
 import {
   headerContentContainer,
   headerIconButtonsContainer,
-} from '@styles/header-styles';
+} from '@styles/header/headerStyles';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BreadcrambsString from './BreadcrumbsString';
@@ -29,6 +29,7 @@ export function Header() {
     <>
       <InfoBar />
       <Divider variant="middle" />
+      <Box sx={{p:'16px 45px'}}>
       <Box sx={headerContentContainer}>
         <LogoIcon onClick={handleLogoClick} />
         <SearchInput />
@@ -41,7 +42,7 @@ export function Header() {
           </IconButton>
         </Box>
       </Box>
-      <CategoryMenus />
+      <CategoryMenus /></Box>
       <BreadcrambsString />
     </>
   );

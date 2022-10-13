@@ -1,56 +1,49 @@
 import { ReactComponent as Arrow } from '@assets/svg/arrow.svg';
 import { Category } from '@common/type';
-import { Button, Fade, ListItem, Menu, MenuItem } from '@mui/material';
+import { Button, ListItem, MenuItem } from '@mui/material';
+import {
+  bindHover,
+  bindMenu,
+  usePopupState,
+} from 'material-ui-popup-state/hooks';
+import HoverMenu from 'material-ui-popup-state/HoverMenu';
+
 import {
   categoryMenuOptions,
   headerMenuButton,
   selectMenuItem,
-} from '@styles/header-styles';
-import { MouseEvent, useState } from 'react';
+} from '@styles/header/headerStyles';
 
 export default function DropDownMenu(props: Category) {
   const { name, brand } = props;
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const open = Boolean(anchorEl);
+  const popupState = usePopupState({
+    variant: 'popover',
+    popupId: 'categoryMenu',
+  });
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const isExpaned = () => (open ? 'true' : undefined);
   return (
     <ListItem sx={selectMenuItem}>
-      <Button
-        sx={headerMenuButton}
-        id="fade-button"
-        aria-haspopup="true"
-        aria-expanded={isExpaned()}
-        onClick={handleClick}
-      >
+      <Button {...bindHover(popupState)} sx={headerMenuButton}>
         {name}
         <Arrow />
       </Button>
-      <Menu
+      <HoverMenu
+        {...bindMenu(popupState)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
         elevation={0}
-        id="fade-menu"
-        anchorEl={anchorEl}
-        TransitionComponent={Fade}
-        open={open}
-        MenuListProps={{
-          onMouseLeave: handleClose,
-          sx: categoryMenuOptions,
-        }}
-        onClose={handleClose}
       >
-        {brand.map(({ name, id }) => (
-          <MenuItem key={id} sx={categoryMenuOptions} onClick={handleClose}>
+        {brand?.map(({ name, id }) => (
+          <MenuItem
+            key={id}
+            sx={categoryMenuOptions}
+            onClick={popupState.close}
+          >
             {name}
           </MenuItem>
         ))}
-      </Menu>
+      </HoverMenu>
     </ListItem>
   );
 }

@@ -1,13 +1,21 @@
-import { productList } from '@common/constants';
-import { ProductListItem } from '@components/product-list-item/ProductListItem';
+import { Product } from '@common/type';
+import ProductList from '@components/product-list/ProductList';
+import ProductListTitle from '@components/product-list/ProductListTitle';
 import { Box } from '@mui/material';
+import { useGetProductsQuery } from '@services/ecommerce';
+import { createContext } from 'react';
+
+export const ProductsContext = createContext<Product[] | undefined>(undefined);
 
 export default function AllProducts() {
+  const { data: allProducts } = useGetProductsQuery();
+
   return (
-    <Box>
-      {productList.map((product) => (
-        <ProductListItem key={product.id}>{product.name}</ProductListItem>
-      ))}
-    </Box>
+    <ProductsContext.Provider value={allProducts}>
+      <Box>
+        <ProductListTitle />
+        <ProductList />
+      </Box>
+    </ProductsContext.Provider>
   );
 }

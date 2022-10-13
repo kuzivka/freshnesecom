@@ -13,6 +13,9 @@ import { store } from './store';
 const theme = createTheme({
   typography: {
     fontFamily: ['Poppins', 'sans-serif'].join(','),
+    allVariants:{
+      color:'#151515'
+    }
   },
   components: {
     MuiLink: {
