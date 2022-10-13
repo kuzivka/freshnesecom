@@ -6,8 +6,8 @@ export interface Category {
 export interface Price {
   pcs: number | null;
   kg: number ;
-  box: number | null;
-  pckg: number | null;
+  box: number;
+  pckg: number;
 }
 export interface Farm {
   id: number;
@@ -16,9 +16,9 @@ export interface Farm {
 }
 export interface Stock {
   pcs: number | null;
-  kg: number | null;
-  box: number | null;
-  pckg: number | null;
+  kg: number;
+  box: number;
+  pckg: number;
 }
 export interface Product {
   id: number;
