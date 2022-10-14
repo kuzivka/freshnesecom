@@ -1,6 +1,5 @@
-import { Product } from '@common/type';
+import { Farm, Product } from '@common/type';
 import { Box, List, ListItem, Rating, Typography } from '@mui/material';
-import { useGetFarmsQuery } from '@services/ecommerce';
 import {
   cardDescriptionList,
   cardRating,
@@ -13,13 +12,14 @@ import {
 interface ProductDescriptionProps {
   product: Product;
   pcs: boolean | undefined;
+  farmsData: Farm[] | undefined;
 }
 
 export default function ProductDescription({
   product,
   pcs,
+  farmsData,
 }: ProductDescriptionProps) {
-  const { data: farmsData } = useGetFarmsQuery();
   const ratingValue =
     product.rate.reduce((a: number, b: number) => a + b, 0) /
     product.rate.length;

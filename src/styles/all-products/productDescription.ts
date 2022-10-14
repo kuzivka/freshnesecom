@@ -2,13 +2,15 @@ import { C1, C2 } from '../colors';
 import { hideOverflow } from '../mixins';
 
 export const cardDescriptionList = {
-  textTransform: 'capitalize',
   ...hideOverflow,
   minWidth: '100px',
   width: '50%',
   fontFamily: 'Open Sans',
   fontSize: '14px',
   color: C1.C,
+  '&::first-letter': {
+    textTransform: 'uppercase',
+  },
 };
 export const productCardName = {
   fontWeight: '600',
@@ -27,6 +29,7 @@ export const productCardDescriptionContainer = {
   padding: '6px 0',
   '&:last-child p:last-child': {
     color: C2.A,
+    textTransform: 'lowercase',
   },
 };
 export const productDescriptionContainer = {

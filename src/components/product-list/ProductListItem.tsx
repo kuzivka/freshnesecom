@@ -1,4 +1,4 @@
-import { Product } from '@common/type';
+import { Farm, Product } from '@common/type';
 import { Box, Card } from '@mui/material';
 import {
   cardContainer,
@@ -10,9 +10,10 @@ import ProductPriceInfo from './ProductPriceInfo';
 
 interface ProductListItemProps {
   product: Product;
+  farmsData: Farm[] | undefined;
 }
 
-export function ProductListItem({ product }: ProductListItemProps) {
+export function ProductListItem({ product, farmsData }: ProductListItemProps) {
   const isPcsAvailable =
     !!(product.price.pcs && product.stock.pcs) ||
     !(product.price.kg && product.stock.kg);
@@ -21,7 +22,11 @@ export function ProductListItem({ product }: ProductListItemProps) {
     <Card variant="outlined" sx={cardContainer}>
       <CardImage image={product.img[0]} />
       <Box sx={productInfoContainer}>
-        <ProductDescription product={product} pcs={isPcsAvailable} />
+        <ProductDescription
+          product={product}
+          pcs={isPcsAvailable}
+          farmsData={farmsData}
+        />
         <ProductPriceInfo product={product} pcs={isPcsAvailable} />
       </Box>
     </Card>

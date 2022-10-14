@@ -4,11 +4,12 @@ import { ReactComponent as LogoIcon } from '@assets/svg/freshnesecom.svg';
 import { PATH } from '@common/enums';
 import { Box, Divider, IconButton } from '@mui/material';
 import {
+  headerContent,
   headerContentContainer,
   headerIconButtonsContainer,
 } from '@styles/header/headerStyles';
 import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import BreadcrambsString from './BreadcrumbsString';
 import CategoryMenus from './CategoryMenus';
 import InfoBar from './InfoBar';
@@ -16,6 +17,7 @@ import SearchInput from './SearchInput';
 
 export function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleCartClick = useCallback(() => {
     navigate(PATH.CART);
@@ -29,20 +31,21 @@ export function Header() {
     <>
       <InfoBar />
       <Divider variant="middle" />
-      <Box sx={{p:'16px 45px'}}>
       <Box sx={headerContentContainer}>
-        <LogoIcon onClick={handleLogoClick} />
-        <SearchInput />
-        <Box sx={headerIconButtonsContainer}>
-          <IconButton>
-            <Account />
-          </IconButton>
-          <IconButton onClick={handleCartClick}>
-            <Cart />
-          </IconButton>
+        <Box sx={headerContent}>
+          <LogoIcon onClick={handleLogoClick} />
+          {location.pathname === PATH.ALL_PRODUCTS && <SearchInput />}
+          <Box sx={headerIconButtonsContainer}>
+            <IconButton>
+              <Account />
+            </IconButton>
+            <IconButton onClick={handleCartClick}>
+              <Cart />
+            </IconButton>
+          </Box>
         </Box>
+        <CategoryMenus />
       </Box>
-      <CategoryMenus /></Box>
       <BreadcrambsString />
     </>
   );

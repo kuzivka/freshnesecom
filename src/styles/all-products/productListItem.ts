@@ -1,5 +1,4 @@
-import { C1, C2 } from '../colors';
-import { greenButton, hideOverflow } from '../mixins';
+import { C1 } from '../colors';
 
 export const cardContainer = {
   width: '60vw',
@@ -15,7 +14,6 @@ export const productInfoContainer = {
   justifyContent: 'space-between',
 };
 
-
 export const cardPriceInfoContainer = {
   width: '35%',
   justifyContent: 'space-between',
@@ -23,7 +21,6 @@ export const cardPriceInfoContainer = {
   flexDirection: 'column',
 };
 export const productPrice = { fontWeight: '600', fontSize: '18px' };
-
 
 export const priceWithoutDiscount = {
   fontWeight: '600',

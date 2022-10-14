@@ -18,34 +18,28 @@ export default function ProductPriceInfo({
   product,
   pcs,
 }: ProductPriceInfoProps) {
-  const price = () => {
-    if (pcs) {
-      const priceNumber =
-        product.discount && product.price.pcs
-          ? ((product.price.pcs * product.discount) / 100).toFixed(2)
-          : product.price.pcs;
-      return priceNumber;
-    } else {
-      const priceNumber =
-        product.discount && product.price.kg
-          ? ((product.price.kg * product.discount) / 100).toFixed(2)
-          : product.price.kg;
-      return priceNumber;
-    }
-  };
+  const price = pcs ? product.price.pcs : product.price.kg;
+
+  const priceWithDiscount =
+    product.discount && price
+      ? ((price * product.discount) / 100).toFixed(2)
+      : price?.toFixed(2);
+
+  const priceBeforeDiscount = price?.toFixed(2);
 
   const shippingPrice = product.shippingPrice
     ? `Shipping Price: ${product.shippingPrice} USD`
     : 'Free Shipping';
+
   return (
     <Box sx={cardPriceInfoContainer}>
       <Box>
         <Typography variant="h5" sx={productPrice}>
-          {price()} USD
+          {priceWithDiscount} USD
         </Typography>
         {product.discount && (
           <Typography sx={priceWithoutDiscount} variant="caption">
-            {price()}
+            {priceBeforeDiscount}
           </Typography>
         )}
       </Box>
