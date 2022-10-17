@@ -69,8 +69,20 @@ export const categoryMenuOptions = { backgroundColor: C1.H };
 export const breadcrumbs = {
   p: '16px',
   pl: '36px',
-  '& >*': { textTransform: 'capitalize' },
+  color: C1.C,
+  fontSize: '12px',
+  '& .MuiBreadcrumbs-li:last-child': { '& >*': { color: C1.A } },
 };
+
+export const breadcrumbsLink = {
+  textTransform: 'capitalize',
+  fontSize: '12px',
+  color: C1.C,
+  '&:last-child': {
+    '& >*': { color: C1.A },
+  },
+};
+
 export const searchInputSelect = {
   width: 150,
   fontWeight: '800',
