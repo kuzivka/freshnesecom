@@ -1,3 +1,9 @@
+import { Box, Typography } from '@mui/material';
+
 export default function PriceFilter() {
-  return <div>PriseFilter</div>;
+  return (
+    <Box>
+      <Typography variant="h5"></Typography>
+    </Box>
+  );
 }

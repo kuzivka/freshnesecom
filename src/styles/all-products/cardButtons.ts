@@ -4,7 +4,7 @@ import { greenButton } from '../mixins';
 export const addToFavouriteButton = {
   backgroundColor: C1.F,
   borderRadius: '12px',
-  width: '100%',
+  width: 'fit-content',
   color: C1.A,
   p: '6px 12px',
   fontWeight: '700',
@@ -14,11 +14,13 @@ export const addToFavouriteButton = {
   },
 };
 export const productDetailsButton = {
-  width: '100%',
   ...greenButton,
+  width: 'fit-content',
+  p: '12px 16px',
 };
 export const cardButtonContainer = {
   gap: '12px',
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
 };

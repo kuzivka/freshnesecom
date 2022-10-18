@@ -5,7 +5,7 @@ export interface Category {
 }
 export interface Price {
   pcs: number | null;
-  kg: number ;
+  kg: number;
   box: number;
   pckg: number;
 }
@@ -37,4 +37,5 @@ export interface Product {
   shippingPrice: string;
   reviews: string[];
   question: string[];
+  category: number;
 }

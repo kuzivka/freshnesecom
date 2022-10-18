@@ -1,11 +1,11 @@
 import { Box, Chip, Typography } from '@mui/material';
-import { ProductsContext } from '@pages/all-products/AllProducts';
 import {
   chip,
   productListTitle,
   productListTitleContainer,
   titleSpan,
 } from '@styles/all-products/productListTitle';
+import { ProductsContext } from '../../App';
 import { useContext } from 'react';
 
 export default function ProductListTitle() {

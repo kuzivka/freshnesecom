@@ -8,8 +8,7 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { searchProducts } from '@reducers/listSlice';
-import { useGetCategoriesQuery } from '@services/ecommerce';
+import { categoryFilter, searchProducts } from '@reducers/listSlice';
 import {
   searchInput,
   searchInputButton,
@@ -17,20 +16,35 @@ import {
   searchInputField,
   searchInputSelect,
 } from '@styles/header/headerStyles';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import {
+  ChangeEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store';
+import { CategoriesContext } from '../../App';
 import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
+  const dispatch = useDispatch();
+  const categories = useContext(CategoriesContext);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const dispatch = useDispatch();
+  const selectedCategoryId = useSelector(
+    (state: RootState) => state.productList.categoryFilter
+  );
 
-  const { data: categories } = useGetCategoriesQuery();
-  const selectChangeHandler = useCallback((event: SelectChangeEvent) => {
-    setSelectedCategory(event.target.value);
-  }, []);
+  const [selectedCategory, setSelectedCategory] = useState(
+    selectedCategoryId.toString()
+  );
+
+  const selectChangeHandler = (event: SelectChangeEvent) => {
+    setSelectedCategory(event.target.value as string);
+    dispatch(categoryFilter(event.target.value));
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,9 +70,9 @@ export default function SearchInput() {
         IconComponent={SelectArrowIcon}
         sx={searchInputSelect}
       >
-        <MenuItem value={'All Categories'}>All Categories</MenuItem>
+        <MenuItem value={0}>All Categories</MenuItem>
         {categories?.map(({ name, id }) => (
-          <MenuItem key={id} value={name}>
+          <MenuItem key={id} value={id}>
             {name}
           </MenuItem>
         ))}

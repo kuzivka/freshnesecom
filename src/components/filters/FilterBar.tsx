@@ -5,11 +5,11 @@ import { Button } from '@mui/material';
 
 export default function FilterBar() {
   return (
-    <>
+    <aside>
       <CategoriesFilter />
       <BrandFilter />
       <PriceFilter />
       <Button>Reset All</Button>
-    </>
+    </aside>
   );
 }
