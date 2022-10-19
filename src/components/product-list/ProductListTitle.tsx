@@ -15,7 +15,7 @@ export default function ProductListTitle() {
       <Typography sx={productListTitle} variant="h2">
         All Products
       </Typography>
-      <Chip label={products?.length} sx={chip} />
+      <Chip label={products?.filteredProducts?.length} sx={chip} />
       <Typography sx={titleSpan} variant="caption">
         Products
       </Typography>

@@ -8,7 +8,7 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { categoryFilter, searchProducts } from '@reducers/listSlice';
+import { categoryFilter, resetFarms, searchProducts } from '@reducers/listSlice';
 import {
   searchInput,
   searchInputButton,
@@ -37,21 +37,10 @@ export default function SearchInput() {
     (state: RootState) => state.productList.categoryFilter
   );
 
-  const [selectedCategory, setSelectedCategory] = useState(
-    selectedCategoryId.toString()
-  );
-
   const selectChangeHandler = (event: SelectChangeEvent) => {
-    setSelectedCategory(event.target.value as string);
+    dispatch(resetFarms())
     dispatch(categoryFilter(event.target.value));
   };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      dispatch(searchProducts(searchQuery));
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [dispatch, searchQuery]);
 
   const handleSearchQueryChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -59,18 +48,24 @@ export default function SearchInput() {
     },
     []
   );
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(searchProducts(searchQuery));
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [dispatch, searchQuery]);
 
   return (
     <Paper elevation={0} component="form" sx={searchInput}>
       <Select
         disableUnderline
         variant="standard"
-        value={selectedCategory}
+        value={`${selectedCategoryId}`}
         onChange={selectChangeHandler}
         IconComponent={SelectArrowIcon}
         sx={searchInputSelect}
       >
-        <MenuItem value={0}>All Categories</MenuItem>
+        <MenuItem value={'undefined'}>All Categories</MenuItem>
         {categories?.map(({ name, id }) => (
           <MenuItem key={id} value={id}>
             {name}

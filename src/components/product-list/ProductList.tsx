@@ -8,8 +8,9 @@ import NoProducts from './NoProducts';
 import { ProductListItem } from './ProductListItem';
 
 export default function ProductList() {
-  const filteredProducts = useContext(ProductsContext);
+  const products = useContext(ProductsContext);
   const { data: farmsData } = useGetFarmsQuery();
+  const filteredProducts = products?.filteredProducts
 
   return (
     <Box sx={productListContainer}>

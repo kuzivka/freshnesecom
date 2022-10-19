@@ -1,7 +1,8 @@
 export const productListContainer = {
-  p: '64px 45px',
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'row',
+  flexWrap:'wrap',
   gap: '32px',
-  alignItems: 'center',
+  width: 'max(80vw, 880px)',
+  justifyContent: 'center',
 };

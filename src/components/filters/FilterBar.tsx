@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 
 export default function FilterBar() {
   return (
-    <aside>
+    <aside style={{ display: 'flex', flexDirection:'column',  width:'280px', gap:'48px' }}>
       <CategoriesFilter />
       <BrandFilter />
       <PriceFilter />

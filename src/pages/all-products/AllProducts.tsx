@@ -7,7 +7,7 @@ export default function AllProducts() {
   return (
     <>
       <ProductListTitle />
-      <Box sx={{ display: 'flex', p: '44px 64px' }}>
+      <Box sx={{ display: 'flex', p: '44px 64px', gap:'32px'}}>
         <FilterBar />
         <ProductList />
       </Box>

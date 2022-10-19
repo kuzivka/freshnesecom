@@ -13,14 +13,23 @@ import {
   headerMenuButton,
   selectMenuItem,
 } from '@styles/header/headerStyles';
+import { useDispatch } from 'react-redux';
+import { categoryFilter, setOneFarmFilter } from '@reducers/listSlice';
 
 export default function DropDownMenu(props: Category) {
-  const { name, brand } = props;
+  const { id: categoryId, name, brand } = props;
+  const dispatch = useDispatch();
 
   const popupState = usePopupState({
     variant: 'popover',
     popupId: 'categoryMenu',
   });
+
+  const farmChoosingHandler = (brandId: number) => () => {
+    dispatch(setOneFarmFilter(brandId));
+    dispatch(categoryFilter(categoryId));
+    return popupState.close;
+  };
 
   return (
     <ListItem sx={selectMenuItem}>
@@ -34,11 +43,11 @@ export default function DropDownMenu(props: Category) {
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
         elevation={0}
       >
-        {brand?.map(({ name, id }) => (
+        {brand?.map(({ name, id: farmId }) => (
           <MenuItem
-            key={id}
+            key={farmId}
             sx={categoryMenuOptions}
-            onClick={popupState.close}
+            onClick={farmChoosingHandler(farmId)}
           >
             {name}
           </MenuItem>
