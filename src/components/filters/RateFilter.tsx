@@ -12,7 +12,11 @@ import {
   filterLabel,
   filterList,
 } from '@styles/filters/filters';
-import { rateCheckbox, rateLabel, rateListItem } from '@styles/filters/rate-filter';
+import {
+  rateCheckbox,
+  rateLabel,
+  rateListItem,
+} from '@styles/filters/rate-filter';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -41,7 +45,13 @@ export default function RateFilter() {
     [checkedRate]
   );
 
-  const isChecked = (farmId: number) => ratesToFilter.includes(farmId);
+  const isChecked = useCallback(
+    (rate: number) => ratesToFilter.includes(rate),
+    [ratesToFilter]
+  );
+  useEffect(() => {
+    setCheckedRate(ratesToFilter);
+  }, [ratesToFilter]);
 
   useEffect(() => {
     dispatch(setRateFilter(checkedRate));

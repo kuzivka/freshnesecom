@@ -54,7 +54,9 @@ export default function BrandFilter() {
   );
 
   const isChecked = (farmId: number) => farmsToFilter.includes(farmId);
-
+  useEffect(() => {
+    setCheckedFarms(farmsToFilter);
+  }, [farmsToFilter]);
   useEffect(() => {
     dispatch(setFarmFilter(checkedFarms));
   }, [checkedFarms, dispatch]);
