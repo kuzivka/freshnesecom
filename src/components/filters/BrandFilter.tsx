@@ -40,7 +40,7 @@ export default function BrandFilter() {
   );
 
   const farmsByCategory = farms?.filter(
-    (farm) => farm.categoryId === chosenCategory || !chosenCategory
+    (farm) => farm.categoryId === chosenCategory || chosenCategory==='all'
   );
 
   const isChecked = (farmId: number) => farmsToFilter.includes(farmId);

@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type CategoryFilter = number | undefined;
+type CategoryFilter = number | 'all';
 
 export const productListSlice = createSlice({
   name: 'productList',
   initialState: {
     searchQuery: '',
-    categoryFilter: undefined as CategoryFilter,
+    categoryFilter: 'all' as CategoryFilter,
     farmFilter: [] as number[],
+    priceRange: [0, 100],
   },
   reducers: {
     searchProducts: (state, action) => {
@@ -27,8 +28,16 @@ export const productListSlice = createSlice({
     setOneFarmFilter: (state, action) => {
       state.farmFilter = [action.payload];
     },
-    resetFarms: (state)=>{
-      state.farmFilter = []
+    resetFarms: (state) => {
+      state.farmFilter = [];
+    },
+    setPriceRange: (state, action) => {
+      state.priceRange = action.payload;
+    },
+    resetAll:(state) => {
+      state.categoryFilter = 'all';
+      state.farmFilter = [];
+      state.searchQuery = ''
     }
   },
 });
@@ -39,5 +48,7 @@ export const {
   categoryFilter,
   addFarmFilter,
   deleteFarmFilter,
-  setOneFarmFilter, resetFarms
+  setOneFarmFilter,
+  resetFarms,
+  setPriceRange, resetAll
 } = productListSlice.actions;

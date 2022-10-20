@@ -17,6 +17,7 @@ import { RootState } from '../../store';
 export default function CategoriesFilter() {
   const categories = useContext(CategoriesContext);
   const products = useContext(ProductsContext);
+  
   const dispatch = useDispatch();
   const chosenCategory = useSelector(
     (state: RootState) => state.productList?.categoryFilter
@@ -29,7 +30,7 @@ export default function CategoriesFilter() {
 
   const categoryRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) === chosenCategory) {
-      dispatch(categoryFilter(undefined));
+      dispatch(categoryFilter('all'));
       dispatch(resetFarms());
     } else {
       dispatch(resetFarms());

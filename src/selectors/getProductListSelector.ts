@@ -9,13 +9,19 @@ export const selectProductListSelector = (
 ): Selector<Product[]> =>
   createSelector(
     [(state: RootState) => state.productList],
-    ({ searchQuery, categoryFilter, farmFilter }) =>
+    ({ searchQuery, categoryFilter, farmFilter, priceRange }) =>
       products
         ?.filter(({ name }) => name.toLocaleLowerCase().includes(searchQuery))
         .filter(
-          (product) => product.category === categoryFilter || !categoryFilter
+          (product) =>
+            product.category === categoryFilter || categoryFilter === 'all'
         )
         .filter(
           (product) => farmFilter.includes(product.farm) || !farmFilter.length
+        )
+        .filter(
+          (product) =>
+            (product.price.pcs || product.price.kg) >= Math.min(...priceRange) &&
+            (product.price.pcs || product.price.kg) <= Math.max(...priceRange)
         )
   );

@@ -39,7 +39,7 @@ export default function SearchInput() {
 
   const selectChangeHandler = (event: SelectChangeEvent) => {
     dispatch(resetFarms())
-    dispatch(categoryFilter(event.target.value));
+     dispatch(categoryFilter(event.target.value));
   };
 
   const handleSearchQueryChange = useCallback(
@@ -65,7 +65,7 @@ export default function SearchInput() {
         IconComponent={SelectArrowIcon}
         sx={searchInputSelect}
       >
-        <MenuItem value={'undefined'}>All Categories</MenuItem>
+        <MenuItem value={'all'}>All Categories</MenuItem>
         {categories?.map(({ name, id }) => (
           <MenuItem key={id} value={id}>
             {name}
