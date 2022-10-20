@@ -8,7 +8,11 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { categoryFilter, resetFarms, searchProducts } from '@reducers/listSlice';
+import {
+  categoryFilter,
+  searchProducts,
+  setFarmFilter,
+} from '@reducers/listSlice';
 import {
   searchInput,
   searchInputButton,
@@ -38,13 +42,13 @@ export default function SearchInput() {
   );
 
   const selectChangeHandler = (event: SelectChangeEvent) => {
-    dispatch(resetFarms())
-     dispatch(categoryFilter(event.target.value));
+    dispatch(setFarmFilter([]));
+    dispatch(categoryFilter(event.target.value));
   };
 
   const handleSearchQueryChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      setSearchQuery(event.target.value.replace(/[^\w\s]/gi, '').trim());
+      setSearchQuery(event.target.value.replace(/[^a-zA-Z]/g, '').trim());
     },
     []
   );
@@ -74,6 +78,7 @@ export default function SearchInput() {
       </Select>
       <Divider sx={searchInputDivider} orientation="vertical" />
       <InputBase
+        value={searchQuery}
         sx={searchInputField}
         placeholder="Search Products, categories..."
         onChange={handleSearchQueryChange}

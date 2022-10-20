@@ -8,6 +8,17 @@ import {
 } from '@mui/material';
 import { setFarmFilter } from '@reducers/listSlice';
 import { useGetFarmsQuery } from '@services/ecommerce';
+import {
+  barndCheckboxLabel,
+  brandCheckbox,
+  brandListItem,
+  brandName,
+} from '@styles/filters/brand-filter';
+import {
+  filterContainer,
+  filterLabel,
+  filterList,
+} from '@styles/filters/filters';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -15,6 +26,7 @@ import { RootState } from '../../store';
 export default function BrandFilter() {
   const { data: farms } = useGetFarmsQuery();
   const dispatch = useDispatch();
+
   const farmsToFilter = useSelector(
     (state: RootState) => state.productList.farmFilter,
     shallowEqual
@@ -38,7 +50,7 @@ export default function BrandFilter() {
   );
 
   const farmsByCategory = farms?.filter(
-    (farm) => farm.categoryId === chosenCategory || chosenCategory==='all'
+    (farm) => farm.categoryId === chosenCategory || chosenCategory === 'all'
   );
 
   const isChecked = (farmId: number) => farmsToFilter.includes(farmId);
@@ -48,31 +60,24 @@ export default function BrandFilter() {
   }, [checkedFarms, dispatch]);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Typography variant="h5" sx={{ fontSize: '18px', fontWeight: '600' }}>
+    <Box sx={filterContainer}>
+      <Typography variant="h5" sx={filterLabel}>
         Brands
       </Typography>
-      <List
-        sx={{ display: 'flex', flexDirection: 'column', gap: '12px', p: 0 }}
-      >
+      <List sx={filterList}>
         {farmsByCategory?.map((farm) => (
-          <ListItem key={farm.id} sx={{ p: 0, display: 'flex' }}>
+          <ListItem key={farm.id} sx={brandListItem}>
             <FormControlLabel
-              sx={{
-                ml: '0',
-              }}
+              sx={barndCheckboxLabel}
               label={
-                <Typography
-                  sx={{ fontSize: '14px', fontFamily: 'Open Sans', pl: 1 }}
-                  variant="body1"
-                >
+                <Typography sx={brandName} variant="body1">
                   {farm.name}
                 </Typography>
               }
               control={
                 <Checkbox
                   value={farm.id}
-                  sx={{ p: 0, color: '#d1d1d1'}}
+                  sx={brandCheckbox}
                   checked={isChecked(farm.id)}
                   onChange={checkboxChangeHandler(farm.id)}
                 />

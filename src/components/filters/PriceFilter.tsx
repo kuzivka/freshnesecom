@@ -1,5 +1,14 @@
 import { Box, InputLabel, Slider, TextField, Typography } from '@mui/material';
 import { setPriceRange } from '@reducers/listSlice';
+import { filterContainer, filterLabel } from '@styles/filters/filters';
+import {
+  inputsContainer,
+  inputSeparator,
+  priceInput,
+  priceInputBase,
+  priceInputLabel,
+  priceSlider,
+} from '@styles/filters/price-filter';
 import {
   ChangeEvent,
   forwardRef,
@@ -18,6 +27,8 @@ interface PriceFilterProps {
 export const PriceFilter = forwardRef<ResetPrice, PriceFilterProps>(
   ({ min, max }, ref) => {
     const dispatch = useDispatch();
+
+    const [inputError, setInputError] = useState(false);
 
     const [minValue, setMinValue] = useState(min);
     const [maxValue, setMaxValue] = useState(max);
@@ -43,37 +54,29 @@ export const PriceFilter = forwardRef<ResetPrice, PriceFilterProps>(
 
     useEffect(() => {
       const timer = setTimeout(() => {
-        dispatch(setPriceRange([minValue, maxValue]));
+        if (!inputError) {
+          dispatch(setPriceRange([minValue, maxValue]));
+        }
       }, 500);
       return () => clearTimeout(timer);
-    }, [dispatch, maxValue, minValue]);
+    }, [dispatch, inputError, maxValue, minValue]);
 
     useEffect(() => {
       setMaxValue(max);
       setMinValue(min);
     }, [max, min]);
 
+    useEffect(() => {
+      setInputError(minValue > maxValue);
+    }, [maxValue, minValue]);
+
     return (
-      <Box
-        sx={{ display: 'flex', flexDirection: 'column', gap: '16px', pr: 2 }}
-      >
-        <Typography variant="h5" sx={{ fontSize: '18px', fontWeight: '600' }}>
+      <Box sx={filterContainer}>
+        <Typography variant="h5" sx={filterLabel}>
           Price
         </Typography>
         <Slider
-          sx={{
-            height: '6px',
-            '& .MuiSlider-thumb': {
-              color: '#fff',
-              border: '1px solid #d1d1d1',
-              height: '20px',
-            },
-            '& .MuiSlider-rail': {
-              color: '#ebebeb',
-              borderRadius: '12px',
-              opacity: '1',
-            },
-          }}
+          sx={priceSlider}
           disableSwap
           min={min}
           max={max}
@@ -81,67 +84,32 @@ export const PriceFilter = forwardRef<ResetPrice, PriceFilterProps>(
           onChange={handleChange}
           valueLabelDisplay="auto"
         />
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
+        <Box sx={inputsContainer}>
           <Box>
-            <InputLabel
-              sx={{ fontSize: '12px', fontWeight: '600' }}
-              htmlFor="min-value"
-            >
+            <InputLabel sx={priceInputLabel} htmlFor="min-value">
               Min
             </InputLabel>
             <TextField
-              inputProps={{
-                style: {
-                  fontSize: '14px',
-                  padding: '12px 16px 12px 20px',
-                  borderRadius: '12px',
-                },
-              }}
-              sx={{
-                width: '110px',
-                backgroundColor: '#f9f9f9',
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderRadius: '12px',
-                  },
-                },
-              }}
+              error={inputError}
+              inputProps={priceInput}
+              sx={priceInputBase}
               id="min-value"
               placeholder="0"
               value={minValue}
               onChange={handlePriceInputChange}
             />
           </Box>
-          <span style={{ position: 'relative', top: '5px' }}>-</span>
+          <Typography variant="caption" sx={inputSeparator}>
+            -
+          </Typography>
           <Box>
-            <InputLabel
-              sx={{ fontSize: '12px', fontWeight: '600' }}
-              htmlFor="min-value"
-            >
+            <InputLabel sx={priceInputLabel} htmlFor="min-value">
               Max
             </InputLabel>
             <TextField
-              sx={{
-                width: '110px',
-                backgroundColor: '#f9f9f9',
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    borderRadius: '12px',
-                  },
-                },
-              }}
-              inputProps={{
-                style: {
-                  fontSize: '14px',
-                  padding: '12px 16px 12px 20px',
-                },
-              }}
+              error={inputError}
+              sx={priceInputBase}
+              inputProps={priceInput}
               id="max-value"
               placeholder="000"
               value={maxValue}

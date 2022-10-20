@@ -1,9 +1,12 @@
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { resetAll } from '@reducers/listSlice';
+import {
+  filterBarContainer, resetButton
+} from '@styles/filters/filters';
+import { productsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 import { useContext, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { ProductsContext } from '../../App';
-import { productsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 import BrandFilter from './BrandFilter';
 import CategoriesFilter from './CategoriesFilter';
 import { PriceFilter } from './PriceFilter';
@@ -24,19 +27,14 @@ export default function FilterBar() {
   };
 
   return (
-    <aside
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '280px',
-        gap: '48px',
-      }}
-    >
+    <Box sx={filterBarContainer}>
       <CategoriesFilter />
       <BrandFilter />
-      <PriceFilter min={min} max={max} ref={childRef} />
       <RateFilter />
-      <Button onClick={resetClick}>Reset All</Button>
-    </aside>
+      <PriceFilter min={min} max={max} ref={childRef} />
+      <Button sx={resetButton} onClick={resetClick}>
+        Reset 
+      </Button>
+    </Box>
   );
 }

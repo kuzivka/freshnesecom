@@ -14,7 +14,7 @@ import {
   selectMenuItem,
 } from '@styles/header/headerStyles';
 import { useDispatch } from 'react-redux';
-import { categoryFilter, setOneFarmFilter } from '@reducers/listSlice';
+import { categoryFilter, setFarmFilter } from '@reducers/listSlice';
 
 export default function DropDownMenu(props: Category) {
   const { id: categoryId, name, brand } = props;
@@ -26,7 +26,7 @@ export default function DropDownMenu(props: Category) {
   });
 
   const farmChoosingHandler = (brandId: number) => () => {
-    dispatch(setOneFarmFilter(brandId));
+    dispatch(setFarmFilter([brandId]));
     dispatch(categoryFilter(categoryId));
     return popupState.close;
   };

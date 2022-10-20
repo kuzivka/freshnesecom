@@ -7,8 +7,20 @@ import {
   ListItem,
   Typography,
 } from '@mui/material';
-import { categoryFilter, resetFarms } from '@reducers/listSlice';
+import { categoryFilter, setFarmFilter } from '@reducers/listSlice';
 import { chip } from '@styles/all-products/productListTitle';
+import {
+  categoryCheckbox,
+  categoryLabel,
+  categoryListItem,
+  categoryName,
+  checkedCategoryName,
+} from '@styles/filters/category-filter';
+import {
+  filterContainer,
+  filterLabel,
+  filterList,
+} from '@styles/filters/filters';
 import { ChangeEvent, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CategoriesContext, ProductsContext } from '../../App';
@@ -17,7 +29,7 @@ import { RootState } from '../../store';
 export default function CategoriesFilter() {
   const categories = useContext(CategoriesContext);
   const products = useContext(ProductsContext);
-  
+
   const dispatch = useDispatch();
   const chosenCategory = useSelector(
     (state: RootState) => state.productList?.categoryFilter
@@ -31,40 +43,31 @@ export default function CategoriesFilter() {
   const categoryRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) === chosenCategory) {
       dispatch(categoryFilter('all'));
-      dispatch(resetFarms());
+      dispatch(setFarmFilter([]));
     } else {
-      dispatch(resetFarms());
+      dispatch(setFarmFilter([]));
       dispatch(categoryFilter(Number(event.target.value)));
     }
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Typography variant="h5" sx={{ fontSize: '18px', fontWeight: '600' }}>
+    <Box sx={filterContainer}>
+      <Typography variant="h5" sx={filterLabel}>
         Categories
       </Typography>
 
-      <List
-        sx={{ display: 'flex', flexDirection: 'column', gap: '12px', p: 0 }}
-      >
+      <List sx={filterList}>
         {categories?.map((category) => (
-          <ListItem
-            key={category.name}
-            sx={{ p: 0, display: 'flex', justifyContent: 'space-between' }}
-          >
+          <ListItem key={category.name} sx={categoryListItem}>
             <FormControlLabel
-              sx={{
-                ml: '0',
-              }}
+              sx={categoryLabel}
               label={
                 <Typography
-                  sx={{
-                    fontSize: '14px',
-                    fontFamily: 'Open Sans',
-                    color: category.id === chosenCategory ? 'green' : undefined,
-                    fontWeight:
-                      category.id === chosenCategory ? '600' : undefined,
-                  }}
+                  sx={
+                    category.id === chosenCategory
+                      ? checkedCategoryName
+                      : categoryName
+                  }
                   variant="body1"
                 >
                   {category.name}
@@ -73,7 +76,7 @@ export default function CategoriesFilter() {
               control={
                 <Checkbox
                   value={category.id}
-                  sx={{ display: 'none' }}
+                  sx={categoryCheckbox}
                   checked={category.id === chosenCategory}
                   onChange={categoryRadioChange}
                 />

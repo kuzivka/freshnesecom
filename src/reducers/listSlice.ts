@@ -19,13 +19,7 @@ export const productListSlice = createSlice({
       state.categoryFilter = action.payload;
     },
     setFarmFilter: (state, action) => {
-      state.farmFilter.push(action.payload);
-    },
-    setOneFarmFilter: (state, action) => {
-      state.farmFilter = [action.payload];
-    },
-    resetFarms: (state) => {
-      state.farmFilter = [];
+      state.farmFilter = action.payload;
     },
     setRateFilter: (state, action) => {
       state.rateFilter = action.payload;
@@ -36,6 +30,7 @@ export const productListSlice = createSlice({
     resetAll: (state) => {
       state.categoryFilter = 'all';
       state.farmFilter = [];
+      state.rateFilter = [];
       state.searchQuery = '';
     },
   },
@@ -46,8 +41,6 @@ export const {
   searchProducts,
   categoryFilter,
   setFarmFilter,
-  setOneFarmFilter,
-  resetFarms,
   setRateFilter,
   setPriceRange,
   resetAll,

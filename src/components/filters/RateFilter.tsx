@@ -7,6 +7,12 @@ import {
   Typography,
 } from '@mui/material';
 import { setRateFilter } from '@reducers/listSlice';
+import {
+  filterContainer,
+  filterLabel,
+  filterList,
+} from '@styles/filters/filters';
+import { rateCheckbox, rateLabel, rateListItem } from '@styles/filters/rate-filter';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -42,25 +48,20 @@ export default function RateFilter() {
   }, [checkedRate, dispatch]);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <Typography variant="h5" sx={{ fontSize: '18px', fontWeight: '600' }}>
+    <Box sx={filterContainer}>
+      <Typography variant="h5" sx={filterLabel}>
         Ratings
       </Typography>
-      <List
-        sx={{ display: 'flex', flexDirection: 'column', gap: '12px', p: 0 }}
-      >
+      <List sx={filterList}>
         {RATES.sort((a, b) => b - a).map((rate) => (
-          <ListItem key={rate} sx={{ p: 0, display: 'flex' }}>
+          <ListItem key={rate} sx={rateListItem}>
             <FormControlLabel
-              sx={{
-                ml: '0',
-                gap: '8px',
-              }}
+              sx={rateLabel}
               label={<Rating value={rate} />}
               control={
                 <Checkbox
                   value={rate}
-                  sx={{ p: 0, color: '#d1d1d1' }}
+                  sx={rateCheckbox}
                   checked={isChecked(rate)}
                   onChange={checkboxChangeHandler(rate)}
                 />

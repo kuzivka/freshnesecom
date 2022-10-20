@@ -1,8 +1,7 @@
+import { ReactComponent as StarOutline } from '@assets/svg/star-outline.svg';
+import { ReactComponent as Star } from '@assets/svg/star.svg';
 import styled from '@emotion/styled';
 import { Box, Typography } from '@mui/material';
-import { FC } from 'react';
-import { ReactComponent as Star } from '@assets/svg/star.svg';
-import { ReactComponent as StarOutline } from '@assets/svg/star-outline.svg';
 
 interface IRating {
   value: number;
@@ -18,12 +17,12 @@ const StyledSpan = styled.span`
   align-items: center;
   color: ${({ color }) => color};
 `;
-const Rating: FC<IRating> = ({
+function Rating({
   value,
   text,
   amount = 5,
   color = '#ffc600',
-}) => {
+}: IRating): JSX.Element {
   return (
     <Box display="flex" alignItems="center">
       <ul style={{ display: 'flex', flexDirection: 'row', gap: '2px' }}>
@@ -36,13 +35,13 @@ const Rating: FC<IRating> = ({
         ))}
 
         {text && (
-          <Typography variant="body1" sx={{ marginLeft: 1 }}>
+          <Typography variant="body1" sx={{ ml: 1 }}>
             {text}
           </Typography>
         )}
       </ul>
     </Box>
   );
-};
+}
 
 export default Rating;
