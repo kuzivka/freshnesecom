@@ -16,6 +16,7 @@ export const priceInput = {
     fontSize: '14px',
     padding: '12px 16px 12px 20px',
     borderRadius: '12px',
+    width:'110px'
   },
 };
 export const priceInputBase = {
