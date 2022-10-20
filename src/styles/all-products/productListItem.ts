@@ -6,6 +6,7 @@ export const cardContainer = {
   display: 'flex',
   borderRadius: '12px',
   height:'fit-content'
+  
 };
 
 export const productInfoContainer = {
