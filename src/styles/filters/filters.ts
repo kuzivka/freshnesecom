@@ -8,7 +8,7 @@ export const filterLabel = { fontSize: '18px', fontWeight: '600' };
 export const filterBarContainer = {
   display: 'flex',
   flexDirection: 'column',
-  width: '280px',
+  minWidth: '280px',
   gap: '48px',
 };
 export const filterList = {
