@@ -27,7 +27,7 @@ function Rating({
     <Box display="flex" alignItems="center">
       <ul style={{ display: 'flex', flexDirection: 'row', gap: '2px' }}>
         {Array.from({ length: amount }, (_, i) => i + 1).map((number) => (
-          <li style={{ display: 'inline' }}>
+          <li key={number} style={{ display: 'inline' }}>
             <StyledSpan color={color}>
               {Math.ceil(value) >= number ? <Star /> : <StarOutline />}
             </StyledSpan>
