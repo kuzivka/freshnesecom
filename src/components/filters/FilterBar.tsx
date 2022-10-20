@@ -3,10 +3,11 @@ import { resetAll } from '@reducers/listSlice';
 import { useContext, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { ProductsContext } from '../../App';
-import { productsMinMaxPrice } from '../../utils/getProductsMinMaxPrice';
+import { productsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 import BrandFilter from './BrandFilter';
 import CategoriesFilter from './CategoriesFilter';
 import { PriceFilter } from './PriceFilter';
+import RateFilter from './RateFilter';
 
 export interface ResetPrice {
   resetPriceRange(): void;
@@ -34,6 +35,7 @@ export default function FilterBar() {
       <CategoriesFilter />
       <BrandFilter />
       <PriceFilter min={min} max={max} ref={childRef} />
+      <RateFilter />
       <Button onClick={resetClick}>Reset All</Button>
     </aside>
   );

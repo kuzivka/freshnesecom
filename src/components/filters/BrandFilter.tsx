@@ -6,9 +6,9 @@ import {
   ListItem,
   Typography,
 } from '@mui/material';
-import { addFarmFilter, deleteFarmFilter } from '@reducers/listSlice';
+import { setFarmFilter } from '@reducers/listSlice';
 import { useGetFarmsQuery } from '@services/ecommerce';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
@@ -29,14 +29,12 @@ export default function BrandFilter() {
       const farmsSet = new Set(checkedFarms);
       if (event.target.checked) {
         setCheckedFarms(Array.from(farmsSet.add(farmId)));
-        dispatch(addFarmFilter(farmId));
       } else if (!event.target.checked) {
         farmsSet.delete(farmId);
         setCheckedFarms(Array.from(farmsSet));
-        dispatch(deleteFarmFilter(farmId));
       }
     },
-    [checkedFarms, dispatch]
+    [checkedFarms]
   );
 
   const farmsByCategory = farms?.filter(
@@ -45,10 +43,14 @@ export default function BrandFilter() {
 
   const isChecked = (farmId: number) => farmsToFilter.includes(farmId);
 
+  useEffect(() => {
+    dispatch(setFarmFilter(checkedFarms));
+  }, [checkedFarms, dispatch]);
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <Typography variant="h5" sx={{ fontSize: '18px', fontWeight: '600' }}>
-        Farms
+        Brands
       </Typography>
       <List
         sx={{ display: 'flex', flexDirection: 'column', gap: '12px', p: 0 }}

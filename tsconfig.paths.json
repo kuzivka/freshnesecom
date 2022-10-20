@@ -9,7 +9,8 @@
       "@selectors/*": ["./selectors/*"],
       "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
-      "@services/*": ["./services/*"]
+      "@services/*": ["./services/*"],
+      "@utils/*": ["./utils/*"],
     }
   }
 }

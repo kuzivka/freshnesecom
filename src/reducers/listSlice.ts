@@ -8,6 +8,7 @@ export const productListSlice = createSlice({
     searchQuery: '',
     categoryFilter: 'all' as CategoryFilter,
     farmFilter: [] as number[],
+    rateFilter: [] as number[],
     priceRange: [0, 100],
   },
   reducers: {
@@ -17,13 +18,8 @@ export const productListSlice = createSlice({
     categoryFilter: (state, action) => {
       state.categoryFilter = action.payload;
     },
-    addFarmFilter: (state, action) => {
+    setFarmFilter: (state, action) => {
       state.farmFilter.push(action.payload);
-    },
-    deleteFarmFilter: (state, action) => {
-      const farmsSet = new Set(state.farmFilter);
-      farmsSet.delete(action.payload);
-      state.farmFilter = Array.from(farmsSet);
     },
     setOneFarmFilter: (state, action) => {
       state.farmFilter = [action.payload];
@@ -31,14 +27,17 @@ export const productListSlice = createSlice({
     resetFarms: (state) => {
       state.farmFilter = [];
     },
+    setRateFilter: (state, action) => {
+      state.rateFilter = action.payload;
+    },
     setPriceRange: (state, action) => {
       state.priceRange = action.payload;
     },
-    resetAll:(state) => {
+    resetAll: (state) => {
       state.categoryFilter = 'all';
       state.farmFilter = [];
-      state.searchQuery = ''
-    }
+      state.searchQuery = '';
+    },
   },
 });
 
@@ -46,9 +45,10 @@ export default productListSlice.reducer;
 export const {
   searchProducts,
   categoryFilter,
-  addFarmFilter,
-  deleteFarmFilter,
+  setFarmFilter,
   setOneFarmFilter,
   resetFarms,
-  setPriceRange, resetAll
+  setRateFilter,
+  setPriceRange,
+  resetAll,
 } = productListSlice.actions;

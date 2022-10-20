@@ -8,6 +8,7 @@ import {
   productCardName,
   productDescriptionContainer,
 } from '@styles/all-products/productDescription';
+import { getRatingValue } from '@utils/getRatingValue';
 
 interface ProductDescriptionProps {
   product: Product;
@@ -20,9 +21,7 @@ export default function ProductDescription({
   pcs,
   farmsData,
 }: ProductDescriptionProps) {
-  const ratingValue =
-    product.rate.reduce((a: number, b: number) => a + b, 0) /
-    product.rate.length;
+  const ratingValue = getRatingValue(product);
 
   const farmName = () => {
     if (farmsData) {
