@@ -1,4 +1,4 @@
-import StarRating from '@components/common/StarRating';
+import StarRating from '@components/rating/StarRating';
 import {
   Box,
   Checkbox,
@@ -7,20 +7,20 @@ import {
   ListItem,
   Typography,
 } from '@mui/material';
-import { setRateFilter } from '@reducers/listSlice';
+import { setRateFilter } from 'store/reducers/listSlice';
 import {
   filterContainer,
   filterLabel,
   filterList,
-} from '@styles/filters/filters';
+} from '@components/filters/styles/filters';
 import {
   rateCheckbox,
   rateLabel,
   rateListItem,
-} from '@styles/filters/rateFilter';
+} from '@components/filters/styles/rateFilter';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 export default function RateFilter() {
   const RATES = [1, 2, 3, 4, 5];

@@ -12,7 +12,7 @@ import {
   categoryFilter,
   searchProducts,
   setFarmFilter,
-} from '@reducers/listSlice';
+} from 'store/reducers/listSlice';
 import { useGetCategoriesQuery } from '@services/ecommerce';
 import {
   searchInput,
@@ -20,10 +20,10 @@ import {
   searchInputDivider,
   searchInputField,
   searchInputSelect,
-} from '@styles/header/headerStyles';
+} from '@components/header/styles/headerStyles';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store';
+import { RootState } from 'store/store';
 import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {

@@ -1,5 +1,5 @@
-import { C1 } from '../colors';
-import { greenChip } from '../mixins';
+import { C1 } from '../../../styles/colors';
+import { greenChip } from '../../../styles/mixins';
 
 export const productListTitleContainer = {
   p: '8px 45px',

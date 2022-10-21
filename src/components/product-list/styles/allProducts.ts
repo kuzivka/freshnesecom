@@ -5,8 +5,3 @@ export const productListContainer = {
   width: '100%',
   alignItems: 'center',
 };
-export const allProductsContent = {
-  display: 'flex',
-  p: '44px 64px',
-  gap: '32px',
-};

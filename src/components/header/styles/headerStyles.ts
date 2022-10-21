@@ -1,4 +1,4 @@
-import { C1 } from '../colors';
+import { C1 } from '../../../styles/colors';
 
 export const infoBarContainer = {
   display: 'flex',

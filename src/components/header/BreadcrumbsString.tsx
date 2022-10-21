@@ -1,6 +1,6 @@
 import { PATH } from '@common/enums';
 import { Breadcrumbs, Link } from '@mui/material';
-import { breadcrumbs, breadcrumbsLink } from '@styles/header/headerStyles';
+import { breadcrumbs, breadcrumbsLink } from '@components/header/styles/headerStyles';
 import { useHref, useLocation, useNavigate } from 'react-router-dom';
 
 export default function BreadcrumbsString() {

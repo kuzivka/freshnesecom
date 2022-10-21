@@ -1,8 +1,8 @@
 import { Product } from '@common/type';
 import { Box } from '@mui/material';
-import { getProductListSelector } from '@selectors/getProductListSelector';
+import { getProductListSelector } from 'store/selectors/getProductListSelector';
 import { useGetFarmsQuery, useGetProductsQuery } from '@services/ecommerce';
-import { productListContainer } from '@styles/all-products/allProducts';
+import { productListContainer } from '@components/product-list/styles/allProducts';
 import { useSelector } from 'react-redux';
 import NoProducts from './NoProducts';
 import { ProductListItem } from './ProductListItem';

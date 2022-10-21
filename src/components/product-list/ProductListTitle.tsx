@@ -1,12 +1,12 @@
 import { Box, Chip, Typography } from '@mui/material';
-import { getProductListSelector } from '@selectors/getProductListSelector';
+import { getProductListSelector } from 'store/selectors/getProductListSelector';
 import { useGetProductsQuery } from '@services/ecommerce';
 import {
   chip,
   productListTitle,
   productListTitleContainer,
   titleSpan
-} from '@styles/all-products/productListTitle';
+} from '@components/product-list/styles/productListTitle';
 import { useSelector } from 'react-redux';
 
 export default function ProductListTitle() {

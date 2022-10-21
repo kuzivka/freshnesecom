@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { copyrightsText, copyrightsContainer } from '@styles/footer/footerStyles';
+import { copyrightsText, copyrightsContainer } from '@components/footer/styles/footerStyles';
 
 export default function Copyrights() {
   return (

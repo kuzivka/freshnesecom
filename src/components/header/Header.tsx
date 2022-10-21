@@ -7,7 +7,7 @@ import {
   headerContent,
   headerContentContainer,
   headerIconButtonsContainer,
-} from '@styles/header/headerStyles';
+} from '@components/header/styles/headerStyles';
 import { useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BreadcrambsString from './BreadcrumbsString';

@@ -1,5 +1,5 @@
-import { C1, C2 } from '../colors';
-import { hideOverflow } from '../mixins';
+import { C1, C2 } from '../../../styles/colors';
+import { hideOverflow } from '../../../styles/mixins';
 
 export const cardDescriptionList = {
   ...hideOverflow,

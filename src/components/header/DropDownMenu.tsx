@@ -12,9 +12,9 @@ import {
   categoryMenuOptions,
   headerMenuButton,
   selectMenuItem,
-} from '@styles/header/headerStyles';
+} from '@components/header/styles/headerStyles';
 import { useDispatch } from 'react-redux';
-import { categoryFilter, setFarmFilter } from '@reducers/listSlice';
+import { categoryFilter, setFarmFilter } from 'store/reducers/listSlice';
 
 export default function DropDownMenu(props: Category) {
   const { id: categoryId, name, brand } = props;

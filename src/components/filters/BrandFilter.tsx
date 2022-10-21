@@ -6,22 +6,22 @@ import {
   ListItem,
   Typography,
 } from '@mui/material';
-import { setFarmFilter } from '@reducers/listSlice';
+import { setFarmFilter } from 'store/reducers/listSlice';
 import { useGetFarmsQuery } from '@services/ecommerce';
 import {
   barndCheckboxLabel,
   brandCheckbox,
   brandListItem,
   brandName,
-} from '@styles/filters/brandFilter';
+} from '@components/filters/styles/brandFilter';
 import {
   filterContainer,
   filterLabel,
   filterList,
-} from '@styles/filters/filters';
+} from '@components/filters/styles/filters';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 export default function BrandFilter() {
   const { data: farms } = useGetFarmsQuery();

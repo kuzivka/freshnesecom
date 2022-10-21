@@ -5,7 +5,7 @@ import {
   addToFavouriteButton,
   cardButtonContainer,
   productDetailsButton,
-} from '@styles/all-products/cardButtons';
+} from '@components/product-list/styles/cardButtons';
 
 export default function ProductCardButtons() {
   return (

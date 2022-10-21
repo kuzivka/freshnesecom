@@ -1,6 +1,6 @@
 import { Box, InputLabel, Slider, TextField, Typography } from '@mui/material';
-import { setPriceRange } from '@reducers/listSlice';
-import { filterContainer, filterLabel } from '@styles/filters/filters';
+import { setPriceRange } from 'store/reducers/listSlice';
+import { filterContainer, filterLabel } from '@components/filters/styles/filters';
 import {
   inputsContainer,
   inputSeparator,
@@ -8,7 +8,7 @@ import {
   priceInputBase,
   priceInputLabel,
   priceSlider,
-} from '@styles/filters/priceFilter';
+} from '@components/filters/styles/priceFilter';
 import {
   ChangeEvent,
   forwardRef,

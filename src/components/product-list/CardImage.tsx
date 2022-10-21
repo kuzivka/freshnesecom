@@ -1,5 +1,5 @@
 import { Box, CardMedia } from '@mui/material';
-import { cardImage, cardImageContainer } from '@styles/all-products/cardImage';
+import { cardImage, cardImageContainer } from '@components/product-list/styles/cardImage';
 
 interface CardImageProps {
   image: string;

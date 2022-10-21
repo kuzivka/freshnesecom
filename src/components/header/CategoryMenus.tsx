@@ -4,7 +4,7 @@ import { useGetCategoriesQuery } from '@services/ecommerce';
 import {
   categoryMenuContainer,
   headerCategoryMenu,
-} from '@styles/header/headerStyles';
+} from '@components/header/styles/headerStyles';
 import DropDownMenu from './DropDownMenu';
 
 export default function CategoryMenu() {

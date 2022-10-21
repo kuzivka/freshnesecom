@@ -7,27 +7,27 @@ import {
   ListItem,
   Typography,
 } from '@mui/material';
-import { categoryFilter, setFarmFilter } from '@reducers/listSlice';
+import { categoryFilter, setFarmFilter } from 'store/reducers/listSlice';
 import {
   useGetCategoriesQuery,
   useGetProductsQuery,
 } from '@services/ecommerce';
-import { chip } from '@styles/all-products/productListTitle';
+import { chip } from '@components/product-list/styles/productListTitle';
 import {
   categoryCheckbox,
   categoryLabel,
   categoryListItem,
   categoryName,
   checkedCategoryName,
-} from '@styles/filters/categoryFilter';
+} from '@components/filters/styles/categoryFilter';
 import {
   filterContainer,
   filterLabel,
   filterList,
-} from '@styles/filters/filters';
+} from '@components/filters/styles/filters';
 import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 export default function CategoriesFilter() {
   const { data: categories } = useGetCategoriesQuery();

@@ -3,7 +3,7 @@ import { Box, Card } from '@mui/material';
 import {
   cardContainer,
   productInfoContainer,
-} from '@styles/all-products/productListItem';
+} from '@components/product-list/styles/productListItem';
 import CardImage from './CardImage';
 import ProductDescription from './ProductDescription';
 import ProductPriceInfo from './ProductPriceInfo';

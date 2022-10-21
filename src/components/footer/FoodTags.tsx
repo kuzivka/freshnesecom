@@ -1,5 +1,5 @@
 import { Chip, Typography, Box } from '@mui/material';
-import { footerTagsContainer, footerTagsTitle } from '@styles/footer/footerStyles';
+import { footerTagsContainer, footerTagsTitle } from '@components/footer/styles/footerStyles';
 import { food } from './constants';
 
 export default function FoodTags() {

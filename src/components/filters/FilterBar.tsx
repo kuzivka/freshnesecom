@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material';
-import { resetAll } from '@reducers/listSlice';
+import { resetAll } from 'store/reducers/listSlice';
 import { useGetProductsQuery } from '@services/ecommerce';
-import { filterBarContainer, resetButton } from '@styles/filters/filters';
+import { filterBarContainer, resetButton } from '@components/filters/styles/filters';
 import { productsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';

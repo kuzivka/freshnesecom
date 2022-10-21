@@ -7,7 +7,7 @@ import {
   productCardDescriptionContainer,
   productCardName,
   productDescriptionContainer,
-} from '@styles/all-products/productDescription';
+} from '@components/product-list/styles/productDescription';
 import { getRatingValue } from '@utils/getRatingValue';
 
 interface ProductDescriptionProps {

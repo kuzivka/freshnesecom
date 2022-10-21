@@ -1,5 +1,5 @@
-import { C1 } from '../colors';
-import { greenButton } from '../mixins';
+import { C1 } from '../../../styles/colors';
+import { greenButton } from '../../../styles/mixins';
 
 export const addToFavouriteButton = {
   backgroundColor: C1.F,

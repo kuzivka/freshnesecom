@@ -6,7 +6,7 @@ import {
   productPrice,
   shipingDurationInfo,
   shippingPriceInfo,
-} from '@styles/all-products/productListItem';
+} from '@components/product-list/styles/productListItem';
 import ProductCardButtons from './ProductCardButtons';
 
 interface ProductPriceInfoProps {

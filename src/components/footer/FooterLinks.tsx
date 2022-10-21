@@ -3,7 +3,7 @@ import {
   footerLinksContainer,
   footerLinksLink,
   footerLinksTitle,
-} from '@styles/footer/footerStyles';
+} from '@components/footer/styles/footerStyles';
 
 import { links } from './constants';
 

@@ -7,7 +7,7 @@ import {
   starList,
   starListItem,
   starRatingContainer,
-} from '@styles/common/starRatingBlock';
+} from '@components/rating/style/starRatingBlock';
 
 interface IRating {
   value: number;
