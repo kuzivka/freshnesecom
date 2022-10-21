@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/freshnesecom/static/css/main.e9a02175.css",
-    "main.js": "/freshnesecom/static/js/main.40e0afee.js",
+    "main.js": "/freshnesecom/static/js/main.0484e512.js",
     "static/media/freshnesecom.svg": "/freshnesecom/static/media/freshnesecom.1566941c3300bdc2a39504180460a627.svg",
     "static/media/star-outline.svg": "/freshnesecom/static/media/star-outline.0d2012977a35ab30f7d183dfa9f547f0.svg",
     "static/media/star.svg": "/freshnesecom/static/media/star.69dc067899fadd1ea2c5a467a989b074.svg",
@@ -13,10 +13,10 @@
     "static/media/arrow.svg": "/freshnesecom/static/media/arrow.139579ddc8bdab92308166d32b0528cd.svg",
     "static/media/arrow-right.svg": "/freshnesecom/static/media/arrow-right.cc7801587a14fa3cfeb9005433841f80.svg",
     "main.e9a02175.css.map": "/freshnesecom/static/css/main.e9a02175.css.map",
-    "main.40e0afee.js.map": "/freshnesecom/static/js/main.40e0afee.js.map"
+    "main.0484e512.js.map": "/freshnesecom/static/js/main.0484e512.js.map"
   },
   "entrypoints": [
     "static/css/main.e9a02175.css",
-    "static/js/main.40e0afee.js"
+    "static/js/main.0484e512.js"
   ]
 }
