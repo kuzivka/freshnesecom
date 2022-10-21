@@ -1,6 +1,6 @@
 import { PATH } from '@common/enums';
-import { Footer } from '@components/footer/Footer';
-import { Header } from '@components/header/Header';
+import { Footer } from '@components/footer/footer/Footer';
+import { Header } from '@components/header/Header/Header';
 import { ThemeProvider } from '@mui/material/styles';
 import ProductList from '@pages/all-products/AllProducts';
 import SelectedProduct from '@pages/product/SelectedProduct';

@@ -1,6 +1,6 @@
 import { Product } from '@common/type';
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from 'store/store';
+import { RootState } from '@store/store';
 import { getRatingValue } from '@utils/getRatingValue';
 
 type Selector<Return> = (state: RootState) => Return | undefined;

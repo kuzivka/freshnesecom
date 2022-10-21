@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import productListReducer from 'store/reducers/listSlice';
+import productListReducer from './reducers/listSlice';
 import { ecommerceApi } from '@services/ecommerce';
 
 export type RootState = ReturnType<typeof rootReducer>;
