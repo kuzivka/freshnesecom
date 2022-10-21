@@ -6,6 +6,7 @@ export const C1 = {
   E: '#EBEBEB',
   F: '#F5F5F5',
   H: '#F9F9F9',
+  J: '#ffffff',
 };
 export const C2 = {
   A: '#6A983C',
