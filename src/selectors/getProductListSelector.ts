@@ -5,7 +5,7 @@ import { getRatingValue } from '@utils/getRatingValue';
 
 type Selector<Return> = (state: RootState) => Return | undefined;
 
-export const selectProductListSelector = (
+export const getProductListSelector = (
   products: Product[] | undefined
 ): Selector<Product[]> =>
   createSelector(

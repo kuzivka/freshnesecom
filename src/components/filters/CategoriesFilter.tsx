@@ -8,7 +8,10 @@ import {
   Typography,
 } from '@mui/material';
 import { categoryFilter, setFarmFilter } from '@reducers/listSlice';
-import { useGetCategoriesQuery } from '@services/ecommerce';
+import {
+  useGetCategoriesQuery,
+  useGetProductsQuery,
+} from '@services/ecommerce';
 import { chip } from '@styles/all-products/productListTitle';
 import {
   categoryCheckbox,
@@ -22,14 +25,13 @@ import {
   filterLabel,
   filterList,
 } from '@styles/filters/filters';
-import { ChangeEvent, useContext } from 'react';
+import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ProductsContext } from '../../App';
 import { RootState } from '../../store';
 
 export default function CategoriesFilter() {
   const { data: categories } = useGetCategoriesQuery();
-  const products = useContext(ProductsContext);
+  const { data: allProducts } = useGetProductsQuery();
 
   const dispatch = useDispatch();
   const chosenCategory = useSelector(
@@ -37,8 +39,7 @@ export default function CategoriesFilter() {
   );
 
   const itemsInCategory = (id: number) => {
-    return products?.allProducts?.filter((product) => product.category === id)
-      .length;
+    return allProducts?.filter((product) => product.category === id).length;
   };
 
   const categoryRadioChange = (event: ChangeEvent<HTMLInputElement>) => {

@@ -37,15 +37,16 @@ export default function BrandFilter() {
   const [checkedFarms, setCheckedFarms] = useState(farmsToFilter);
 
   const checkboxChangeHandler = useCallback(
-    (farmId: number) => (event: ChangeEvent<HTMLInputElement>) => {
-      const farmsSet = new Set(checkedFarms);
-      if (event.target.checked) {
-        setCheckedFarms(Array.from(farmsSet.add(farmId)));
-      } else if (!event.target.checked) {
-        farmsSet.delete(farmId);
-        setCheckedFarms(Array.from(farmsSet));
-      }
-    },
+    (farmId: number) =>
+      (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
+        const farmsSet = new Set(checkedFarms);
+        if (checked) {
+          setCheckedFarms(Array.from(farmsSet.add(farmId)));
+        } else if (!checked) {
+          farmsSet.delete(farmId);
+          setCheckedFarms(Array.from(farmsSet));
+        }
+      },
     [checkedFarms]
   );
 

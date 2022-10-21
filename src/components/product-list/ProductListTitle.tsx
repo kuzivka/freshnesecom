@@ -1,21 +1,24 @@
 import { Box, Chip, Typography } from '@mui/material';
+import { getProductListSelector } from '@selectors/getProductListSelector';
+import { useGetProductsQuery } from '@services/ecommerce';
 import {
   chip,
   productListTitle,
   productListTitleContainer,
-  titleSpan,
+  titleSpan
 } from '@styles/all-products/productListTitle';
-import { ProductsContext } from '../../App';
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function ProductListTitle() {
-  const products = useContext(ProductsContext);
+  const { data: allProducts } = useGetProductsQuery();
+  const filteredProducts = useSelector(getProductListSelector(allProducts));
+
   return (
     <Box sx={productListTitleContainer}>
       <Typography sx={productListTitle} variant="h2">
         All Products
       </Typography>
-      <Chip label={products?.filteredProducts?.length} sx={chip} />
+      <Chip label={filteredProducts?.length} sx={chip} />
       <Typography sx={titleSpan} variant="caption">
         Products
       </Typography>

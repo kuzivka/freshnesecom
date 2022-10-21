@@ -2,6 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type CategoryFilter = number | 'all';
 
+export interface Filters{
+  searchQuery: '',
+    categoryFilter: CategoryFilter
+    farmFilter: number[],
+    rateFilter:number[],
+    priceRange: number[],
+}
+
 export const productListSlice = createSlice({
   name: 'productList',
   initialState: {
@@ -10,7 +18,7 @@ export const productListSlice = createSlice({
     farmFilter: [] as number[],
     rateFilter: [] as number[],
     priceRange: [0, 100],
-  },
+  } as Filters,
   reducers: {
     searchProducts: (state, action) => {
       state.searchQuery = action.payload;

@@ -1,16 +1,16 @@
 import { Product } from '@common/type';
 import { Box } from '@mui/material';
-import { useGetFarmsQuery } from '@services/ecommerce';
+import { getProductListSelector } from '@selectors/getProductListSelector';
+import { useGetFarmsQuery, useGetProductsQuery } from '@services/ecommerce';
 import { productListContainer } from '@styles/all-products/allProducts';
-import { ProductsContext } from '../../App';
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import NoProducts from './NoProducts';
 import { ProductListItem } from './ProductListItem';
 
 export default function ProductList() {
-  const products = useContext(ProductsContext);
   const { data: farmsData } = useGetFarmsQuery();
-  const filteredProducts = products?.filteredProducts
+  const { data: allProducts } = useGetProductsQuery();
+  const filteredProducts = useSelector(getProductListSelector(allProducts));
 
   return (
     <Box sx={productListContainer}>
