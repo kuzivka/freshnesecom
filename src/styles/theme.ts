@@ -1,15 +1,16 @@
 import { createTheme } from '@mui/material/styles';
+import { C1, C2 } from './colors';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#6A983C',
+      main: C2.A,
     },
   },
   typography: {
     fontFamily: ['Poppins', 'sans-serif'].join(','),
     allVariants: {
-      color: '#151515',
+      color: C1.A,
     },
   },
   components: {
@@ -18,7 +19,7 @@ export const theme = createTheme({
         root: {
           fontFamily: 'Open Sans',
           textDecorationLine: 'none',
-          color: '#6A983C',
+          color: C2.A,
         },
       },
     },

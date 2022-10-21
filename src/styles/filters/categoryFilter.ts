@@ -1,3 +1,5 @@
+import { C2 } from "@styles/colors";
+
 export const categoryListItem = {
   p: 0,
   display: 'flex',
@@ -12,7 +14,7 @@ export const categoryName = {
 };
 export const categoryCheckbox = { display: 'none' };
 export const checkedCategoryName = {
-  color: 'green',
+  color: C2.A,
   fontWeight: '600',
   fontSize: '14px',
   fontFamily: 'Open Sans',

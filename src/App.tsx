@@ -22,15 +22,11 @@ interface ProductContext {
   filteredProducts: Product[] | undefined;
 }
 
-export const CategoriesContext = createContext<Category[] | undefined>(
-  undefined
-);
 export const ProductsContext = createContext<ProductContext | undefined>(
   undefined
 );
 
 function App() {
-  const { data: categories } = useGetCategoriesQuery();
   const { data: allProducts } = useGetProductsQuery();
 
   const filteredProducts = useSelector(selectProductListSelector(allProducts));
@@ -38,22 +34,20 @@ function App() {
   return (
     <HashRouter>
       <ThemeProvider theme={theme}>
-        <CategoriesContext.Provider value={categories}>
-          <ProductsContext.Provider
-            value={{
-              allProducts: allProducts,
-              filteredProducts: filteredProducts,
-            }}
-          >
-            <Header />
-            <Routes>
-              <Route path={PATH.ALL_PRODUCTS} element={<ProductList />} />
-              <Route path={PATH.PRODUCT} element={<SelectedProduct />} />
-              <Route path={PATH.CART} element={<ShoppingCart />} />
-            </Routes>
-            <Footer />
-          </ProductsContext.Provider>
-        </CategoriesContext.Provider>
+        <ProductsContext.Provider
+          value={{
+            allProducts: allProducts,
+            filteredProducts: filteredProducts,
+          }}
+        >
+          <Header />
+          <Routes>
+            <Route path={PATH.ALL_PRODUCTS} element={<ProductList />} />
+            <Route path={PATH.PRODUCT} element={<SelectedProduct />} />
+            <Route path={PATH.CART} element={<ShoppingCart />} />
+          </Routes>
+          <Footer />
+        </ProductsContext.Provider>
       </ThemeProvider>
     </HashRouter>
   );

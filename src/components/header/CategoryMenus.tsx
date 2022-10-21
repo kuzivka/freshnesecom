@@ -1,15 +1,14 @@
 import { List } from '@mui/material';
 import { Box } from '@mui/system';
+import { useGetCategoriesQuery } from '@services/ecommerce';
 import {
   categoryMenuContainer,
   headerCategoryMenu,
 } from '@styles/header/headerStyles';
-import { CategoriesContext } from '../../App';
-import { useContext } from 'react';
 import DropDownMenu from './DropDownMenu';
 
 export default function CategoryMenu() {
-  const categories = useContext(CategoriesContext);
+  const { data: categories } = useGetCategoriesQuery();
 
   return (
     <Box sx={categoryMenuContainer}>

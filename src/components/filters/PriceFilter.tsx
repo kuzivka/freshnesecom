@@ -8,7 +8,7 @@ import {
   priceInputBase,
   priceInputLabel,
   priceSlider,
-} from '@styles/filters/price-filter';
+} from '@styles/filters/priceFilter';
 import {
   ChangeEvent,
   forwardRef,

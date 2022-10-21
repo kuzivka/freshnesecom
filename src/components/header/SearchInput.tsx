@@ -13,6 +13,7 @@ import {
   searchProducts,
   setFarmFilter,
 } from '@reducers/listSlice';
+import { useGetCategoriesQuery } from '@services/ecommerce';
 import {
   searchInput,
   searchInputButton,
@@ -20,21 +21,14 @@ import {
   searchInputField,
   searchInputSelect,
 } from '@styles/header/headerStyles';
-import {
-  ChangeEvent,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { CategoriesContext } from '../../App';
 import { SelectArrowIcon } from './SelectArrowIcon';
 
 export default function SearchInput() {
   const dispatch = useDispatch();
-  const categories = useContext(CategoriesContext);
+  const { data: categories } = useGetCategoriesQuery();
   const [searchQuery, setSearchQuery] = useState('');
 
   const selectedCategoryId = useSelector(

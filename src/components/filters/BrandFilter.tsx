@@ -13,7 +13,7 @@ import {
   brandCheckbox,
   brandListItem,
   brandName,
-} from '@styles/filters/brand-filter';
+} from '@styles/filters/brandFilter';
 import {
   filterContainer,
   filterLabel,

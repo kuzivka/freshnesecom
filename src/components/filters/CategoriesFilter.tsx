@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { categoryFilter, setFarmFilter } from '@reducers/listSlice';
+import { useGetCategoriesQuery } from '@services/ecommerce';
 import { chip } from '@styles/all-products/productListTitle';
 import {
   categoryCheckbox,
@@ -15,7 +16,7 @@ import {
   categoryListItem,
   categoryName,
   checkedCategoryName,
-} from '@styles/filters/category-filter';
+} from '@styles/filters/categoryFilter';
 import {
   filterContainer,
   filterLabel,
@@ -23,11 +24,11 @@ import {
 } from '@styles/filters/filters';
 import { ChangeEvent, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CategoriesContext, ProductsContext } from '../../App';
+import { ProductsContext } from '../../App';
 import { RootState } from '../../store';
 
 export default function CategoriesFilter() {
-  const categories = useContext(CategoriesContext);
+  const { data: categories } = useGetCategoriesQuery();
   const products = useContext(ProductsContext);
 
   const dispatch = useDispatch();

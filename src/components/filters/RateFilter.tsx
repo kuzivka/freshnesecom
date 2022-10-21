@@ -1,3 +1,4 @@
+import StarRating from '@components/common/StarRating';
 import {
   Box,
   Checkbox,
@@ -16,11 +17,10 @@ import {
   rateCheckbox,
   rateLabel,
   rateListItem,
-} from '@styles/filters/rate-filter';
+} from '@styles/filters/rateFilter';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import Rating from '../common/StarRating';
 
 export default function RateFilter() {
   const RATES = [1, 2, 3, 4, 5];
@@ -33,15 +33,16 @@ export default function RateFilter() {
   const [checkedRate, setCheckedRate] = useState<number[]>(ratesToFilter);
 
   const checkboxChangeHandler = useCallback(
-    (farmId: number) => (event: ChangeEvent<HTMLInputElement>) => {
-      const rateSet = new Set(checkedRate);
-      if (event.target.checked) {
-        setCheckedRate(Array.from(rateSet.add(farmId)));
-      } else if (!event.target.checked) {
-        rateSet.delete(farmId);
-        setCheckedRate(Array.from(rateSet));
-      }
-    },
+    (farmId: number) =>
+      (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
+        const rateSet = new Set(checkedRate);
+        if (checked) {
+          setCheckedRate(Array.from(rateSet.add(farmId)));
+        } else if (!checked) {
+          rateSet.delete(farmId);
+          setCheckedRate(Array.from(rateSet));
+        }
+      },
     [checkedRate]
   );
 
@@ -49,6 +50,8 @@ export default function RateFilter() {
     (rate: number) => ratesToFilter.includes(rate),
     [ratesToFilter]
   );
+  const sortedRates = RATES.sort((a, b) => b - a);
+
   useEffect(() => {
     setCheckedRate(ratesToFilter);
   }, [ratesToFilter]);
@@ -63,11 +66,11 @@ export default function RateFilter() {
         Ratings
       </Typography>
       <List sx={filterList}>
-        {RATES.sort((a, b) => b - a).map((rate) => (
+        {sortedRates.map((rate) => (
           <ListItem key={rate} sx={rateListItem}>
             <FormControlLabel
               sx={rateLabel}
-              label={<Rating value={rate} />}
+              label={<StarRating value={rate} />}
               control={
                 <Checkbox
                   value={rate}

@@ -1,7 +1,13 @@
 import { ReactComponent as StarOutline } from '@assets/svg/star-outline.svg';
 import { ReactComponent as Star } from '@assets/svg/star.svg';
-import styled from '@emotion/styled';
-import { Box, Typography } from '@mui/material';
+import { Box, List, ListItem } from '@mui/material';
+import React from 'react';
+import {
+  starContainer,
+  starList,
+  starListItem,
+  starRatingContainer,
+} from '@styles/common/starRatingBlock';
 
 interface IRating {
   value: number;
@@ -11,37 +17,24 @@ interface IRating {
   amount?: number;
 }
 
-const StyledSpan = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${({ color }) => color};
-`;
-function Rating({
+export default function StarRating({
   value,
-  text,
   amount = 5,
   color = '#ffc600',
 }: IRating): JSX.Element {
+  const amountOfStars = Array.from({ length: amount }, (_, i) => i + 1);
+  const shouldColor = (number: number) => Math.ceil(value) >= number;
   return (
-    <Box display="flex" alignItems="center">
-      <ul style={{ display: 'flex', flexDirection: 'row', gap: '2px' }}>
-        {Array.from({ length: amount }, (_, i) => i + 1).map((number) => (
-          <li key={number} style={{ display: 'inline' }}>
-            <StyledSpan color={color}>
-              {Math.ceil(value) >= number ? <Star /> : <StarOutline />}
-            </StyledSpan>
-          </li>
+    <Box sx={starRatingContainer}>
+      <List sx={starList}>
+        {amountOfStars.map((number) => (
+          <ListItem key={number} sx={starListItem}>
+            <Box sx={starContainer} component="span" color={color}>
+              {shouldColor(number) ? <Star /> : <StarOutline />}
+            </Box>
+          </ListItem>
         ))}
-
-        {text && (
-          <Typography variant="body1" sx={{ ml: 1 }}>
-            {text}
-          </Typography>
-        )}
-      </ul>
+      </List>
     </Box>
   );
 }
-
-export default Rating;

@@ -1,12 +1,14 @@
+import { C1 } from '@styles/colors';
+
 export const priceSlider = {
   height: '6px',
   '& .MuiSlider-thumb': {
-    color: '#fff',
-    border: '1px solid #d1d1d1',
+    color: C1.J,
+    border: `1px solid ${C1.D}`,
     height: '20px',
   },
   '& .MuiSlider-rail': {
-    color: '#ebebeb',
+    color: C1.E,
     borderRadius: '12px',
     opacity: '1',
   },
@@ -16,12 +18,12 @@ export const priceInput = {
     fontSize: '14px',
     padding: '12px 16px 12px 20px',
     borderRadius: '12px',
-    width:'110px'
+    width: '110px',
   },
 };
 export const priceInputBase = {
   width: '110px',
-  backgroundColor: '#f9f9f9',
+  backgroundColor: C1.H,
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       borderRadius: '12px',
