@@ -8,8 +8,11 @@ import { getPrice } from '@utils/getPrice';
 
 const applySorting = (sortBy: string) => (a: Product, b: Product) => {
   switch (sortBy) {
-    case SortBy.byRate: {
+    case SortBy.byRateAsc: {
       return b.averageRate - a.averageRate;
+    }
+    case SortBy.byRateDsc: {
+      return a.averageRate - b.averageRate;
     }
     case SortBy.byNameAZ: {
       return a.name.localeCompare(b.name);
@@ -17,27 +20,18 @@ const applySorting = (sortBy: string) => (a: Product, b: Product) => {
     case SortBy.byNameZA: {
       return b.name.localeCompare(a.name);
     }
+    case SortBy.lowestPrice: {
+      return (
+        (getPrice(a).priceWithDiscount || getPrice(a).price) -
+        (getPrice(b).priceWithDiscount || getPrice(b).price)
+      );
+    }
     case SortBy.highestPrice: {
       return (
-        (!a.discount
-          ? getPrice(a).price
-          : (getPrice(a).price * a.discount) / 100) -
-        (!b.discount
-          ? getPrice(b).price
-          : (getPrice(b).price * b.discount) / 100)
+        (getPrice(a).priceWithDiscount || getPrice(a).price) -
+        (getPrice(b).priceWithDiscount || getPrice(b).price)
       );
     }
-    case SortBy.lowesPrice: {
-      return (
-        (!b.discount
-          ? getPrice(b).price
-          : (getPrice(b).price * b.discount) / 100) -
-        (!a.discount
-          ? getPrice(a).price
-          : (getPrice(a).price * a.discount) / 100)
-      );
-    }
-
     default:
       return 0;
   }

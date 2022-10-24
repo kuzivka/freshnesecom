@@ -12,7 +12,7 @@ export interface Filters {
     | 'nameZA'
     | 'lowestPrice'
     | 'highestPrice'
-    | '';
+    | 'unset';
 }
 
 export const productListSlice = createSlice({
@@ -23,7 +23,7 @@ export const productListSlice = createSlice({
     farmFilter: [],
     rateFilter: [],
     priceRange: [],
-    sortBy: '',
+    sortBy: 'unset',
   } as Filters,
   reducers: {
     searchProducts: (state, action) => {
@@ -47,7 +47,7 @@ export const productListSlice = createSlice({
       state.rateFilter = [];
       state.searchQuery = '';
     },
-    setSortingOrder: (state, action) => (state.sortBy = action.payload),
+    setSortingOrder: (state, action) => {state.sortBy = action.payload},
   },
 });
 
@@ -58,5 +58,5 @@ export const {
   setFarmFilter,
   setRateFilter,
   setPriceRange,
-  resetAll,
+  resetAll, setSortingOrder
 } = productListSlice.actions;
