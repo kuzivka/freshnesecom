@@ -7,7 +7,7 @@ export enum PATH {
 export enum SortBy {
   unset =' Select',
   byRateAsc = 'By rate (asc)',
-  byRateDsc = 'By rate (dsc)',
+  byRateDsc = 'By rate (desc)',
   byNameAZ = 'Name A-Z',
   byNameZA = 'Name Z-A',
   lowestPrice = 'Lowest price',
