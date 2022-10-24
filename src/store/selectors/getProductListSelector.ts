@@ -22,8 +22,13 @@ export const getProductListSelector = (
         )
         .filter(
           (product) =>
-            (product.price.pcs || product.price.kg) >= Math.min(...priceRange) &&
+            (product.price.pcs || product.price.kg) >=
+              Math.min(...priceRange) &&
             (product.price.pcs || product.price.kg) <= Math.max(...priceRange)
         )
-        .filter((product)=>(rateFilter.includes(Math.floor(getRatingValue(product)))||!rateFilter.length))
+        .filter(
+          (product) =>
+            rateFilter.includes(Math.floor(getRatingValue(product))) ||
+            !rateFilter.length
+        )
   );

@@ -1,7 +1,5 @@
 import { Farm, Product } from '@common/type';
 import { Box, List, ListItem, Rating, Typography } from '@mui/material';
-
-import { getRatingValue } from '@utils/getRatingValue';
 import {
   cardDescriptionList,
   cardRating,
@@ -22,8 +20,6 @@ export default function ProductDescription({
   pcs,
   farmsData,
 }: ProductDescriptionProps) {
-  const ratingValue = getRatingValue(product);
-
   const farmName = () => {
     if (farmsData) {
       const farm = farmsData.find((farm) => farm.id === product.farm);
@@ -46,7 +42,12 @@ export default function ProductDescription({
       <Typography variant="body2" sx={productCardDescription}>
         {product.description}
       </Typography>
-      <Rating sx={cardRating} name="read-only" value={ratingValue} readOnly />
+      <Rating
+        sx={cardRating}
+        name="read-only"
+        value={product.averageRate}
+        readOnly
+      />
       <List>
         {Object.entries(description).map(([objectKey, value]) => (
           <ListItem key={objectKey} sx={productCardDescriptionContainer}>

@@ -1,16 +1,16 @@
 import { Product } from '@common/type';
-import { Box } from '@mui/material';
-import { getProductListSelector } from '@store/selectors/getProductListSelector';
-import { useGetFarmsQuery, useGetProductsQuery } from '@services/ecommerce';
 import { productListContainer } from '@components/product-list/product-list/allProducts';
+import { Box } from '@mui/material';
+import { useGetFarmsQuery } from '@services/ecommerce';
+import { getFilteredProducts } from '@store/selectors/getFilteredProducts';
 import { useSelector } from 'react-redux';
 import NoProducts from '../no-products/NoProducts';
 import { ProductListItem } from '../product-list-item/ProductListItem';
 
 export default function ProductList() {
   const { data: farmsData } = useGetFarmsQuery();
-  const { data: allProducts } = useGetProductsQuery();
-  const filteredProducts = useSelector(getProductListSelector(allProducts));
+
+  const filteredProducts = useSelector(getFilteredProducts);
 
   return (
     <Box sx={productListContainer}>

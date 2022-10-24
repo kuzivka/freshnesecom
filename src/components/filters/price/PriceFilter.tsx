@@ -18,6 +18,8 @@ import {
 } from 'react';
 import { useDispatch } from 'react-redux';
 import { ResetPrice } from '../filter-bar/FilterBar';
+import { useGetProductsQuery } from '@services/ecommerce';
+import { getProductsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 
 interface PriceFilterProps {
   min: number;
@@ -25,13 +27,13 @@ interface PriceFilterProps {
 }
 
 export const PriceFilter = forwardRef<ResetPrice, PriceFilterProps>(
-  ({ min, max }, ref) => {
+  ({min, max}, ref) => {
     const dispatch = useDispatch();
-
+    
     const [inputError, setInputError] = useState(false);
-
     const [minValue, setMinValue] = useState(min);
     const [maxValue, setMaxValue] = useState(max);
+    
     const handleChange = (event: Event, newValue: number | number[]) => {
       if (Array.isArray(newValue)) {
         setMinValue(Math.min(...newValue));
@@ -60,11 +62,6 @@ export const PriceFilter = forwardRef<ResetPrice, PriceFilterProps>(
       }, 500);
       return () => clearTimeout(timer);
     }, [dispatch, inputError, maxValue, minValue]);
-
-    useEffect(() => {
-      setMaxValue(max);
-      setMinValue(min);
-    }, [max, min]);
 
     useEffect(() => {
       setInputError(minValue > maxValue);

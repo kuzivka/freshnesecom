@@ -9,11 +9,17 @@ export const searchInput = {
   width: 500,
   height: '42px',
   borderRadius: '12px',
+  '& *> :focus': {
+    backgroundColor: C1.H,
+  },
 };
 export const searchInputSelect = {
   width: 150,
   fontWeight: '800',
   fontSize: '16px',
+  '&:focus': {
+    backgroundColor: C1.H,
+  },
 };
 export const searchInputDivider = { height: 28, m: 0.5 };
 export const searchInputField = {
