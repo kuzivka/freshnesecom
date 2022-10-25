@@ -10,6 +10,12 @@ export const getPrice = (product: Product) => {
         : null,
     };
   } else {
-    return { unit: 'kg', price: product.price.kg };
+    return {
+      unit: 'kg',
+      price: product.price.kg,
+      priceWithDiscount: product.discount
+        ? (product.price.kg * product.discount) / 100
+        : null,
+    };
   }
 };
