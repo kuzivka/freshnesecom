@@ -20,7 +20,6 @@ interface IRating {
 export default function StarRating({
   value,
   amount = 5,
-  color = '#ffc600',
 }: IRating): JSX.Element {
   const amountOfStars = Array.from({ length: amount }, (_, i) => i + 1);
   const shouldColor = (number: number) => Math.ceil(value) >= number;

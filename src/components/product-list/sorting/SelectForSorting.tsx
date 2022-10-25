@@ -13,7 +13,13 @@ import { RootState } from '@store/store';
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SortIcon } from '../sort-icon/SortIcon';
-import { selectForSorting } from './SelectForSortingStyle';
+import {
+  selectCaption,
+  selectContainer,
+  selectForSorting,
+  selectSorting,
+  sortingOption,
+} from './SelectForSortingStyle';
 
 export default function SelectForSorting() {
   const dispatch = useDispatch();
@@ -38,14 +44,14 @@ export default function SelectForSorting() {
     [dispatch]
   );
   return (
-    <Box sx={{ display: 'flex', p: '16px 48px' }}>
+    <Box sx={selectContainer}>
       <Paper elevation={0} component="form" sx={selectForSorting}>
-        <Typography variant="caption" sx={{ fontSize: '14px' }}>
+        <Typography variant="caption" sx={selectCaption}>
           Sort by
         </Typography>
         <Divider orientation="vertical" />
         <Select
-          sx={{ p: 0, fontSize: '12px', fontWeight: '600' }}
+          sx={selectSorting}
           onChange={sortOptionChange}
           disableUnderline
           variant="standard"
@@ -53,11 +59,7 @@ export default function SelectForSorting() {
           IconComponent={SortIcon}
         >
           {sortOptions.map((option, index) => (
-            <MenuItem
-              sx={{ fontSize: '12px', fontWeight: '600' }}
-              key={option}
-              value={option}
-            >
+            <MenuItem sx={sortingOption} key={option} value={option}>
               {getSortOptionString(option)}
             </MenuItem>
           ))}
