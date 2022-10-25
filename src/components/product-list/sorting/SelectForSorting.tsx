@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { setSortingOrder } from '@store/reducers/listSlice';
 import { RootState } from '@store/store';
+import { getSortingOptionString } from '@utils/getSortingOptionString';
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SortIcon } from '../sort-icon/SortIcon';
@@ -32,10 +33,6 @@ export default function SelectForSorting() {
   const sortingOrder = useSelector(
     (state: RootState) => state.productList.sortBy
   );
-  const getSortOptionString = (key: string) => {
-    const indexOfValue = Object.keys(SortBy).indexOf(key);
-    return Object.values(SortBy)[indexOfValue];
-  };
 
   const sortOptionChange = useCallback(
     (event: SelectChangeEvent<string>) => {
@@ -58,9 +55,9 @@ export default function SelectForSorting() {
           value={sortingOrder}
           IconComponent={SortIcon}
         >
-          {sortOptions.map((option, index) => (
+          {sortOptions.map((option) => (
             <MenuItem sx={sortingOption} key={option} value={option}>
-              {getSortOptionString(option)}
+              {getSortingOptionString(option)}
             </MenuItem>
           ))}
         </Select>

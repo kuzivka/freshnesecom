@@ -5,11 +5,18 @@ export enum PATH {
 }
 
 export enum SortBy {
-  unset =' Select',
-  byRateAsc = 'By rate (asc)',
-  byRateDsc = 'By rate (desc)',
-  byNameAZ = 'Name A-Z',
-  byNameZA = 'Name Z-A',
-  lowestPrice = 'Lowest price',
-  highestPrice = 'Highest price',
+  unset = 'unset',
+  byRateAsc = 'byRateAsc',
+  byRateDsc = 'byRateDesc',
+  byNameAZ = 'byNameAZ',
+  byNameZA = 'byNameZA',
+  lowestPrice = 'lowestPrice',
+  highestPrice = 'highestPrice',
 }
+// unset =' Select',
+// byRateAsc = 'By rate (asc)',
+// byRateDsc = 'By rate (desc)',
+// byNameAZ = 'Name A-Z',
+// byNameZA = 'Name Z-A',
+// lowestPrice = 'Lowest price',
+// highestPrice = 'Highest price',

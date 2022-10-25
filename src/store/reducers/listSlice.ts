@@ -1,18 +1,15 @@
+import { SortBy } from '@common/enums';
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface Filters {
+export type ISortBy = `${SortBy}`;
+
+export interface IFilters {
   searchQuery: '';
   categoryFilter: number | 'all';
   farmFilter: number[];
   rateFilter: number[];
   priceRange: number[];
-  sortBy:
-    | 'byRate'
-    | 'byNameAZ'
-    | 'nameZA'
-    | 'lowestPrice'
-    | 'highestPrice'
-    | 'unset';
+  sortBy: ISortBy;
 }
 
 export const productListSlice = createSlice({
@@ -24,7 +21,7 @@ export const productListSlice = createSlice({
     rateFilter: [],
     priceRange: [],
     sortBy: 'unset',
-  } as Filters,
+  } as IFilters,
   reducers: {
     searchProducts: (state, action) => {
       state.searchQuery = action.payload;
@@ -47,7 +44,9 @@ export const productListSlice = createSlice({
       state.rateFilter = [];
       state.searchQuery = '';
     },
-    setSortingOrder: (state, action) => {state.sortBy = action.payload},
+    setSortingOrder: (state, action) => {
+      state.sortBy = action.payload;
+    },
   },
 });
 
@@ -58,5 +57,6 @@ export const {
   setFarmFilter,
   setRateFilter,
   setPriceRange,
-  resetAll, setSortingOrder
+  resetAll,
+  setSortingOrder,
 } = productListSlice.actions;
