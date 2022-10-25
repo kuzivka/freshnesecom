@@ -28,7 +28,7 @@ export default function StarRating({
       <List sx={starList}>
         {amountOfStars.map((number) => (
           <ListItem key={number} sx={starListItem}>
-            <Box sx={starContainer} component="span" color={color}>
+            <Box sx={starContainer} component="span">
               {shouldColor(number) ? <Star /> : <StarOutline />}
             </Box>
           </ListItem>
