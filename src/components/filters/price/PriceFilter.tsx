@@ -1,14 +1,6 @@
+import { filterContainer, filterLabel } from '@components/filters/FilterStyles';
 import { Box, InputLabel, Slider, TextField, Typography } from '@mui/material';
 import { setPriceRange } from '@store/reducers/listSlice';
-import { filterContainer, filterLabel } from '@components/filters/FilterStyles';
-import {
-  inputsContainer,
-  inputSeparator,
-  priceInput,
-  priceInputBase,
-  priceInputLabel,
-  priceSlider,
-} from './PriceFilterStyles';
 import {
   ChangeEvent,
   forwardRef,
@@ -18,6 +10,14 @@ import {
 } from 'react';
 import { useDispatch } from 'react-redux';
 import { ResetPrice } from '../filter-bar/FilterBar';
+import {
+  inputsContainer,
+  inputSeparator,
+  priceInput,
+  priceInputBase,
+  priceInputLabel,
+  priceSlider,
+} from './PriceFilterStyles';
 
 interface PriceFilterProps {
   min: number;
@@ -29,9 +29,9 @@ export const PriceFilter = forwardRef<ResetPrice, PriceFilterProps>(
     const dispatch = useDispatch();
 
     const [inputError, setInputError] = useState(false);
-
     const [minValue, setMinValue] = useState(min);
     const [maxValue, setMaxValue] = useState(max);
+
     const handleChange = (event: Event, newValue: number | number[]) => {
       if (Array.isArray(newValue)) {
         setMinValue(Math.min(...newValue));
@@ -60,11 +60,6 @@ export const PriceFilter = forwardRef<ResetPrice, PriceFilterProps>(
       }, 500);
       return () => clearTimeout(timer);
     }, [dispatch, inputError, maxValue, minValue]);
-
-    useEffect(() => {
-      setMaxValue(max);
-      setMinValue(min);
-    }, [max, min]);
 
     useEffect(() => {
       setInputError(minValue > maxValue);

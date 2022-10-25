@@ -1,24 +1,27 @@
+import { SortBy } from '@common/enums';
 import { createSlice } from '@reduxjs/toolkit';
 
-type CategoryFilter = number | 'all';
+export type ISortBy = `${SortBy}`;
 
-export interface Filters{
-  searchQuery: '',
-    categoryFilter: CategoryFilter
-    farmFilter: number[],
-    rateFilter:number[],
-    priceRange: number[],
+export interface IFilters {
+  searchQuery: '';
+  categoryFilter: number | 'all';
+  farmFilter: number[];
+  rateFilter: number[];
+  priceRange: number[];
+  sortBy: ISortBy;
 }
 
 export const productListSlice = createSlice({
   name: 'productList',
   initialState: {
     searchQuery: '',
-    categoryFilter: 'all' as CategoryFilter,
-    farmFilter: [] as number[],
-    rateFilter: [] as number[],
-    priceRange: [0, 100],
-  } as Filters,
+    categoryFilter: 'all',
+    farmFilter: [],
+    rateFilter: [],
+    priceRange: [],
+    sortBy: 'unset',
+  } as IFilters,
   reducers: {
     searchProducts: (state, action) => {
       state.searchQuery = action.payload;
@@ -41,6 +44,9 @@ export const productListSlice = createSlice({
       state.rateFilter = [];
       state.searchQuery = '';
     },
+    setSortingOrder: (state, action) => {
+      state.sortBy = action.payload;
+    },
   },
 });
 
@@ -52,4 +58,5 @@ export const {
   setRateFilter,
   setPriceRange,
   resetAll,
+  setSortingOrder,
 } = productListSlice.actions;

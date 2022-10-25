@@ -38,4 +38,5 @@ export interface Product {
   reviews: string[];
   question: string[];
   category: number;
+  averageRate: number;
 }

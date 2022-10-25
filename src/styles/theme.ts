@@ -14,6 +14,11 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiSelect: {
+      styleOverrides: {
+        select: { backgroundColor: C1.H },
+      },
+    },
     MuiLink: {
       styleOverrides: {
         root: {

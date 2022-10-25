@@ -1,5 +1,6 @@
 import { Category, Farm, Product } from '@common/type';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { getRatingValue } from '@utils/getRatingValue';
 
 export const ecommerceApi = createApi({
   reducerPath: 'ecommerce',
@@ -10,11 +11,18 @@ export const ecommerceApi = createApi({
     getCategories: builder.query<Category[], void>({
       query: () => '/categories',
     }),
-    getProducts: builder.query<Product[], void>({
-      query: () => '/products',
-    }),
     getFarms: builder.query<Farm[], void>({
       query: () => `/brand`,
+    }),
+    getProducts: builder.query<Product[], void>({
+      query: () => '/products',
+
+      transformResponse: (response: Product[]) => {
+        return response.map((product) => ({
+          ...product,
+          averageRate: getRatingValue(product),
+        }));
+      },
     }),
   }),
 });
