@@ -2,9 +2,8 @@ import { Product } from '@common/type';
 import { createSelector } from '@reduxjs/toolkit';
 import { Filters } from '@store/reducers/listSlice';
 import { RootState } from '@store/store';
-import { getRatingValue } from '@utils/getRatingValue';
-import { SortBy } from '@common/enums';
 import { getPrice } from '@utils/getPrice';
+import { getRatingValue } from '@utils/getRatingValue';
 
 const applySorting = (sortBy: string) => (a: Product, b: Product) => {
   switch (sortBy) {
