@@ -3,7 +3,7 @@ import { Product } from '@common/type';
 import { createSelector } from '@reduxjs/toolkit';
 import { IFilters } from '@store/reducers/listSlice';
 import { RootState } from '@store/store';
-import { getPrice } from '@utils/getPrice';
+import { getPriceAndStock } from '@utils/getPriceAndStock';
 import { getRatingValue } from '@utils/getRatingValue';
 
 const applySorting = (sortBy: string) => (a: Product, b: Product) => {
@@ -22,14 +22,14 @@ const applySorting = (sortBy: string) => (a: Product, b: Product) => {
     }
     case SortBy.lowestPrice: {
       return (
-        (getPrice(a).priceWithDiscount || getPrice(a).price) -
-        (getPrice(b).priceWithDiscount || getPrice(b).price)
+        (getPriceAndStock(a).priceWithDiscount || getPriceAndStock(a).price) -
+        (getPriceAndStock(b).priceWithDiscount || getPriceAndStock(b).price)
       );
     }
     case SortBy.highestPrice: {
       return (
-        (getPrice(b).priceWithDiscount || getPrice(b).price) -
-        (getPrice(a).priceWithDiscount || getPrice(a).price)
+        (getPriceAndStock(b).priceWithDiscount || getPriceAndStock(b).price) -
+        (getPriceAndStock(a).priceWithDiscount || getPriceAndStock(a).price)
       );
     }
     default:

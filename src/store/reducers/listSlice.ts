@@ -30,7 +30,15 @@ export const productListSlice = createSlice({
       state.categoryFilter = action.payload;
     },
     setFarmFilter: (state, action) => {
-      state.farmFilter = action.payload;
+      if (!action.payload) {
+        state.farmFilter = [];
+      } else if (state.farmFilter.includes(action.payload)) {
+        state.farmFilter = state.farmFilter.filter(
+          (farmId) => farmId !== action.payload
+        );
+      } else if (!state.farmFilter.includes(action.payload)) {
+        state.farmFilter.push(action.payload);
+      }
     },
     setRateFilter: (state, action) => {
       state.rateFilter = action.payload;

@@ -6,18 +6,18 @@ import {
   ListItem,
   Typography,
 } from '@mui/material';
-import { setFarmFilter } from '@store/reducers/listSlice';
 import { useGetFarmsQuery } from '@services/ecommerce';
+import { setFarmFilter } from '@store/reducers/listSlice';
+import { RootState } from '@store/store';
+import { ChangeEvent, useCallback } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { filterContainer, filterLabel, filterList } from '../FilterStyles';
 import {
   barndCheckboxLabel,
   brandCheckbox,
   brandListItem,
   brandName,
 } from './BrandFilterStyles';
-import { filterContainer, filterLabel, filterList } from '../FilterStyles';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store/store';
 
 export default function BrandFilter() {
   const { data: farms } = useGetFarmsQuery();
@@ -30,33 +30,23 @@ export default function BrandFilter() {
   const chosenCategory = useSelector(
     (state: RootState) => state.productList.categoryFilter
   );
-  const [checkedFarms, setCheckedFarms] = useState(farmsToFilter);
 
   const checkboxChangeHandler = useCallback(
     (farmId: number) =>
       (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-        const farmsSet = new Set(checkedFarms);
-        if (checked) {
-          setCheckedFarms(Array.from(farmsSet.add(farmId)));
-        } else if (!checked) {
-          farmsSet.delete(farmId);
-          setCheckedFarms(Array.from(farmsSet));
-        }
+        dispatch(setFarmFilter(farmId));
       },
-    [checkedFarms]
+    [dispatch]
   );
 
   const farmsByCategory = farms?.filter(
     (farm) => farm.categoryId === chosenCategory || chosenCategory === 'all'
   );
 
-  const isChecked = (farmId: number) => farmsToFilter.includes(farmId);
-  useEffect(() => {
-    setCheckedFarms(farmsToFilter);
-  }, [farmsToFilter]);
-  useEffect(() => {
-    dispatch(setFarmFilter(checkedFarms));
-  }, [checkedFarms, dispatch]);
+  const isChecked = useCallback(
+    (farmId: number) => farmsToFilter.includes(farmId),
+    [farmsToFilter]
+  );
 
   return (
     <Box sx={filterContainer}>

@@ -36,7 +36,7 @@ export default function SearchInput() {
   );
 
   const selectChangeHandler = (event: SelectChangeEvent) => {
-    dispatch(setFarmFilter([]));
+    dispatch(setFarmFilter(undefined));
     dispatch(categoryFilter(event.target.value));
   };
 
