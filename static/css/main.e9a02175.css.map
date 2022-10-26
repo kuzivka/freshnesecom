@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.e9a02175.css","mappings":"AAAA,EAGE,sBAFA,SACA,SACA,CAEF,kBAEE","sources":["styles/style.scss"],"sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\na:hover,\r\nsvg:hover {\r\n  cursor: pointer;\r\n}\r\n"],"names":[],"sourceRoot":""}
