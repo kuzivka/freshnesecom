@@ -5,7 +5,7 @@ import {
   categoryMenuContainer,
   headerCategoryMenu,
 } from './CategoryMenusStyles';
-import DropDownMenu from '../DropDownMenu/DropDownMenu';
+import DropDownMenu from '../dropdown-menu/DropDownMenu';
 
 export default function CategoryMenu() {
   const { data: categories } = useGetCategoriesQuery();

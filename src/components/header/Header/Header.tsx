@@ -10,10 +10,10 @@ import {
 } from './HeaderStyles';
 import { useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import BreadcrambsString from '../BreadcrumbsString/BreadcrumbsString';
-import CategoryMenus from '../CategoryMenus/CategoryMenus';
-import InfoBar from '../InfoBar/InfoBar';
-import SearchInput from '../SearchInput/SearchInput';
+import BreadcrambsString from '../breadcrumbs-string/BreadcrumbsString';
+import CategoryMenus from '../category-menus/CategoryMenus';
+import InfoBar from '../info-bar/InfoBar';
+import SearchInput from '../search-input/SearchInput';
 
 export function Header() {
   const navigate = useNavigate();
