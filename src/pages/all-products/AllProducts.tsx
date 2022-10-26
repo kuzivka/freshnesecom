@@ -6,7 +6,7 @@ import { allProductsContent } from './AllProductPageStyle';
 import SelectForSorting from '@components/product-list/sorting/SelectForSorting';
 import PaginationContainer from '@components/product-list/pagination/PaginationContainer';
 import { getFilteredProducts } from '@store/selectors/getFilteredProducts';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function AllProducts() {
@@ -19,28 +19,37 @@ export default function AllProducts() {
     () => Math.ceil(filteredProducts?.length / PRODUCTS_ON_PAGE),
     [filteredProducts?.length]
   );
+  
   const productsIndexes = [
     (pagesIndexes[0] - 1) * PRODUCTS_ON_PAGE,
     (pagesIndexes[pagesIndexes?.length - 1] - 1) * PRODUCTS_ON_PAGE +
       (PRODUCTS_ON_PAGE - 1),
   ];
-  useEffect(() => {
-    setPagesIndexes([1]);
-  }, [filteredProducts]);
 
-  if (pagesIndexes?.length === 1) {
-    window.scrollTo({ top: 0 });
-  }
+  const scrollToTop = useCallback(() => {
+    if (pagesIndexes?.length === 1) {
+      window.scrollTo({ top: 0 });
+    }
+  }, [pagesIndexes?.length]);
 
   const productsToShow = filteredProducts?.filter((product, index) => {
     return index >= productsIndexes[0] && index <= productsIndexes[1];
   });
+
   const productsLeft = () => {
     const productsLeftNumber =
       filteredProducts?.length -
       pagesIndexes[pagesIndexes?.length - 1] * PRODUCTS_ON_PAGE;
     return productsLeftNumber >= 0 ? productsLeftNumber : 0;
   };
+
+  useEffect(() => {
+    setPagesIndexes([1]);
+  }, [filteredProducts]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [scrollToTop, productsToShow]);
 
   return (
     <>
