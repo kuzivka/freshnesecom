@@ -35,9 +35,12 @@ export default function AllProducts() {
   const productsToShow = filteredProducts?.filter((product, index) => {
     return index >= productsIndexes[0] && index <= productsIndexes[1];
   });
-  const productsLeft =
-    filteredProducts?.length -
-    pagesIndexes[pagesIndexes?.length - 1] * PRODUCTS_ON_PAGE;
+  const productsLeft = () => {
+    const productsLeftNumber =
+      filteredProducts?.length -
+      pagesIndexes[pagesIndexes?.length - 1] * PRODUCTS_ON_PAGE;
+    return productsLeftNumber >= 0 ? productsLeftNumber : 0;
+  };
 
   return (
     <>
@@ -48,7 +51,7 @@ export default function AllProducts() {
         <ProductList productsToShow={productsToShow} />
       </Box>
       <PaginationContainer
-        productsLeft={productsLeft}
+        productsLeft={productsLeft()}
         amountOfPages={amountOfPages}
         currentPages={pagesIndexes}
         changePage={setPagesIndexes}
