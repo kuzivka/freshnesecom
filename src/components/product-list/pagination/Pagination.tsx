@@ -1,14 +1,18 @@
-import { Box, Button, Chip, List, ListItem, Typography } from '@mui/material';
-import { greenButton, greenChip } from '@styles/mixins';
-import { useMemo } from 'react';
 import { ReactComponent as Arrow } from '@assets/svg/arrow-white.svg';
+import { Box, Button, Chip, List, ListItem, Typography } from '@mui/material';
+import { useMemo } from 'react';
 import {
+  pageListContainer,
   pageNumberButton,
   pagesCaption,
   pagesList,
   pagesListItem,
   paginationContainer,
+  productsLeftChip,
+  productsLeftContainer,
   selectedPage,
+  showMoreButton,
+  showMoreButtonIcon,
 } from './PaginationStyle';
 
 interface IPaginationProps {
@@ -40,7 +44,7 @@ export default function PaginationContainer({
 
   return (
     <Box sx={paginationContainer}>
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={pageListContainer}>
         <Typography sx={pagesCaption} variant="caption">
           Page:
         </Typography>
@@ -62,25 +66,16 @@ export default function PaginationContainer({
       </Box>
       {!(currentPages[currentPages.length - 1] === amountOfPages) && (
         <Button
-          endIcon={<Arrow style={{ marginRight: '8px' }} />}
-          sx={{
-            ...greenButton,
-            color: '#fff',
-            textTransform: 'none',
-            gap: '6px',
-            p: '12px 16px',
-          }}
+          endIcon={<Arrow style={showMoreButtonIcon} />}
+          sx={showMoreButton}
           onClick={onShowMoreButtonClick}
         >
           Show more products
         </Button>
       )}
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <Chip sx={{ ...greenChip }} label={`${productsLeft}`} />
-        <Typography
-          variant="caption"
-          sx={{ fontSize: '12px', color: '#A9A9A9', fontFamily: 'Open Sans' }}
-        >
+      <Box sx={productsLeftContainer}>
+        <Chip sx={productsLeftChip} label={`${productsLeft}`} />
+        <Typography variant="caption" sx={pagesCaption}>
           Products
         </Typography>
       </Box>

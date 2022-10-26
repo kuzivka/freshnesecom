@@ -1,13 +1,13 @@
 import FilterBar from '@components/filters/filter-bar/FilterBar';
-import ProductList from '@components/product-list/product-list/ProductList';
-import ProductListTitle from '@components/product-list/product-list-title/ProductListTitle';
-import { Box } from '@mui/material';
-import { allProductsContent } from './AllProductPageStyle';
-import SelectForSorting from '@components/product-list/sorting/SelectForSorting';
 import PaginationContainer from '@components/product-list/pagination/Pagination';
+import ProductListTitle from '@components/product-list/product-list-title/ProductListTitle';
+import ProductList from '@components/product-list/product-list/ProductList';
+import SelectForSorting from '@components/product-list/sorting/SelectForSorting';
+import { Box } from '@mui/material';
 import { getFilteredProducts } from '@store/selectors/getFilteredProducts';
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { allProductsContent } from './AllProductPageStyle';
 
 export default function AllProducts() {
   const PRODUCTS_ON_PAGE = 5;
