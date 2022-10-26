@@ -4,7 +4,7 @@ import { food } from '../constants';
 
 export default function FoodTags() {
   return (
-    <>
+    <Box>
       <Typography sx={footerTagsTitle} variant="h6">
         Product tags
       </Typography>
@@ -13,6 +13,6 @@ export default function FoodTags() {
           <Chip key={name} label={name} />
         ))}
       </Box>
-    </>
+    </Box>
   );
 }

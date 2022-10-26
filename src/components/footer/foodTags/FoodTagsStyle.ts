@@ -1,11 +1,11 @@
 export const footerTagsTitle = {
   fontWeight: '600',
   fontSize: '18px',
-  p: '12px 36px',
+  pt: '12px',
+  pb: '12px',
 };
 export const footerTagsContainer = {
   display: 'flex',
-  padding: '0 36px',
   maxWidth: '80vw',
   gap: '16px',
   flexWrap: 'wrap',
