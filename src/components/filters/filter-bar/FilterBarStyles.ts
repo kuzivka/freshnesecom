@@ -10,4 +10,4 @@ export const filterBarContainer = {
   gap: '48px',
   pr: { md: '16px' },
 };
-
+export const filterBarInDrawer = { display: 'flex', width: 'fit-content' };

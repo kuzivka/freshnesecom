@@ -8,7 +8,11 @@ import BrandFilter from '../brand/BrandFilter';
 import CategoriesFilter from '../category/CategoryFilter';
 import { PriceFilter } from '../price/PriceFilter';
 import RateFilter from '../rate/RateFilter';
-import { filterBarContainer, resetButton } from './FilterBarStyles';
+import {
+  filterBarContainer,
+  filterBarInDrawer,
+  resetButton,
+} from './FilterBarStyles';
 
 export interface ResetPrice {
   resetPriceRange(): void;
@@ -36,7 +40,7 @@ export default function FilterBar({ inDrawer }: IFilterBarProps) {
     <Box
       sx={{
         ...filterBarContainer,
-        ...(inDrawer && { display: 'flex', width: 'fit-content' }),
+        ...(inDrawer && filterBarInDrawer),
       }}
     >
       <CategoriesFilter />

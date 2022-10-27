@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import Copyrights from '../copyrights/Copyrights';
-import FoodTags from '../foodTags/FoodTags';
+import FoodTags from '../footer-tags/FoodTags';
 import FooterLinks from '../footer-links/FooterLinks';
 import { footerContainer } from './FooterStyle';
 

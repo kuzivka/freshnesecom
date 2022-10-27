@@ -22,8 +22,8 @@ export const shipingDurationInfo = {
 };
 
 export const cardPriceInfoContainer = {
-  width: '35%',
+  width: {sm:'35%'},
   justifyContent: 'space-between',
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: {sm:'column'},
 };

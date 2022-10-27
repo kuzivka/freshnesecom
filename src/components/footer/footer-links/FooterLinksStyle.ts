@@ -1,5 +1,6 @@
 export const footerLinksContainer = {
   display: 'flex',
+  flexWrap:'wrap',
   justifyContent: 'space-between',
 };
 export const footerLinksTitle = { fontWeight: '600', fontSize: '18px' };

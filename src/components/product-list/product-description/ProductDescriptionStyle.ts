@@ -4,7 +4,7 @@ import { hideOverflow } from '@styles/mixins';
 export const cardDescriptionList = {
   ...hideOverflow,
   minWidth: '100px',
-  width: '50%',
+  width: {xs:'100%',sm:'50%'},
   fontFamily: 'Open Sans',
   fontSize: '14px',
   color: C1.C,
@@ -35,6 +35,8 @@ export const productCardDescriptionContainer = {
 export const productDescriptionContainer = {
   display: 'flex',
   flexDirection: 'column',
-  width: '50%',
+  width: {xs:'100%',sm:'50%'},
+  ...hideOverflow
+
 };
 export const cardRating = { color: 'black' };
