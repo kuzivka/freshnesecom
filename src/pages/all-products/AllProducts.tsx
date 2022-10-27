@@ -1,4 +1,5 @@
 import FilterBar from '@components/filters/filter-bar/FilterBar';
+import FiltersButton from '@components/product-list/filters-button/FiltersButton';
 import PaginationContainer from '@components/product-list/pagination/Pagination';
 import ProductListTitle from '@components/product-list/product-list-title/ProductListTitle';
 import ProductList from '@components/product-list/product-list/ProductList';
@@ -51,6 +52,7 @@ export default function AllProducts() {
     <>
       <ProductListTitle />
       <SelectForSorting />
+      <FiltersButton />
       <Box sx={allProductsContent}>
         <FilterBar />
         <ProductList productsToShow={productsToShow} />

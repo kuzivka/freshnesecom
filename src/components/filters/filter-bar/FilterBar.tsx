@@ -1,24 +1,23 @@
-import { Box, Button, useMediaQuery } from '@mui/material';
-import { resetAll } from '@store/reducers/listSlice';
+import { Box, Button } from '@mui/material';
 import { useGetProductsQuery } from '@services/ecommerce';
-import {
-  filterBarContainer,
-  filterBarContainerResponsive,
-  resetButton,
-} from './FilterBarStyles';
+import { resetAll } from '@store/reducers/listSlice';
 import { getProductsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import RateFilter from '../rate/RateFilter';
-import { PriceFilter } from '../price/PriceFilter';
 import BrandFilter from '../brand/BrandFilter';
 import CategoriesFilter from '../category/CategoryFilter';
+import { PriceFilter } from '../price/PriceFilter';
+import RateFilter from '../rate/RateFilter';
+import { filterBarContainer, resetButton } from './FilterBarStyles';
 
 export interface ResetPrice {
   resetPriceRange(): void;
 }
+interface IFilterBarProps {
+  inDrawer?: boolean;
+}
 
-export default function FilterBar() {
+export default function FilterBar({ inDrawer }: IFilterBarProps) {
   const { min, max, data } = useGetProductsQuery(undefined, {
     selectFromResult: ({ data }) => ({
       data: data,
@@ -33,14 +32,11 @@ export default function FilterBar() {
     childRef.current?.resetPriceRange();
   };
 
-  const tablet = useMediaQuery('(max-width: 1024px)');
-  const mobile = useMediaQuery('(max-width: 700px)');
-
   return (
     <Box
       sx={{
         ...filterBarContainer,
-        ...((tablet || mobile) && filterBarContainerResponsive),
+        ...(inDrawer && { display: 'flex', width: 'fit-content' }),
       }}
     >
       <CategoriesFilter />
