@@ -1,4 +1,5 @@
 import { Box, Link, Typography } from '@mui/material';
+import { theme } from '@styles/theme';
 import {
   infoBarContactInfo,
   infoBarContactsContainer,

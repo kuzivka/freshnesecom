@@ -1,3 +1,4 @@
+
 export const resetButton = {
   fontWeight: '700',
   fontSize: '15px',
@@ -5,7 +6,15 @@ export const resetButton = {
 };
 export const filterBarContainer = {
   display: 'flex',
+
   flexDirection: 'column',
-  minWidth: '280px',
+
+  width: '280px',
   gap: '48px',
+  pr: { md: '16px' },
+};
+
+export const filterBarContainerResponsive = {
+  display: 'none'
+
 };

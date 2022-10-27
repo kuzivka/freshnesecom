@@ -1,7 +1,11 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, useMediaQuery } from '@mui/material';
 import { resetAll } from '@store/reducers/listSlice';
 import { useGetProductsQuery } from '@services/ecommerce';
-import { filterBarContainer, resetButton } from './FilterBarStyles';
+import {
+  filterBarContainer,
+  filterBarContainerResponsive,
+  resetButton,
+} from './FilterBarStyles';
 import { getProductsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
@@ -29,8 +33,16 @@ export default function FilterBar() {
     childRef.current?.resetPriceRange();
   };
 
+  const tablet = useMediaQuery('(max-width: 1024px)');
+  const mobile = useMediaQuery('(max-width: 700px)');
+
   return (
-    <Box sx={filterBarContainer}>
+    <Box
+      sx={{
+        ...filterBarContainer,
+        ...((tablet || mobile) && filterBarContainerResponsive),
+      }}
+    >
       <CategoriesFilter />
       <BrandFilter />
       <RateFilter />

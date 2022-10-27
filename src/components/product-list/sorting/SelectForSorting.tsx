@@ -26,7 +26,7 @@ export default function SelectForSorting() {
   const dispatch = useDispatch();
 
   const sortOptions = useMemo(
-    () => Object.keys(SortBy).map((option) => option),
+    () => Object.values(SortBy).map((option) => option),
     []
   );
 
