@@ -5,7 +5,7 @@ import ProductList from '@components/product-list/product-list/ProductList';
 import SelectForSorting from '@components/product-list/sorting/SelectForSorting';
 import { Box } from '@mui/material';
 import { getFilteredProducts } from '@store/selectors/getFilteredProducts';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { allProductsContent } from './AllProductPageStyle';
 
@@ -37,15 +37,20 @@ export default function AllProducts() {
     return productsLeftNumber >= 0 ? productsLeftNumber : 0;
   };
 
+  const firstPage = pagesIndexes[0];
+  const scrollToTop = useCallback(() => {
+    if (pagesIndexes.length === 1) {
+      window.scrollTo({ top: 0 });
+    }
+  }, [pagesIndexes.length]);
+
   useEffect(() => {
     setPagesIndexes([1]);
   }, [filteredProducts]);
 
   useEffect(() => {
-    if (pagesIndexes?.length === 1) {
-      window.scrollTo({ top: 0 });
-    }
-  }, [ pagesIndexes?.length, setPagesIndexes]);
+    scrollToTop();
+  }, [firstPage, scrollToTop]);
 
   return (
     <>
