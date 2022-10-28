@@ -86,8 +86,8 @@ export default function PaginationContainer({
           Page:
         </Typography>
         <List sx={pagesList}>
-          {pageListRange?.map((pageNumber) => (
-            <ListItem key={pageNumber} sx={pagesListItem}>
+          {pageListRange?.map((pageNumber, index) => (
+            <ListItem key={`${pageNumber}${index}`} sx={pagesListItem}>
               <Button
                 sx={{
                   ...pageNumberButton,
