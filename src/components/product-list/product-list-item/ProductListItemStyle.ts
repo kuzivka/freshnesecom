@@ -5,7 +5,7 @@ export const cardContainer = {
   flexDirection:{xs:'column', sm:'row'},
   borderRadius: '12px',
   maxHeight: {sm:'fit-content', xs:'90vh'},
-  height:{xs:'60vh', sm:'fit-content'}
+  height:{xs:'fit-content', sm:'fit-content'}
 };
 
 export const productInfoContainer = {

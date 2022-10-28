@@ -26,8 +26,8 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
     : 'Free Shipping';
 
   return (
-    <Box sx={cardPriceInfoContainer}>
-      <Box>
+    <Box sx={cardPriceInfoContainer}><Box>
+      <Box sx={{}}>
         <Typography variant="h5" sx={productPrice}>
           {priceWithDiscountString} USD
         </Typography>
@@ -44,7 +44,7 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
         <Typography sx={shipingDurationInfo} variant="subtitle2">
           Delivery in 1 day
         </Typography>
-      </Box>
+      </Box></Box>
       <ProductCardButtons />
     </Box>
   );

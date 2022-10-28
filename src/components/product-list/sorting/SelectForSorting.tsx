@@ -13,6 +13,7 @@ import { RootState } from '@store/store';
 import { getSortingOptionString } from '@utils/getSortingOptionString';
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import FiltersButton from '../filters-button/FiltersButton';
 import { SortIcon } from '../sort-icon/SortIcon';
 import {
   selectCaption,
@@ -62,6 +63,7 @@ export default function SelectForSorting() {
           ))}
         </Select>
       </Paper>
+      <FiltersButton/>
     </Box>
   );
 }

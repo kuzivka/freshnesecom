@@ -16,7 +16,9 @@ export default function ProductCardButtons() {
         disableElevation
         endIcon={<Arrow />}
       >
-        Product Details
+        <Box component="span">
+          <Box component="span">Product </Box>Details
+        </Box>
       </Button>
       <Button
         sx={addToFavouriteButton}

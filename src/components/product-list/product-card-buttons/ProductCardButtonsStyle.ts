@@ -21,6 +21,6 @@ export const productDetailsButton = {
 export const cardButtonContainer = {
   gap: '12px',
   display: 'flex',
-  flexDirection: {sx:'row',sm:'column'},
+  flexDirection: {xs:'row',sm:'column'},
   alignItems: 'center',
 };

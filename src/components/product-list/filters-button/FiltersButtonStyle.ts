@@ -4,7 +4,6 @@ import { greenButton } from '@styles/mixins';
 export const drawerOpenButtonContainer = {
   display: { md: 'none', xs: 'flex' },
   justifyContent: 'center',
-  p: '16px 48px',
 };
 export const drawerContainer = {
   sx: { p: 3, width: { xs: '90vw', sm: '60vw', md: '40vw' } },

@@ -1,5 +1,6 @@
 import FilterBar from '@components/filters/filter-bar/FilterBar';
 import { Box, Button, SwipeableDrawer } from '@mui/material';
+import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
 import React from 'react';
 import {
   drawerContainer,
@@ -14,7 +15,7 @@ export default function FiltersButton() {
   };
   return (
     <Box sx={drawerOpenButtonContainer} onClick={toggleDrawer}>
-      <Button sx={openDrawerButton}>Apply filters</Button>
+      <Button sx={openDrawerButton}><FilterAltRoundedIcon/></Button>
       <SwipeableDrawer
         PaperProps={drawerContainer}
         anchor="left"
