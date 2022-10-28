@@ -2,6 +2,8 @@ import { Product } from '@common/type';
 import { Box, Typography } from '@mui/material';
 import {
   cardPriceInfoContainer,
+  priceInfo,
+  priceInfoContent,
   priceWithoutDiscount,
   productPrice,
   shipingDurationInfo,
@@ -27,15 +29,8 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
 
   return (
     <Box sx={cardPriceInfoContainer}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          flexGrow:'1',
-          justifyContent: 'space-evenly',
-        }}
-      >
-        <Box sx={{ display: 'flex',  flexDirection: 'column' }}>
+      <Box sx={priceInfo}>
+        <Box sx={priceInfoContent}>
           <Typography variant="h5" sx={productPrice}>
             {priceWithDiscountString} USD
           </Typography>

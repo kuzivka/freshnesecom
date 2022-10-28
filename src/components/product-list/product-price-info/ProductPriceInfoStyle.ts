@@ -20,10 +20,16 @@ export const shipingDurationInfo = {
   color: C1.C,
   fontFamily: 'Open Sans',
 };
-
+export const priceInfo = {
+  display: 'flex',
+  flexDirection: 'column',
+  flexGrow: '1',
+  justifyContent: 'space-evenly',
+};
+export const priceInfoContent = { display: 'flex', flexDirection: 'column' };
 export const cardPriceInfoContainer = {
-  width: {sm:'35%'},
+  width: { sm: '35%' },
   justifyContent: 'space-between',
   display: 'flex',
-  flexDirection: {sm:'column'},
+  flexDirection: { sm: 'column' },
 };
