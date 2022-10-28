@@ -101,7 +101,7 @@ export default function PaginationContainer({
           ))}
         </List>
       </Box>
-      {!(currentPage === amountOfPages) && (
+      {!!productsLeft && (
         <Button
           endIcon={<Arrow style={showMoreButtonIcon} />}
           sx={showMoreButton}

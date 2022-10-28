@@ -1,17 +1,15 @@
 import { Box, Chip, Typography } from '@mui/material';
-import { getProductListSelector } from '@store/selectors/getProductListSelector';
-import { useGetProductsQuery } from '@services/ecommerce';
+import { getFilteredProducts } from '@store/selectors/getFilteredProducts';
+import { useSelector } from 'react-redux';
 import {
   chip,
   productListTitle,
   productListTitleContainer,
-  titleSpan
+  titleSpan,
 } from './ProductListTitleStyle';
-import { useSelector } from 'react-redux';
 
 export default function ProductListTitle() {
-  const { data: allProducts } = useGetProductsQuery();
-  const filteredProducts = useSelector(getProductListSelector(allProducts));
+  const filteredProducts = useSelector(getFilteredProducts);
 
   return (
     <Box sx={productListTitleContainer}>

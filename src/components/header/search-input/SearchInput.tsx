@@ -24,7 +24,7 @@ import {
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/store';
-import { SelectArrowIcon } from '../SelectArrowIcon/SelectArrowIcon';
+import { SelectArrowIcon } from '../select-arrow-icon/SelectArrowIcon';
 
 export default function SearchInput() {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export default function SearchInput() {
   );
 
   const selectChangeHandler = (event: SelectChangeEvent) => {
-    dispatch(setFarmFilter([]));
+    dispatch(setFarmFilter(undefined));
     dispatch(categoryFilter(event.target.value));
   };
 

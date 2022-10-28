@@ -24,7 +24,6 @@ export function ProductListItem({ product, farmsData }: ProductListItemProps) {
       <Box sx={productInfoContainer}>
         <ProductDescription
           product={product}
-          pcs={isPcsAvailable}
           farmsData={farmsData}
         />
         <ProductPriceInfo product={product} pcs={isPcsAvailable} />

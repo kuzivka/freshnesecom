@@ -8,24 +8,18 @@ import {
   shippingPriceInfo,
 } from './ProductPriceInfoStyle';
 import ProductCardButtons from '../product-card-buttons/ProductCardButtons';
+import { getPriceAndStock } from '@utils/getPriceAndStock';
 
 interface ProductPriceInfoProps {
   product: Product;
   pcs: boolean | undefined;
 }
 
-export default function ProductPriceInfo({
-  product,
-  pcs,
-}: ProductPriceInfoProps) {
-  const price = pcs ? product.price.pcs : product.price.kg;
+export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
+  const { price, priceWithDiscount } = getPriceAndStock(product);
 
-  const priceWithDiscount =
-    product.discount && price
-      ? ((price * product.discount) / 100).toFixed(2)
-      : price?.toFixed(2);
-
-  const priceBeforeDiscount = price?.toFixed(2);
+  const priceString = price.toFixed(2);
+  const priceWithDiscountString = priceWithDiscount.toFixed(2);
 
   const shippingPrice = product.shippingPrice
     ? `Shipping Price: ${product.shippingPrice} USD`
@@ -35,11 +29,11 @@ export default function ProductPriceInfo({
     <Box sx={cardPriceInfoContainer}>
       <Box>
         <Typography variant="h5" sx={productPrice}>
-          {priceWithDiscount} USD
+          {priceWithDiscountString} USD
         </Typography>
         {product.discount && (
           <Typography sx={priceWithoutDiscount} variant="caption">
-            {priceBeforeDiscount}
+            {priceString}
           </Typography>
         )}
       </Box>

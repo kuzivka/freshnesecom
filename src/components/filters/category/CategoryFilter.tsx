@@ -45,9 +45,9 @@ export default function CategoriesFilter() {
   const categoryRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.target.value) === chosenCategory) {
       dispatch(categoryFilter('all'));
-      dispatch(setFarmFilter([]));
+      dispatch(setFarmFilter(undefined));
     } else {
-      dispatch(setFarmFilter([]));
+      dispatch(setFarmFilter(undefined));
       dispatch(categoryFilter(Number(event.target.value)));
     }
   };

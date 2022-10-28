@@ -1,8 +1,9 @@
 import { Farm, Product } from '@common/type';
-import { Box, List, ListItem, Rating, Typography } from '@mui/material';
+import StarRating from '@components/rating/StarRating';
+import { Box, List, ListItem, Typography } from '@mui/material';
+import { getPriceAndStock } from '@utils/getPriceAndStock';
 import {
   cardDescriptionList,
-  cardRating,
   productCardDescription,
   productCardDescriptionContainer,
   productCardName,
@@ -11,15 +12,14 @@ import {
 
 interface ProductDescriptionProps {
   product: Product;
-  pcs: boolean | undefined;
   farmsData: Farm[] | undefined;
 }
 
 export default function ProductDescription({
   product,
-  pcs,
   farmsData,
 }: ProductDescriptionProps) {
+  const { inStock, unit } = getPriceAndStock(product);
   const farmName = () => {
     if (farmsData) {
       const farm = farmsData.find((farm) => farm.id === product.farm);
@@ -30,9 +30,7 @@ export default function ProductDescription({
     Freshness: product.freshness,
     Farm: farmName(),
     Delivery: product.delivery,
-    Stock: `${pcs ? product.stock.pcs : product.stock.kg} ${
-      pcs ? 'pcs' : 'kg'
-    }`,
+    Stock: `${inStock} ${unit}`,
   };
   return (
     <Box sx={productDescriptionContainer}>
@@ -42,12 +40,7 @@ export default function ProductDescription({
       <Typography variant="body2" sx={productCardDescription}>
         {product.description}
       </Typography>
-      <Rating
-        sx={cardRating}
-        name="read-only"
-        value={product.averageRate}
-        readOnly
-      />
+      <StarRating black value={product.averageRate} />
       <List>
         {Object.entries(description).map(([objectKey, value]) => (
           <ListItem key={objectKey} sx={productCardDescriptionContainer}>

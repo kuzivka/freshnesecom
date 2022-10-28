@@ -26,7 +26,8 @@ export default function DropDownMenu(props: Category) {
   });
 
   const farmChoosingHandler = (brandId: number) => () => {
-    dispatch(setFarmFilter([brandId]));
+    dispatch(setFarmFilter(undefined));
+    dispatch(setFarmFilter(brandId));
     dispatch(categoryFilter(categoryId));
     return popupState.close;
   };
