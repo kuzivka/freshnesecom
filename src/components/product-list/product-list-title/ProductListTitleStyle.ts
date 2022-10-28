@@ -2,14 +2,14 @@ import { C1 } from '@styles/colors';
 import { greenChip } from '@styles/mixins';
 
 export const productListTitleContainer = {
-  p: '8px 45px',
+  p: {xs:'8px 20px',sm:'8px 44px'},
   display: 'flex',
   alignItems: 'center',
 };
 export const productListTitle = {
   flexGrow: '1',
   fontWeight: '600',
-  fontSize: '32px',
+  fontSize: {xs:'20px',sm:'32px'},
 };
 export const chip = {
   ...greenChip,

@@ -6,7 +6,7 @@ export const resetButton = {
 export const filterBarContainer = {
   display: { xs: 'none', md: 'flex' },
   flexDirection: 'column',
-  width: '280px',
+  minWidth: {md:'fit-content',lg:'288px'},
   gap: '48px',
   pr: { md: '16px' },
 };

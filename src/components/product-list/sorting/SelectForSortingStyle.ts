@@ -6,9 +6,23 @@ export const selectForSorting = {
   borderRadius: '12px',
   backgroundColor: C1.H,
   p: '9px 16px',
-  gap: '24px',
+  alignItems: 'center',
+  gap: { xs: '12px', md: '24px' },
 };
-export const selectContainer = { display: 'flex', p: '16px 48px', justifyContent:'space-between'  };
-export const selectCaption = { fontSize: '14px' };
-export const selectSorting = { p: 0, fontSize: '12px', fontWeight: '600' };
-export const sortingOption = { fontSize: '12px', fontWeight: '600' };
+export const selectContainer = {
+  display: 'flex',
+  p: { xs: '8px 20px', sm: '16px 48px' },
+  justifyContent: 'space-between',
+  gap: '12px',
+};
+export const selectCaption = { fontSize: { xs: '12px', md: '14px' } };
+export const selectSorting = {
+  maxWidth: {xs:'100px', sm:'fit-content'},
+  p: 0,
+  fontSize: '12px',
+  fontWeight: '600',
+};
+export const sortingOption = {
+  fontSize: '12px',
+  fontWeight: '600',
+};

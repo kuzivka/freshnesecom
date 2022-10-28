@@ -11,8 +11,11 @@ export const greenButton = {
   borderRadius: '12px',
   fontWeight: '700',
   textTransform: 'capitalize',
+  '&:active': {
+    backgroundColor: C2.B ,
+  },
   '&:hover': {
-    backgroundColor: C2.B,
+     backgroundColor: { lg: C2.B},
   },
 };
 export const greenChip = {

@@ -3,6 +3,8 @@ import { ReactComponent as Arrow } from '@assets/svg/arrow-right.svg';
 import { ReactComponent as Heart } from '@assets/svg/heart.svg';
 import {
   addToFavouriteButton,
+  buttonTextLong,
+  buttonTextShort,
   cardButtonContainer,
   productDetailsButton,
 } from './ProductCardButtonsStyle';
@@ -16,8 +18,11 @@ export default function ProductCardButtons() {
         disableElevation
         endIcon={<Arrow />}
       >
-        <Box component="span">
-          <Box component="span">Product </Box>Details
+        <Box sx={buttonTextLong} component="span">
+          Product Details
+        </Box>
+        <Box sx={buttonTextShort} component="span">
+          Details
         </Box>
       </Button>
       <Button
@@ -26,7 +31,12 @@ export default function ProductCardButtons() {
         disableElevation
         startIcon={<Heart />}
       >
-        Add to wish list
+        <Box sx={buttonTextLong} component="span">
+          Add to wish list
+        </Box>
+        <Box sx={buttonTextShort} component="span">
+          wish list
+        </Box>
       </Button>
     </Box>
   );

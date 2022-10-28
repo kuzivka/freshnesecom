@@ -26,25 +26,34 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
     : 'Free Shipping';
 
   return (
-    <Box sx={cardPriceInfoContainer}><Box>
-      <Box sx={{}}>
-        <Typography variant="h5" sx={productPrice}>
-          {priceWithDiscountString} USD
-        </Typography>
-        {product.discount && (
-          <Typography sx={priceWithoutDiscount} variant="caption">
-            {priceString}
+    <Box sx={cardPriceInfoContainer}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          flexGrow:'1',
+          justifyContent: 'space-evenly',
+        }}
+      >
+        <Box sx={{ display: 'flex',  flexDirection: 'column' }}>
+          <Typography variant="h5" sx={productPrice}>
+            {priceWithDiscountString} USD
           </Typography>
-        )}
+          {product.discount && (
+            <Typography sx={priceWithoutDiscount} variant="caption">
+              {priceString}
+            </Typography>
+          )}
+        </Box>
+        <Box>
+          <Typography sx={shippingPriceInfo} variant="subtitle2">
+            {shippingPrice}
+          </Typography>
+          <Typography sx={shipingDurationInfo} variant="subtitle2">
+            Delivery in 1 day
+          </Typography>
+        </Box>
       </Box>
-      <Box>
-        <Typography sx={shippingPriceInfo} variant="subtitle2">
-          {shippingPrice}
-        </Typography>
-        <Typography sx={shipingDurationInfo} variant="subtitle2">
-          Delivery in 1 day
-        </Typography>
-      </Box></Box>
       <ProductCardButtons />
     </Box>
   );

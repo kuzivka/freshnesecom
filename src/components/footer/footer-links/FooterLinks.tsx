@@ -3,6 +3,7 @@ import {
   footerLinksContainer,
   footerLinksLink,
   footerLinksTitle,
+  linksList,
 } from './FooterLinksStyle';
 
 import { links } from '../constants';
@@ -15,7 +16,7 @@ export default function FooterLinks() {
           <Typography component="div" variant="h6" sx={footerLinksTitle}>
             {title}
           </Typography>
-          <List>
+          <List sx={linksList}>
             {links.map(({ link, resource }) => (
               <ListItem key={resource} sx={footerLinksLink}>
                 <Link href={link}>{resource}</Link>
