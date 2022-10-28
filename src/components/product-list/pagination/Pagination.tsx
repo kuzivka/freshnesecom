@@ -54,30 +54,29 @@ export default function PaginationContainer({
       return pageNumber >= currentPages[0] && pageNumber <= currentPage;
     }
   };
+
+  const pageListRange = useMemo(() => {
     const leftPage = Math.max(currentPage - 1, 1);
     const rightPage = Math.min(currentPage + 1, amountOfPages);
     const addLeftDots = leftPage > 2;
     const addRightDots = rightPage < amountOfPages - 2;
-  const pageListRange = useMemo(() => {
-
 
     if (6 >= amountOfPages) {
       return pagesArray;
     }
     if (!addLeftDots && addRightDots) {
-      let leftRange = getRange(1, 5);
-
+      const leftRange = getRange(1, 5);
       return [...leftRange, '...', amountOfPages];
     }
     if (addLeftDots && !addRightDots) {
-      let rightRange = getRange(amountOfPages - 5 + 1, amountOfPages);
+      const rightRange = getRange(amountOfPages - 5 + 1, amountOfPages);
       return [1, '...', ...rightRange];
     }
     if (addLeftDots && addRightDots) {
-      let middleRange = getRange(leftPage, rightPage);
+      const middleRange = getRange(leftPage, rightPage);
       return [1, '...', ...middleRange, '...', amountOfPages];
     }
-  }, [addLeftDots, addRightDots, amountOfPages, leftPage, pagesArray, rightPage]);
+  }, [amountOfPages, currentPage, pagesArray]);
 
   return (
     <Box sx={paginationContainer}>
