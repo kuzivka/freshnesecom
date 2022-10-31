@@ -23,6 +23,7 @@ export const shipingDurationInfo = {
 export const priceInfo = {
   display: 'flex',
   flexDirection: 'column',
+  width: { xs: '50%', sm: '100%' },
   flexGrow: '1',
   justifyContent: 'space-evenly',
 };

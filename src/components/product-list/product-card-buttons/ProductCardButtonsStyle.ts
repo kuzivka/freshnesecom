@@ -4,7 +4,7 @@ import { greenButton } from '@styles/mixins';
 export const addToFavouriteButton = {
   backgroundColor: C1.F,
   borderRadius: '12px',
-  width: {xs:'100%',md:'fit-content'},
+  width: { xs: '100%', md: 'fit-content' },
   color: C1.A,
   p: '6px 12px',
   fontWeight: '700',
@@ -22,10 +22,12 @@ export const productDetailsButton = {
   p: '12px 16px',
 };
 export const cardButtonContainer = {
-  gap: '12px',flexGrow:'1',
   display: 'flex',
+  gap: '12px',
+  flexGrow: '1',
   flexDirection: { xs: 'column', sm: 'column' },
-  alignItems: 'center', justifyContent:'end'
+  alignItems: 'center',
+  justifyContent: 'end',
 };
 export const buttonTextLong = { display: { md: 'flex', xs: 'none' } };
 export const buttonTextShort = { display: { md: 'none', xs: 'flex' } };
