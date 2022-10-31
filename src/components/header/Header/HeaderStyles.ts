@@ -2,7 +2,8 @@ export const headerContent = {
   pl: '26px',
   pb: '10px',
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: {md:'row', xs:'column'},
+  gap:{xs:'10px'},
   justifyContent: 'space-between',
   alignItems: 'center',
 };

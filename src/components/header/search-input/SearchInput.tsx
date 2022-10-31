@@ -15,6 +15,7 @@ import {
 } from '@store/reducers/listSlice';
 import { useGetCategoriesQuery } from '@services/ecommerce';
 import {
+  menuItem,
   searchInput,
   searchInputButton,
   searchInputDivider,
@@ -63,9 +64,11 @@ export default function SearchInput() {
         IconComponent={SelectArrowIcon}
         sx={searchInputSelect}
       >
-        <MenuItem value={'all'}>All Categories</MenuItem>
+        <MenuItem sx={menuItem} value={'all'}>
+          All Categories
+        </MenuItem>
         {categories?.map(({ name, id }) => (
-          <MenuItem key={id} value={id}>
+          <MenuItem sx={menuItem} key={id} value={id}>
             {name}
           </MenuItem>
         ))}

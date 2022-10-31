@@ -1,6 +1,9 @@
 import { C1 } from '@styles/colors';
 
-export const categoryMenuOptions = { backgroundColor: C1.H };
+export const categoryMenuOptions = {
+  backgroundColor: C1.H,
+  fontSize: { xs: '14px' },
+};
 export const headerMenuButton = {
   textTransform: 'capitalize',
   color: C1.A,
@@ -11,6 +14,7 @@ export const headerMenuButton = {
   },
 };
 export const selectMenuItem = {
+  flexGrow: '1',
   width: 'fit-content',
   height: 'fit-content',
   p: 0,

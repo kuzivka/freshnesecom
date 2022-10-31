@@ -2,6 +2,8 @@ import { Product } from '@common/type';
 import { Box, Typography } from '@mui/material';
 import {
   cardPriceInfoContainer,
+  priceInfo,
+  priceInfoContent,
   priceWithoutDiscount,
   productPrice,
   shipingDurationInfo,
@@ -27,23 +29,25 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
 
   return (
     <Box sx={cardPriceInfoContainer}>
-      <Box>
-        <Typography variant="h5" sx={productPrice}>
-          {priceWithDiscountString} USD
-        </Typography>
-        {product.discount && (
-          <Typography sx={priceWithoutDiscount} variant="caption">
-            {priceString}
+      <Box sx={priceInfo}>
+        <Box sx={priceInfoContent}>
+          <Typography variant="h5" sx={productPrice}>
+            {priceWithDiscountString} USD
           </Typography>
-        )}
-      </Box>
-      <Box>
-        <Typography sx={shippingPriceInfo} variant="subtitle2">
-          {shippingPrice}
-        </Typography>
-        <Typography sx={shipingDurationInfo} variant="subtitle2">
-          Delivery in 1 day
-        </Typography>
+          {product.discount && (
+            <Typography sx={priceWithoutDiscount} variant="caption">
+              {priceString}
+            </Typography>
+          )}
+        </Box>
+        <Box>
+          <Typography sx={shippingPriceInfo} variant="subtitle2">
+            {shippingPrice}
+          </Typography>
+          <Typography sx={shipingDurationInfo} variant="subtitle2">
+            Delivery in 1 day
+          </Typography>
+        </Box>
       </Box>
       <ProductCardButtons />
     </Box>

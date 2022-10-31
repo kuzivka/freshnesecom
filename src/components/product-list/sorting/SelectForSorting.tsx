@@ -13,6 +13,7 @@ import { RootState } from '@store/store';
 import { getSortingOptionString } from '@utils/getSortingOptionString';
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import FiltersButton from '../filters-button/FiltersButton';
 import { SortIcon } from '../sort-icon/SortIcon';
 import {
   selectCaption,
@@ -26,7 +27,7 @@ export default function SelectForSorting() {
   const dispatch = useDispatch();
 
   const sortOptions = useMemo(
-    () => Object.keys(SortBy).map((option) => option),
+    () => Object.values(SortBy).map((option) => option),
     []
   );
 
@@ -62,6 +63,7 @@ export default function SelectForSorting() {
           ))}
         </Select>
       </Paper>
+      <FiltersButton/>
     </Box>
   );
 }

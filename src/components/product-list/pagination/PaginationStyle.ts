@@ -3,9 +3,11 @@ import { greenButton, greenChip } from '@styles/mixins';
 
 export const paginationContainer = {
   display: 'flex',
+  flexDirection:{xs:'column-reverse', sm:'row'},
   justifyContent: 'space-between',
   p: '16px 45px',
   alignItems: 'center',
+  gap:{xs:'20px', sm:'none'}
 };
 export const pagesCaption = {
   fontSize: '12px',

@@ -65,16 +65,15 @@ export default function PaginationContainer({
       return pagesArray;
     }
     if (!addLeftDots && addRightDots) {
-      let leftRange = getRange(1, 5);
-
+      const leftRange = getRange(1, 5);
       return [...leftRange, '...', amountOfPages];
     }
     if (addLeftDots && !addRightDots) {
-      let rightRange = getRange(amountOfPages - 5 + 1, amountOfPages);
+      const rightRange = getRange(amountOfPages - 5 + 1, amountOfPages);
       return [1, '...', ...rightRange];
     }
     if (addLeftDots && addRightDots) {
-      let middleRange = getRange(leftPage, rightPage);
+      const middleRange = getRange(leftPage, rightPage);
       return [1, '...', ...middleRange, '...', amountOfPages];
     }
   }, [amountOfPages, currentPage, pagesArray]);
@@ -86,8 +85,8 @@ export default function PaginationContainer({
           Page:
         </Typography>
         <List sx={pagesList}>
-          {pageListRange?.map((pageNumber) => (
-            <ListItem key={pageNumber} sx={pagesListItem}>
+          {pageListRange?.map((pageNumber, index) => (
+            <ListItem key={`${pageNumber}${index}`} sx={pagesListItem}>
               <Button
                 sx={{
                   ...pageNumberButton,

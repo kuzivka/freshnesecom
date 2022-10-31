@@ -22,7 +22,7 @@ export const priceInput = {
   },
 };
 export const priceInputBase = {
-  width: '110px',
+  width: { lg: '110px', xs: '90px' },
   backgroundColor: C1.H,
   '& .MuiOutlinedInput-root': {
     '& fieldset': {

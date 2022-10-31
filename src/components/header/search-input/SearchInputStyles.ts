@@ -1,4 +1,5 @@
 import { C1 } from '@styles/colors';
+import { hideOverflow } from '@styles/mixins';
 
 export const searchInput = {
   backgroundColor: C1.H,
@@ -6,17 +7,16 @@ export const searchInput = {
   p: '0 12px',
   display: 'flex',
   alignItems: 'center',
-  width: 500,
+  width: 'min(500px, 70vw)',
   height: '42px',
   borderRadius: '12px',
 };
 export const searchInputSelect = {
-  width: 150,
+  maxWidth: {xs:'100px', md:'fit-content'},
+  ...hideOverflow,
+  width: 'fit-content',
   fontWeight: '800',
-  fontSize: '16px',
-  '&:focus': {
-    backgroundColor: C1.H,
-  },
+  fontSize: { md: '16px', sm: '14px', xs: '12px' },
 };
 export const searchInputDivider = { height: 28, m: 0.5 };
 export const searchInputField = {
@@ -24,5 +24,11 @@ export const searchInputField = {
   flex: 1,
   fontFamily: 'Open Sans',
   fontSize: '14px',
+  input: { ...hideOverflow },
 };
 export const searchInputButton = { p: '10px', fontWeight: '500' };
+export const menuItem = {
+  fontSize: { xs: '12px', md: '14px' },
+  p: '4px 4px',
+  minHeight: 'fit-content',
+};

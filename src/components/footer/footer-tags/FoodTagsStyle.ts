@@ -6,7 +6,7 @@ export const footerTagsTitle = {
 };
 export const footerTagsContainer = {
   display: 'flex',
-  maxWidth: '80vw',
+  maxWidth: {xs:'90vw',md:'80vw'},
   gap: '16px',
   flexWrap: 'wrap',
   '& >*': {

@@ -1,20 +1,27 @@
 import { Box, Button } from '@mui/material';
-import { resetAll } from '@store/reducers/listSlice';
 import { useGetProductsQuery } from '@services/ecommerce';
-import { filterBarContainer, resetButton } from './FilterBarStyles';
+import { resetAll } from '@store/reducers/listSlice';
 import { getProductsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import RateFilter from '../rate/RateFilter';
-import { PriceFilter } from '../price/PriceFilter';
 import BrandFilter from '../brand/BrandFilter';
 import CategoriesFilter from '../category/CategoryFilter';
+import { PriceFilter } from '../price/PriceFilter';
+import RateFilter from '../rate/RateFilter';
+import {
+  filterBarContainer,
+  filterBarInDrawer,
+  resetButton,
+} from './FilterBarStyles';
 
 export interface ResetPrice {
   resetPriceRange(): void;
 }
+interface IFilterBarProps {
+  inDrawer?: boolean;
+}
 
-export default function FilterBar() {
+export default function FilterBar({ inDrawer }: IFilterBarProps) {
   const { min, max, data } = useGetProductsQuery(undefined, {
     selectFromResult: ({ data }) => ({
       data: data,
@@ -30,7 +37,12 @@ export default function FilterBar() {
   };
 
   return (
-    <Box sx={filterBarContainer}>
+    <Box
+      sx={{
+        ...filterBarContainer,
+        ...(inDrawer && filterBarInDrawer),
+      }}
+    >
       <CategoriesFilter />
       <BrandFilter />
       <RateFilter />

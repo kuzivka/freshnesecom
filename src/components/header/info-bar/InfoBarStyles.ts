@@ -1,24 +1,24 @@
 export const infoBarContainer = {
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: { md: 'row', xs: 'column' },
   justifyContent: 'space-between',
-  height: '52px',
+  minHeight: { md: '52px', sx: '40px' },
   alignItems: 'center',
-  padding: '0 20px',
+  padding: '5px 20px',
   '> *': {
-    fontSize: '12px',
+    fontSize: { md: '12px', sm:'10px', xs: '8px' },
   },
 };
 export const infoBarContactInfo = {
-  fontSize: '12px',
+  fontSize: { md: '12px', sm:'10px', xs: '8px' },
 };
 export const infoBarContactsContainer = {
   display: 'flex',
+  gap: { md: '33px', xs: '8px' },
   flexDirection: 'row',
-  gap: '33px',
 };
 export const infoBarLinksContainer = {
   display: 'flex',
   flexDirection: 'row',
-  gap: '38px',
+  gap: { md: '38px', xs: '10px' },
 };
