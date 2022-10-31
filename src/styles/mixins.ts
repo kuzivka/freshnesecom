@@ -15,7 +15,7 @@ export const greenButton = {
     backgroundColor: C2.B ,
   },
   '&:hover': {
-     backgroundColor: { xs:C2.A, md: C2.B},
+     backgroundColor: { xs:C2.A, lg: C2.B},
   },
 };
 export const greenChip = {
