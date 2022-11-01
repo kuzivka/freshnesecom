@@ -1,6 +1,5 @@
 import { PATH } from '@common/enums';
 import { Footer } from '@components/footer/footer/Footer';
-import { Header } from '@components/header/header/Header';
 import { ThemeProvider } from '@mui/material/styles';
 import ProductList from '@pages/all-products/AllProducts';
 import SelectedProduct from '@pages/product/SelectedProduct';
@@ -9,16 +8,14 @@ import '@styles/style.scss';
 import { theme } from '@styles/theme';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
-
 function App() {
   return (
     <HashRouter>
       <ThemeProvider theme={theme}>
-        <Header />
         <Routes>
-          <Route path={PATH.ALL_PRODUCTS} element={<ProductList />} />
-          <Route path={PATH.PRODUCT} element={<SelectedProduct />} />
-          <Route path={PATH.CART} element={<ShoppingCart />} />
+          <Route path={PATH.ALL_PRODUCTS.path} element={<ProductList />} />
+          <Route path={PATH.PRODUCT.path} element={<SelectedProduct />} />
+          <Route path={PATH.CART.path} element={<ShoppingCart />} />
         </Routes>
         <Footer />
       </ThemeProvider>

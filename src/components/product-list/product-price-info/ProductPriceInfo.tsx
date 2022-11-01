@@ -49,7 +49,7 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
           </Typography>
         </Box>
       </Box>
-      <ProductCardButtons />
+      <ProductCardButtons productId={product.id}/>
     </Box>
   );
 }

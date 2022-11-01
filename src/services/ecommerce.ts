@@ -14,6 +14,16 @@ export const ecommerceApi = createApi({
     getFarms: builder.query<Farm[], void>({
       query: () => `/brand`,
     }),
+    getSelectedProduct: builder.query<Product, string>({
+      query: (id: string) => `products/${id}`,
+      transformResponse: (response: Product) => {
+        return {
+          ...response,
+          id: Number(response.id),
+          averageRate: getRatingValue(response),
+        };
+      },
+    }),
     getProducts: builder.query<Product[], void>({
       query: () => '/products',
 
@@ -27,5 +37,9 @@ export const ecommerceApi = createApi({
   }),
 });
 
-export const { useGetCategoriesQuery, useGetProductsQuery, useGetFarmsQuery } =
-  ecommerceApi;
+export const {
+  useGetCategoriesQuery,
+  useGetProductsQuery,
+  useGetFarmsQuery,
+  useGetSelectedProductQuery,
+} = ecommerceApi;

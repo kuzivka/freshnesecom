@@ -8,8 +8,21 @@ import {
   cardButtonContainer,
   productDetailsButton,
 } from './ProductCardButtonsStyle';
+import { useNavigate } from 'react-router-dom';
 
-export default function ProductCardButtons() {
+interface IProductCardButtonsProps {
+  productId?: number;
+}
+
+export default function ProductCardButtons({
+  productId,
+}: IProductCardButtonsProps) {
+  const navigate = useNavigate();
+
+  const handleDetailClick = () => {
+    navigate(`product-page/${productId}`);
+  };
+
   return (
     <Box sx={cardButtonContainer}>
       <Button
@@ -17,6 +30,7 @@ export default function ProductCardButtons() {
         variant="contained"
         disableElevation
         endIcon={<Arrow />}
+        onClick={handleDetailClick}
       >
         <Box sx={buttonTextLong} component="span">
           Product Details

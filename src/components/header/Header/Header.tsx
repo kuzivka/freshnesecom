@@ -20,11 +20,11 @@ export function Header() {
   const location = useLocation();
 
   const handleCartClick = useCallback(() => {
-    navigate(PATH.CART);
+    navigate(PATH.CART.path);
   }, [navigate]);
 
   const handleLogoClick = useCallback(() => {
-    navigate(PATH.ALL_PRODUCTS);
+    navigate(PATH.ALL_PRODUCTS.path);
   }, [navigate]);
 
   return (
@@ -34,7 +34,7 @@ export function Header() {
       <Box sx={headerContentContainer}>
         <Box sx={headerContent}>
           <LogoIcon onClick={handleLogoClick} />
-          {location.pathname === PATH.ALL_PRODUCTS && <SearchInput />}
+          {location.pathname === PATH.ALL_PRODUCTS.path && <SearchInput />}
           <Box sx={headerIconButtonsContainer}>
             <IconButton>
               <Account />

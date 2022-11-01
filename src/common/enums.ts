@@ -1,8 +1,8 @@
-export enum PATH {
-  ALL_PRODUCTS = '/',
-  PRODUCT = '/product-page/:id',
-  CART = '/shopping-cart',
-}
+export const PATH = {
+  ALL_PRODUCTS: { path: '/', name: 'All Products' },
+  PRODUCT: { path: '/product-page/:id' },
+  CART: { path: '/shopping-cart', name: 'Shopping Cart' },
+};
 
 export enum SortBy {
   unset = 'unset',

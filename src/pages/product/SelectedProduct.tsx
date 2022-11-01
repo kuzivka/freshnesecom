@@ -1,5 +1,7 @@
-import React from 'react';
+import { Header } from '@components/header/header/Header';
+import { useEffect } from 'react';
 
 export default function SelectedProduct() {
-  return <div>ProductPage</div>;
+  useEffect(() => window.scrollTo({ top: 0 }), []);
+  return <Header />;
 }
