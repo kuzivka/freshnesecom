@@ -1,12 +1,8 @@
 import { Header } from '@components/header/header/Header';
-import { useGetSelectedProductQuery } from '@services/ecommerce';
-import React from 'react';
-import { useParams } from 'react-router-dom';
-
-interface ISelectedProductPropps {}
+import { useEffect } from 'react';
 
 export default function SelectedProduct() {
-  const params = useParams();
+  useEffect(() => window.scrollTo({ top: 0 }), []);
   return (
     <>
       <Header />
