@@ -39,4 +39,6 @@ export interface Product {
   question: string[];
   category: number;
   averageRate: number;
+  size: string;
+  deliveryIn: number;
 }

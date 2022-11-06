@@ -7,7 +7,9 @@ export const getPriceAndStock = (product: Product) => {
       unit: 'pcs',
       price: price,
       priceWithDiscount:
-        product.discount && price ? (price * product.discount) / 100 : price,
+        product.discount && price
+          ? (price * (100 - product.discount)) / 100
+          : price,
       inStock: product.stock.pcs,
     };
   } else {
@@ -17,7 +19,9 @@ export const getPriceAndStock = (product: Product) => {
       unit: 'kg',
       price: price,
       priceWithDiscount:
-        product.discount && price ? (price * product.discount) / 100 : price,
+        product.discount && price
+          ? (price * (100 - product.discount)) / 100
+          : price,
       inStock: product.stock.kg,
     };
   }

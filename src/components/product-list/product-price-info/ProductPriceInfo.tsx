@@ -34,22 +34,23 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
           <Typography variant="h5" sx={productPrice}>
             {priceWithDiscountString} USD
           </Typography>
-          {product.discount && (
+          {product.discount && 
             <Typography sx={priceWithoutDiscount} variant="caption">
               {priceString}
             </Typography>
-          )}
+          }
         </Box>
         <Box>
           <Typography sx={shippingPriceInfo} variant="subtitle2">
             {shippingPrice}
           </Typography>
           <Typography sx={shipingDurationInfo} variant="subtitle2">
-            Delivery in 1 day
+            Delivery in {product.deliveryIn} day
+            {product.deliveryIn > 1 && <span>s</span>}
           </Typography>
         </Box>
       </Box>
-      <ProductCardButtons productId={product.id}/>
+      <ProductCardButtons productId={product.id} />
     </Box>
   );
 }
