@@ -6,6 +6,7 @@ import { useGetSelectedProductQuery } from '@services/ecommerce';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { SpinnerCircular } from 'spinners-react';
+import { mainContent } from './SelectedProductStyle';
 
 export default function SelectedProduct() {
   const { id } = useParams();
@@ -14,9 +15,9 @@ export default function SelectedProduct() {
 
   useEffect(() => window.scrollTo({ top: 0, behavior: 'auto' }), []);
   return (
-    <Box sx={{ scrollBehavior: 'unset' }}>
+    <Box >
       <Header />
-      <Box sx={{ width: '100%', p: '44px', display: 'flex', gap: '32px' }}>
+      <Box sx={mainContent}>
         {isLoading ? (
           <SpinnerCircular
             size={50}
