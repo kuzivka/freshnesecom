@@ -1,3 +1,4 @@
+import Spiner from '@components/spiner/Spiner';
 import {
   Box,
   Checkbox,
@@ -20,7 +21,7 @@ import {
 } from './BrandFilterStyles';
 
 export default function BrandFilter() {
-  const { data: farms } = useGetFarmsQuery();
+  const { data: farms, isLoading } = useGetFarmsQuery();
   const dispatch = useDispatch();
 
   const farmsToFilter = useSelector(
@@ -53,28 +54,32 @@ export default function BrandFilter() {
       <Typography variant="h5" sx={filterLabel}>
         Brands
       </Typography>
-      <List sx={filterList}>
-        {farmsByCategory?.map((farm) => (
-          <ListItem key={farm.id} sx={brandListItem}>
-            <FormControlLabel
-              sx={barndCheckboxLabel}
-              label={
-                <Typography sx={brandName} variant="body1">
-                  {farm.name}
-                </Typography>
-              }
-              control={
-                <Checkbox
-                  value={farm.id}
-                  sx={brandCheckbox}
-                  checked={isChecked(farm.id)}
-                  onChange={checkboxChangeHandler(farm.id)}
-                />
-              }
-            />
-          </ListItem>
-        ))}
-      </List>
+      {isLoading ? (
+        <Spiner />
+      ) : (
+        <List sx={filterList}>
+          {farmsByCategory?.map((farm) => (
+            <ListItem key={farm.id} sx={brandListItem}>
+              <FormControlLabel
+                sx={barndCheckboxLabel}
+                label={
+                  <Typography sx={brandName} variant="body1">
+                    {farm.name}
+                  </Typography>
+                }
+                control={
+                  <Checkbox
+                    value={farm.id}
+                    sx={brandCheckbox}
+                    checked={isChecked(farm.id)}
+                    onChange={checkboxChangeHandler(farm.id)}
+                  />
+                }
+              />
+            </ListItem>
+          ))}
+        </List>
+      )}
     </Box>
   );
 }

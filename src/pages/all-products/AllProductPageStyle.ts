@@ -3,3 +3,4 @@ export const allProductsContent = {
   p: '44px 64px',
   gap: '32px',
 };
+

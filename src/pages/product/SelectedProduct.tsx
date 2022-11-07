@@ -1,6 +1,7 @@
 import { Header } from '@components/header/header/Header';
 import ProductPhotos from '@components/product-info/product-photos/ProductPhotos';
 import SelectedProductInfo from '@components/product-info/selected-product-info/SelectedProductInfo';
+import Spiner from '@components/spiner/Spiner';
 import { Box } from '@mui/material';
 import { useGetSelectedProductQuery } from '@services/ecommerce';
 import { useEffect } from 'react';
@@ -9,14 +10,17 @@ import { mainContent } from './SelectedProductStyle';
 
 export default function SelectedProduct() {
   const { id } = useParams();
-  const { data: product, isSuccess } = useGetSelectedProductQuery(`${id}`);
+
+  const { data: product, isLoading } = useGetSelectedProductQuery(`${id}`);
 
   useEffect(() => window.scrollTo({ top: 0, behavior: 'auto' }), []);
   return (
-    <Box >
+    <Box>
       <Header />
       <Box sx={mainContent}>
-        {isSuccess && (
+        {isLoading ? (
+          <Spiner />
+        ) : (
           <>
             <ProductPhotos product={product} />
             <SelectedProductInfo product={product} />

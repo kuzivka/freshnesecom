@@ -37,7 +37,7 @@ export default function DescriptionList({ product }: DescriptionListProps) {
     <Box>
       <List sx={descriptionList}>
         {Object.entries(description).map(([key, value]) => (
-          <ListItem sx={descriptionListItem}>
+          <ListItem key={key} sx={descriptionListItem}>
             <Typography sx={descriptionProperty}>{key}:</Typography>
             <Typography sx={descriptionValue}>{value}</Typography>
           </ListItem>

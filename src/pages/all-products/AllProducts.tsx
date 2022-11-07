@@ -4,6 +4,7 @@ import PaginationContainer from '@components/product-list/pagination/Pagination'
 import ProductListTitle from '@components/product-list/product-list-title/ProductListTitle';
 import ProductList from '@components/product-list/product-list/ProductList';
 import SelectForSorting from '@components/product-list/sorting/SelectForSorting';
+import Spiner from '@components/spiner/Spiner';
 import { Box } from '@mui/material';
 import { getFilteredProducts } from '@store/selectors/getFilteredProducts';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -41,7 +42,7 @@ export default function AllProducts() {
   const firstPage = pagesIndexes[0];
   const scrollToTop = useCallback(() => {
     if (pagesIndexes.length === 1) {
-      window.scrollTo({ top: 0, behavior:'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [pagesIndexes.length]);
 
@@ -60,7 +61,11 @@ export default function AllProducts() {
       <SelectForSorting />
       <Box sx={allProductsContent}>
         <FilterBar />
-        <ProductList productsToShow={productsToShow} />
+        {productsToShow ? (
+          <ProductList productsToShow={productsToShow} />
+        ) : (
+          <Spiner />
+        )}
       </Box>
       <PaginationContainer
         productsLeft={productsLeft()}

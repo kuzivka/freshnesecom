@@ -88,11 +88,7 @@ export default function PricePanel({ product }: PricePanelProps) {
 
   const handleAmountChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      if (event.target.value === '') {
-        setProductNumber(1);
-      } else {
-        setProductNumber(Number(event.target.value.replace(/^0+/, '')));
-      }
+      setProductNumber(Number(event.target.value));
     },
     []
   );
@@ -117,7 +113,6 @@ export default function PricePanel({ product }: PricePanelProps) {
         <Paper elevation={0} component="form" sx={selectPaper}>
           <InputBase
             type="number"
-            defaultValue={1}
             inputProps={{
               onKeyDown: disableInput,
               inputMode: 'numeric',

@@ -41,4 +41,6 @@ export interface Product {
   averageRate: number;
   size: string;
   deliveryIn: number;
+  origins: string;
+  recipe: string;
 }
