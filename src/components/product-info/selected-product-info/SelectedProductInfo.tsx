@@ -7,7 +7,7 @@ import ProductHeader from '../product-header/ProductHeader';
 import { selectedProductInfoContainer } from './SelectedProductInfoStyle';
 
 interface SelectedProductInfoProps {
-  product: Product;
+  product: Product | undefined;
 }
 
 export default function SelectedProductInfo({
@@ -15,10 +15,11 @@ export default function SelectedProductInfo({
 }: SelectedProductInfoProps) {
  
   return (
-    <Box sx={selectedProductInfoContainer}>
+    <>
+    {product && (<Box sx={selectedProductInfoContainer}>
       <ProductHeader product={product} />
       <DescriptionList product={product} />
       <PricePanel product={product} />
-    </Box>
+    </Box>)}</>
   );
 }
