@@ -4,9 +4,14 @@ export const tabsContainer = { width: '100%' };
 export const tabs = {
   width: '100%',
   display: 'flex',
+
   '& .MuiTabs-indicator': {
-    backgroundColor: 'black',
-    height: '1px',
+    backgroundColor: C1.A,
+    height: '1.5px',
+    bottom: '6px',
+  },
+  '& .MuiTabs-flexContainer': {
+    borderBottom: `2px solid ${C1.D}`,
   },
 };
 export const tabTitle = {
@@ -14,7 +19,7 @@ export const tabTitle = {
     color: C1.A,
   },
   alignItems: 'center',
-  width: '33%',
+  width: 'calc(100%/3)',
   p: 0,
   pl: 1,
   textTransform: 'capitalize',
