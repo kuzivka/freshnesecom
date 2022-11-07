@@ -9,7 +9,12 @@ export const mainContent = {
   border: `1px solid ${C1.F}`,
   borderRadius: '12px',
 };
-export const priceContainer = { width: '35%' };
+export const priceContainer = {
+  width: '35%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+};
 export const productPrice = { fontWeight: '600', fontSize: '26px' };
 export const oldPrice = { fontWeight: '600', fontSize: '12px', color: C1.C };
 export const selectPaper = {

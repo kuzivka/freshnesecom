@@ -5,13 +5,14 @@ import React, { SyntheticEvent, useState } from 'react';
 import {
   descriptionText,
   descriptionTitles,
+  noItemsMessage,
   reviewContainer,
   tabPanelWithGap,
   tabs,
   tabsContainer,
   tabTitle,
 } from './InfoTabsStyle';
-import { TabPanel } from './TapPanel';
+import { TabPanel } from './TabPanel';
 
 interface InfoTabsProps {
   product: Product;
@@ -36,14 +37,14 @@ export default function InfoTabs({
         <Tab sx={tabTitle} label="Description" />
         <Tab
           sx={tabTitle}
-          label="Review"
-          icon={<Chip sx={greenChip} label={reviews?.length||0} />}
+          label="Reviews"
+          icon={<Chip sx={greenChip} label={reviews?.length || 0} />}
           iconPosition="end"
         />
         <Tab
           sx={tabTitle}
           label="Questions"
-          icon={<Chip sx={greenChip} label={question?.length||0} />}
+          icon={<Chip sx={greenChip} label={question?.length || 0} />}
           iconPosition="end"
         />
       </Tabs>
@@ -62,6 +63,11 @@ export default function InfoTabs({
         </Typography>
       </TabPanel>
       <TabPanel styles={tabPanelWithGap} value={value} index={1}>
+      {!reviews && (
+          <Typography sx={noItemsMessage}>
+            There are no reviews yet
+          </Typography>
+        )}
         {reviews?.map((review) => (
           <Box key={review} sx={reviewContainer}>
             <Typography sx={descriptionText} variant="body1">
@@ -71,6 +77,11 @@ export default function InfoTabs({
         ))}
       </TabPanel>
       <TabPanel styles={tabPanelWithGap} value={value} index={2}>
+        {!question && (
+          <Typography sx={noItemsMessage}>
+            There are no questions yet
+          </Typography>
+        )}
         {question?.map((quest) => (
           <Box key={quest} sx={reviewContainer}>
             <Typography sx={descriptionText} variant="body1">

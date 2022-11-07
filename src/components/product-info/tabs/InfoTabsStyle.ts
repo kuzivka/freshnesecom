@@ -16,12 +16,13 @@ export const tabTitle = {
   alignItems: 'center',
   width: '33%',
   p: 0,
+  pl: 1,
   textTransform: 'capitalize',
   color: C1.A,
   fontWeight: '600',
   fontSize: '18px',
   minHeight: '0',
-  height:'40px',
+  height: '40px',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'start',
@@ -33,6 +34,10 @@ export const tabPanelWithGap = {
   maxHeight: '200px',
   overflowY: 'scroll',
   p: '18px',
+  overflow: '-moz-scrollbars-none',
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
 };
 export const reviewContainer = {
   width: '90%',
@@ -49,3 +54,4 @@ export const descriptionTitles = {
   pl: 0,
 };
 export const descriptionText = { fontSize: '14px', fontFamily: 'Open Sans' };
+export const noItemsMessage = { color: C1.D, textAlign: 'center' };
