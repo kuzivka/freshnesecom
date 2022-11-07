@@ -41,7 +41,7 @@ export default function AllProducts() {
   const firstPage = pagesIndexes[0];
   const scrollToTop = useCallback(() => {
     if (pagesIndexes.length === 1) {
-      window.scrollTo({ top: 0 });
+      window.scrollTo({ top: 0, behavior:'smooth'});
     }
   }, [pagesIndexes.length]);
 
