@@ -1,8 +1,14 @@
 import { Product } from '@common/type';
 import { Box, List, ListItem, Typography } from '@mui/material';
-import { C1 } from '@styles/colors';
+import { useGetCategoriesQuery } from '@services/ecommerce';
 import { getPriceAndStock } from '@utils/getPriceAndStock';
 import { getUnits } from '@utils/getUnits';
+import {
+    descriptionList,
+    descriptionListItem,
+    descriptionProperty,
+    descriptionValue
+} from './DescriptionListStyle';
 
 interface DescriptionListProps {
   product: Product;
@@ -10,13 +16,17 @@ interface DescriptionListProps {
 
 export default function DescriptionList({ product }: DescriptionListProps) {
   const units = getUnits(product);
+  const { data: categories } = useGetCategoriesQuery();
+  const categoryName = categories?.find(
+    (category) => category.id === product.category
+  )?.name;
 
   const description = {
     Country: product.country,
-    Category: product.category,
+    Category: categoryName,
     Stock: getPriceAndStock(product).inStock ? 'In stock' : 'Not available',
     Color: product.color,
-    Size: product.name,
+    Size: product.size,
     'Buy by': units.join(', '),
     Delivery: `in ${product.deliveryIn} day${
       product.deliveryIn > 1 ? 's' : ''
@@ -25,30 +35,11 @@ export default function DescriptionList({ product }: DescriptionListProps) {
   };
   return (
     <Box>
-      <List
-        sx={{
-          height: '180px',
-          display: 'flex',
-          flexDirection: 'column',
-          flexWrap: 'wrap',
-          width: 'fit-content',
-        }}
-      >
+      <List sx={descriptionList}>
         {Object.entries(description).map(([key, value]) => (
-          <ListItem>
-            <Typography
-              sx={{
-                width: '100px',
-                color: C1.C,
-                fontSize: '14px',
-                fontFamily: 'Open Sans',
-              }}
-            >
-              {key}:
-            </Typography>
-            <Typography sx={{ fontSize: '14px', fontFamily: 'Open Sans' }}>
-              {value}
-            </Typography>
+          <ListItem sx={descriptionListItem}>
+            <Typography sx={descriptionProperty}>{key}:</Typography>
+            <Typography sx={descriptionValue}>{value}</Typography>
           </ListItem>
         ))}
       </List>

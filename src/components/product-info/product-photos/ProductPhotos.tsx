@@ -1,6 +1,7 @@
 import { Product } from '@common/type';
 import { Box, Chip, Grid } from '@mui/material';
 import {
+  bigPhoto,
   chipContainer,
   chips,
   imgStyle,
@@ -21,8 +22,8 @@ export default function ProductPhotos({ product }: IProductPhotosProps) {
         )}
         {!product?.shippingPrice && <Chip sx={chips} label="Free shipping" />}
       </Box>
-      <Grid container spacing={2}>
-        <Grid sx={{ borderRadius: '12px' }} item xs={12}>
+      <Grid container columnSpacing={4} rowSpacing={2.5}>
+        <Grid sx={bigPhoto} item xs={12}>
           <img style={imgStyle} alt={product?.name} src={product?.img[0]} />
         </Grid>
         <Grid item xs={6}>

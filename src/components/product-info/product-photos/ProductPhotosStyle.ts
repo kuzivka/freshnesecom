@@ -27,3 +27,4 @@ export const productPhotosContainer = {
 };
 
 export const chipContainer = { display: 'flex', pr: '16px', gap: '12px' };
+export const bigPhoto = { borderRadius: '12px' };

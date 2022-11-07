@@ -1,8 +1,7 @@
+import { ReactComponent as Arrow } from '@assets/svg/black-arrow.svg';
+import { ReactComponent as Plus } from '@assets/svg/plus-btn.svg';
 import { Product } from '@common/type';
-import {
-  searchInput,
-  searchInputSelect,
-} from '@components/header/search-input/SearchInputStyles';
+import { ReactComponent as Heart } from '@assets/svg/heart.svg';
 import {
   Box,
   Button,
@@ -16,12 +15,23 @@ import {
 import { getUnits } from '@utils/getUnits';
 import {
   ChangeEvent,
+  KeyboardEvent,
   useCallback,
   useMemo,
   useState,
-  KeyboardEvent,
-  MouseEvent,
 } from 'react';
+import {
+  addToCartBtn,
+  addToWishListBtn,
+  mainContent,
+  oldPrice,
+  panelContainer,
+  priceContainer,
+  productPrice,
+  selectInput,
+  selectPaper,
+  selectUnit,
+} from './PricePanelStyle';
 
 interface PricePanelProps {
   product: Product;
@@ -86,28 +96,25 @@ export default function PricePanel({ product }: PricePanelProps) {
     },
     []
   );
-  const disableInput = (
-    event: KeyboardEvent<HTMLElement> | MouseEvent<HTMLElement>
-  ) => {
+  const disableInput = (event: KeyboardEvent<HTMLElement>) => {
     event.preventDefault();
   };
+  const handleUnitChange = (event: SelectChangeEvent) => {
+    setProductNumber(1);
+    setUnit(event.target.value);
+  };
   return (
-    <Box>
-      <Box sx={{display:'flex'}}>
-        <Box>
-          <Typography sx={{}} variant='h5'>{getDiscountPrice} USD</Typography>
-          {product.discount && <Typography>{getPrice}</Typography>}
+    <Box sx={panelContainer}>
+      <Box sx={mainContent}>
+        <Box sx={priceContainer}>
+          <Typography sx={productPrice} variant="h5">
+            {getDiscountPrice} USD
+          </Typography>
+          {product.discount && (
+            <Typography sx={oldPrice}>{getPrice}</Typography>
+          )}
         </Box>
-        <Paper
-          elevation={0}
-          component="form"
-          sx={{
-            ...searchInput,
-            height: 'fit-content',
-            width: 'fit-content',
-            p: '14px 16px',
-          }}
-        >
+        <Paper elevation={0} component="form" sx={selectPaper}>
           <InputBase
             type="number"
             defaultValue={1}
@@ -120,21 +127,16 @@ export default function PricePanel({ product }: PricePanelProps) {
             }}
             value={productNumber}
             onChange={handleAmountChange}
-            sx={{
-              input: {
-                minWidth: '40px',
-                width: 'fit-content',
-                caretColor: 'transparent',
-                cursor: 'default',
-              },
-            }}
+            sx={selectInput}
           />
+
           <Select
             disableUnderline
             variant="standard"
-            sx={searchInputSelect}
+            IconComponent={Arrow}
+            sx={selectUnit}
             value={selectedUnit}
-            onChange={(event: SelectChangeEvent) => setUnit(event.target.value)}
+            onChange={handleUnitChange}
           >
             {units.map((unit) => (
               <MenuItem value={unit} key={unit}>
@@ -143,9 +145,13 @@ export default function PricePanel({ product }: PricePanelProps) {
             ))}
           </Select>
         </Paper>
-        <Button></Button>
+        <Button startIcon={<Plus />} sx={addToCartBtn}>
+          Add to cart
+        </Button>
       </Box>
-      <Button></Button>
+      <Button sx={addToWishListBtn} startIcon={<Heart />}>
+        Add to my wish list
+      </Button>
     </Box>
   );
 }

@@ -44,7 +44,7 @@ export function Header() {
             </IconButton>
           </Box>
         </Box>
-        <CategoryMenus />
+        {location.pathname === PATH.ALL_PRODUCTS.path && <CategoryMenus />}
       </Box>
       <BreadcrambsString />
     </>
