@@ -37,13 +37,13 @@ export default function InfoTabs({
         <Tab
           sx={tabTitle}
           label="Review"
-          icon={<Chip sx={greenChip} label={reviews.length} />}
+          icon={<Chip sx={greenChip} label={reviews?.length||0} />}
           iconPosition="end"
         />
         <Tab
           sx={tabTitle}
           label="Questions"
-          icon={<Chip sx={greenChip} label={question.length} />}
+          icon={<Chip sx={greenChip} label={question?.length||0} />}
           iconPosition="end"
         />
       </Tabs>
@@ -62,7 +62,7 @@ export default function InfoTabs({
         </Typography>
       </TabPanel>
       <TabPanel styles={tabPanelWithGap} value={value} index={1}>
-        {reviews.map((review) => (
+        {reviews?.map((review) => (
           <Box key={review} sx={reviewContainer}>
             <Typography sx={descriptionText} variant="body1">
               {review}
@@ -71,7 +71,7 @@ export default function InfoTabs({
         ))}
       </TabPanel>
       <TabPanel styles={tabPanelWithGap} value={value} index={2}>
-        {question.map((quest) => (
+        {question?.map((quest) => (
           <Box key={quest} sx={reviewContainer}>
             <Typography sx={descriptionText} variant="body1">
               {quest}
