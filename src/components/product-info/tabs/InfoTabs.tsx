@@ -62,7 +62,7 @@ export default function InfoTabs({
       </TabPanel>
       <TabPanel styles={tabPanelWithGap} value={value} index={1}>
         {reviews.map((review) => (
-          <Box sx={reviewContainer}>
+          <Box key={review} sx={reviewContainer}>
             <Typography sx={descriptionText} variant="body1">
               {review}
             </Typography>
@@ -71,7 +71,7 @@ export default function InfoTabs({
       </TabPanel>
       <TabPanel styles={tabPanelWithGap} value={value} index={2}>
         {question.map((quest) => (
-          <Box sx={reviewContainer}>
+          <Box key={quest} sx={reviewContainer}>
             <Typography sx={descriptionText} variant="body1">
               {quest}
             </Typography>
