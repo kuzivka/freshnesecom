@@ -11,6 +11,7 @@ import {
   tabsContainer,
   tabTitle,
 } from './InfoTabsStyle';
+import { TabPanel } from './TapPanel';
 
 interface InfoTabsProps {
   product: Product;
@@ -79,26 +80,5 @@ export default function InfoTabs({
         ))}
       </TabPanel>
     </Box>
-  );
-}
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-  styles?: Object;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, styles } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-    >
-      {value === index && <Box sx={{ p: 0, ...styles }}>{children}</Box>}
-    </div>
   );
 }
