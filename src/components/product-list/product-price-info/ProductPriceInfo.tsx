@@ -14,7 +14,6 @@ import { getPriceAndStock } from '@utils/getPriceAndStock';
 
 interface ProductPriceInfoProps {
   product: Product;
-  pcs: boolean | undefined;
 }
 
 export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
@@ -34,11 +33,11 @@ export default function ProductPriceInfo({ product }: ProductPriceInfoProps) {
           <Typography variant="h5" sx={productPrice}>
             {priceWithDiscountString} USD
           </Typography>
-          {product.discount && 
+          {product.discount && (
             <Typography sx={priceWithoutDiscount} variant="caption">
               {priceString}
             </Typography>
-          }
+          )}
         </Box>
         <Box>
           <Typography sx={shippingPriceInfo} variant="subtitle2">

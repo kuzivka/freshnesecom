@@ -20,17 +20,14 @@ import {
   categoryName,
   checkedCategoryName,
 } from './CategoryFilterStyles';
-import {
-  filterContainer,
-  filterLabel,
-  filterList,
-} from '../FilterStyles';
+import { filterContainer, filterLabel, filterList } from '../FilterStyles';
 import { ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/store';
+import Spiner from '@components/spiner/Spiner';
 
 export default function CategoriesFilter() {
-  const { data: categories } = useGetCategoriesQuery();
+  const { data: categories, isLoading } = useGetCategoriesQuery();
   const { data: allProducts } = useGetProductsQuery();
 
   const dispatch = useDispatch();
@@ -58,36 +55,40 @@ export default function CategoriesFilter() {
         Categories
       </Typography>
 
-      <List sx={filterList}>
-        {categories?.map((category) => (
-          <ListItem key={category.name} sx={categoryListItem}>
-            <FormControlLabel
-              sx={categoryLabel}
-              label={
-                <Typography
-                  sx={
-                    category.id === chosenCategory
-                      ? checkedCategoryName
-                      : categoryName
-                  }
-                  variant="body1"
-                >
-                  {category.name}
-                </Typography>
-              }
-              control={
-                <Checkbox
-                  value={category.id}
-                  sx={categoryCheckbox}
-                  checked={category.id === chosenCategory}
-                  onChange={categoryRadioChange}
-                />
-              }
-            />
-            <Chip label={itemsInCategory(category.id)} sx={chip} />
-          </ListItem>
-        ))}
-      </List>
+      {isLoading ? (
+        <Spiner />
+      ) : (
+        <List sx={filterList}>
+          {categories?.map((category) => (
+            <ListItem key={category.name} sx={categoryListItem}>
+              <FormControlLabel
+                sx={categoryLabel}
+                label={
+                  <Typography
+                    sx={
+                      category.id === chosenCategory
+                        ? checkedCategoryName
+                        : categoryName
+                    }
+                    variant="body1"
+                  >
+                    {category.name}
+                  </Typography>
+                }
+                control={
+                  <Checkbox
+                    value={category.id}
+                    sx={categoryCheckbox}
+                    checked={category.id === chosenCategory}
+                    onChange={categoryRadioChange}
+                  />
+                }
+              />
+              <Chip label={itemsInCategory(category.id)} sx={chip} />
+            </ListItem>
+          ))}
+        </List>
+      )}
     </Box>
   );
 }

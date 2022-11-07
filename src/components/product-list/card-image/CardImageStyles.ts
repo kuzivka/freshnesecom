@@ -1,5 +1,5 @@
 export const cardImageContainer = {
-  width: { sm: '30%', xs: '100%' },
+  width: '100%',
   height: { xs: '30%', sm: '100%' },
   minHeight:'180px',
   position: 'relative',
