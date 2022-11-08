@@ -8,7 +8,7 @@ import { selectedProductInfoContainer } from './SelectedProductInfoStyle';
 
 interface SelectedProductInfoProps {
   product: Product | undefined;
-  categoryName: string|undefined;
+  categoryName: string | undefined;
 }
 
 export default function SelectedProductInfo({

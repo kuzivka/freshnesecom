@@ -32,8 +32,9 @@ export default function SelectedProduct() {
   return (
     <Box sx={pageContainer}>
       <Header />
-      {isLoading && <Spiner />}
-      {!isLoading && (
+      {isLoading ? (
+        <Spiner />
+      ) : (
         <>
           <Box sx={mainContent}>
             <ProductPhotos product={product} />
@@ -42,7 +43,6 @@ export default function SelectedProduct() {
               product={product}
             />
           </Box>
-
           <Box sx={moreProductsContainer}>
             {product && category && (
               <>
