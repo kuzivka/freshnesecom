@@ -107,7 +107,7 @@ export default function PricePanel({ product }: PricePanelProps) {
             {getDiscountPrice} USD
           </Typography>
           {product.discount && (
-            <Typography sx={oldPrice}>{getPrice}</Typography>
+            <Typography sx={oldPrice}>{getPrice} USD</Typography>
           )}
         </Box>
         <Paper elevation={0} component="form" sx={selectPaper}>

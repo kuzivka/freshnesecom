@@ -1,25 +1,24 @@
 import { Product } from '@common/type';
 import { Box, List, ListItem, Typography } from '@mui/material';
-import { useGetCategoriesQuery } from '@services/ecommerce';
 import { getPriceAndStock } from '@utils/getPriceAndStock';
 import { getUnits } from '@utils/getUnits';
 import {
-    descriptionList,
-    descriptionListItem,
-    descriptionProperty,
-    descriptionValue
+  descriptionList,
+  descriptionListItem,
+  descriptionProperty,
+  descriptionValue,
 } from './DescriptionListStyle';
 
 interface DescriptionListProps {
   product: Product;
+  categoryName: string | undefined;
 }
 
-export default function DescriptionList({ product }: DescriptionListProps) {
+export default function DescriptionList({
+  product,
+  categoryName,
+}: DescriptionListProps) {
   const units = getUnits(product);
-  const { data: categories } = useGetCategoriesQuery();
-  const categoryName = categories?.find(
-    (category) => category.id === product.category
-  )?.name;
 
   const description = {
     Country: product.country,
