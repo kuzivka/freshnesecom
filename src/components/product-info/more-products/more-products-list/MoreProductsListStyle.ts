@@ -7,7 +7,7 @@ export const productList = {
   width: '100%',
   overflow: 'hidden',
   flexWrap: 'wrap',
-  height: '320px',
+  height: '340px',
   justifyContent: 'flex-start',
 };
 
@@ -17,14 +17,18 @@ export const productListItem = {
   p: 0,
 };
 export const productCard = {
-  height: '95%',
+  height: '100%',
   minWidth: '100px',
   p: 0,
   '&:hover': { cursor: 'pointer' },
 };
 export const cardImg = { borderRadius: '12px' };
 export const cardContent = { pl: 0, pr: 0 };
-export const productName = { fontSize: '14px', fontWeight: '500' };
+export const productName = {
+  ...hideOverflow,
+  fontSize: '14px',
+  fontWeight: '500',
+};
 export const productDescription = { ...hideOverflow, fontSize: '12px', p: 0 };
 
 export const priceContainer = {

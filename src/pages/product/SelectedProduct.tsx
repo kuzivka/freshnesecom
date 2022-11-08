@@ -32,22 +32,29 @@ export default function SelectedProduct() {
   return (
     <Box sx={pageContainer}>
       <Header />
-      <Box sx={mainContent}>
-        {isLoading && <Spiner />}
-
+      {isLoading && <Spiner />}
+      {!isLoading && (
         <>
-          <ProductPhotos product={product} />
-          <SelectedProductInfo
-            categoryName={category?.name}
-            product={product}
-          />
+          <Box sx={mainContent}>
+            <ProductPhotos product={product} />
+            <SelectedProductInfo
+              categoryName={category?.name}
+              product={product}
+            />
+          </Box>
+
+          <Box sx={moreProductsContainer}>
+            {product && category && (
+              <>
+                <MoreProductsHeader categoryId={category.id} />
+                <MoreProductsList
+                  productId={product?.id}
+                  categoryId={category.id}
+                />
+              </>
+            )}
+          </Box>
         </>
-      </Box>
-      {category && product && (
-        <Box sx={moreProductsContainer}>
-          <MoreProductsHeader categoryId={category.id} />
-          <MoreProductsList productId={product?.id} categoryId={category.id} />
-        </Box>
       )}
     </Box>
   );
