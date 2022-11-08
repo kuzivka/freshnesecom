@@ -41,7 +41,7 @@ export const oldPrice = { fontWeight: '600', fontSize: '12px', color: C1.C };
 export const buyNowBtn = {
   ...greenButton,
   p: '6px 12px',
-  color: 'white',
+  color: C1.J,
   height: 'fit-content',
   fontSize: '14px',
   textTransform: 'none',
