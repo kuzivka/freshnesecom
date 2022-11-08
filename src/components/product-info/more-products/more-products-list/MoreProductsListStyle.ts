@@ -12,7 +12,7 @@ export const productList = {
 };
 
 export const productListItem = {
-  width: { xs: 'calc((85%)/4)', xl: 'calc((80%)/5)' },
+  width: { sm: 'calc((90%)/3)',md: 'calc((85%)/4)', xl: 'calc((80%)/5)' },
   height: '100%',
   p: 0,
 };

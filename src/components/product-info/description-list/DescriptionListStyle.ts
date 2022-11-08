@@ -2,11 +2,11 @@ import { C1 } from '@styles/colors';
 import { hideOverflow } from '@styles/mixins';
 
 export const descriptionList = {
-  height: '140px',
+  height: {sm:'140px'},
   display: 'flex',
   flexDirection: 'column',
   flexWrap: 'wrap',
-  width: '50%',
+  width: {xs:'100%',sm:'50%'},
   gap: '12px',
 };
 export const descriptionProperty = {

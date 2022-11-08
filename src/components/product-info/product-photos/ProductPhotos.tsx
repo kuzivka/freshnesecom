@@ -7,6 +7,7 @@ import {
   imgStyle,
   productPhotosContainer,
   smallImg,
+  smallPhoto,
 } from './ProductPhotosStyle';
 
 interface IProductPhotosProps {
@@ -22,14 +23,14 @@ export default function ProductPhotos({ product }: IProductPhotosProps) {
         )}
         {!product?.shippingPrice && <Chip sx={chips} label="Free shipping" />}
       </Box>
-      <Grid container columnSpacing={4} rowSpacing={2.5}>
+      <Grid container columnSpacing={{xs:1, md:4 }} rowSpacing={{xs:1,md:2.5}}>
         <Grid sx={bigPhoto} item xs={12}>
           <img style={imgStyle} alt={product?.name} src={product?.img[0]} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid sx={smallPhoto} item xs={6}>
           <img style={smallImg} alt={product?.name} src={product?.img[1]} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid sx={smallPhoto} item xs={6}>
           <img style={smallImg} alt={product?.name} src={product?.img[2]} />
         </Grid>
       </Grid>

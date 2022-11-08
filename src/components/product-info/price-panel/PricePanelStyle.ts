@@ -8,6 +8,7 @@ export const mainContent = {
   pr: '24px',
   border: `1px solid ${C1.F}`,
   borderRadius: '12px',
+  flexWrap:'wrap', gap:'8px'
 };
 export const priceContainer = {
   width: '35%',
