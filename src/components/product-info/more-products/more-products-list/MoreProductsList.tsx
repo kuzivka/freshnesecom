@@ -62,7 +62,7 @@ export default function MoreProductsList({
               sx={cardImg}
               component="img"
               image={product.img[0]}
-              height="60%"
+              height="50%"
             />
 
             <CardContent sx={cardContent}>
