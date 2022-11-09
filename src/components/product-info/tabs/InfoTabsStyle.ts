@@ -11,7 +11,7 @@ export const tabs = {
     bottom: '6px',
   },
   '& .MuiTabs-flexContainer': {
-    borderBottom: `2px solid ${C1.D}`,
+    borderBottom: `2px solid ${C1.E}`,
   },
 };
 export const tabTitle = {

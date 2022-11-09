@@ -8,19 +8,21 @@ import { selectedProductInfoContainer } from './SelectedProductInfoStyle';
 
 interface SelectedProductInfoProps {
   product: Product | undefined;
+  categoryName: string | undefined;
 }
 
 export default function SelectedProductInfo({
   product,
+  categoryName,
 }: SelectedProductInfoProps) {
   return (
     <>
       {product && (
         <Box sx={selectedProductInfoContainer}>
           <ProductHeader product={product} />
-          <DescriptionList product={product} />
+          <DescriptionList categoryName={categoryName} product={product} />
           <PricePanel product={product} />
-          <InfoTabs product={product}  />
+          <InfoTabs product={product} />
         </Box>
       )}
     </>
