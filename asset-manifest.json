@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/freshnesecom/static/css/main.e9a02175.css",
-    "main.js": "/freshnesecom/static/js/main.6fd42a1c.js",
+    "main.js": "/freshnesecom/static/js/main.b125fcf6.js",
     "static/media/freshnesecom.svg": "/freshnesecom/static/media/freshnesecom.1566941c3300bdc2a39504180460a627.svg",
     "static/media/big-star-outline.svg": "/freshnesecom/static/media/big-star-outline.fb8024ddbbdb24e2c7987dd78012ca1c.svg",
     "static/media/star-outline.svg": "/freshnesecom/static/media/star-outline.0d2012977a35ab30f7d183dfa9f547f0.svg",
@@ -13,17 +13,16 @@
     "static/media/account.svg": "/freshnesecom/static/media/account.9a1692625cf0d3abf61665d08be91e7a.svg",
     "static/media/search.svg": "/freshnesecom/static/media/search.7b5c4d6de918ff3db5b0ca53967d87c3.svg",
     "static/media/arrow-white.svg": "/freshnesecom/static/media/arrow-white.2f29da60aca9a11536e24740cc987afc.svg",
-    "static/media/show-more-arrow.svg": "/freshnesecom/static/media/show-more-arrow.ec94c555bb2d972f58ca6741b465d8ed.svg",
     "static/media/arrow.svg": "/freshnesecom/static/media/arrow.139579ddc8bdab92308166d32b0528cd.svg",
     "static/media/arrow-right.svg": "/freshnesecom/static/media/arrow-right.cc7801587a14fa3cfeb9005433841f80.svg",
     "static/media/plus-btn.svg": "/freshnesecom/static/media/plus-btn.75836df51284081a9956cd4dd904c5ab.svg",
     "static/media/black-arrow.svg": "/freshnesecom/static/media/black-arrow.abe5462a5023b03961f83fe9387ddefa.svg",
     "static/media/select-arrow.svg": "/freshnesecom/static/media/select-arrow.7b121a25f457b094b96196ce99c256da.svg",
     "main.e9a02175.css.map": "/freshnesecom/static/css/main.e9a02175.css.map",
-    "main.6fd42a1c.js.map": "/freshnesecom/static/js/main.6fd42a1c.js.map"
+    "main.b125fcf6.js.map": "/freshnesecom/static/js/main.b125fcf6.js.map"
   },
   "entrypoints": [
     "static/css/main.e9a02175.css",
-    "static/js/main.6fd42a1c.js"
+    "static/js/main.b125fcf6.js"
   ]
 }
