@@ -17,8 +17,8 @@ interface PriceFilterProps {
   max: number;
   minValue: number;
   maxValue: number;
-  setMinValue: any;
-  setMaxValue: any;
+  setMinValue: (value:number) => void;
+  setMaxValue: (value:number) => void;
 }
 
 export function PriceFilter({
