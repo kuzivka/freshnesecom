@@ -2,7 +2,7 @@ import { Box, Button } from '@mui/material';
 import { useGetProductsQuery } from '@services/ecommerce';
 import { resetAll } from '@store/reducers/listSlice';
 import { getProductsMinMaxPrice } from '@utils/getProductsMinMaxPrice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import BrandFilter from '../brand/BrandFilter';
 import CategoriesFilter from '../category/CategoryFilter';
@@ -41,6 +41,11 @@ export default function FilterBar({ inDrawer }: IFilterBarProps) {
     dispatch(resetAll());
     resetPriceRange();
   };
+
+  useEffect(() => {
+    setMinValue(min);
+    setMaxValue(max);
+  }, [max, min]);
 
   return (
     <Box
